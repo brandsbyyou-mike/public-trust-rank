@@ -342,14 +342,25 @@ body {
   }
 
   /* One full-height pane at a time instead of a cramped 45vh/55vh split --
-     .list is the default pane; .layout.mobile-show-map flips which one is
-     visible. Both keep rendering their content underneath (markers/cards
-     stay populated), only visibility changes, so switching tabs is instant. */
+     .map-wrap is the default pane (map-first on mobile, 2026-09-01 per
+     user feedback: opening on the map and reaching the list in one tap
+     reads better than the reverse); .layout.mobile-show-list flips which
+     one is visible. Both keep rendering their content underneath
+     (markers/cards stay populated), only visibility changes, so switching
+     tabs is instant. */
   .layout { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-  .list { border-right: none; border-bottom: none; display: block; }
-  .map-wrap { display: none; }
-  .layout.mobile-show-map .list { display: none; }
-  .layout.mobile-show-map .map-wrap { display: block; }
+  .list { border-right: none; border-bottom: none; display: none; }
+  .map-wrap { display: block; }
+  .layout.mobile-show-list .list { display: block; }
+  .layout.mobile-show-list .map-wrap { display: none; }
+
+  /* The sources/methodology banner reads fine as a permanent fixture on
+     desktop, but on a small screen it pushes the actual content (map/list)
+     below the fold before the user sees anything useful -- 2026-09-01 per
+     user feedback ("kinda kills the experience"). The same disclosure is
+     still one tap away via the small "sources & methodology" link fixed to
+     the corner (see .methodology-link), so nothing is lost, just deferred. */
+  .info-banner { display: none; }
 }
 
 /* Intentionally unobtrusive: methodology/source disclosure, not part of the

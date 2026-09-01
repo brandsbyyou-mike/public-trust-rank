@@ -52,7 +52,7 @@ function initTheme() {
 // Below the 720px breakpoint, list and map are full-screen tabs (see
 // styles.css) instead of both sharing a cramped 45vh/55vh split. No-ops
 // harmlessly above that width since the toggle bar is hidden by CSS and
-// .layout never gets the mobile-show-map class from anything else.
+// .layout never gets the mobile-show-list class from anything else.
 function initMobileViewToggle() {
   const toggle = document.getElementById("mobile-view-toggle");
   const layout = document.querySelector(".layout");
@@ -63,7 +63,9 @@ function initMobileViewToggle() {
       toggle.querySelectorAll(".mvt-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       const showMap = btn.dataset.view === "map";
-      layout.classList.toggle("mobile-show-map", showMap);
+      // Map is the default pane (no modifier class); .mobile-show-list
+      // switches to the list instead -- see styles.css.
+      layout.classList.toggle("mobile-show-list", !showMap);
       // Mapbox GL sizes its canvas from the container's dimensions at the
       // moment it last rendered; a container that was display:none has no
       // dimensions, so the map needs an explicit resize the first time it
@@ -468,6 +470,13 @@ async function main() {
   initMobileViewToggle();
   await loadData();
   applyFilters();
+
+  // Map is the default pane on a mobile viewport now (no click needed to
+  // get there), so it's visible from first paint -- give it the same
+  // resize Mapbox GL needs after any display:none -> visible transition
+  // (see the comment in initMobileViewToggle) instead of only doing that
+  // on a tab click.
+  if (map && window.matchMedia("(max-width: 720px)").matches) map.resize();
 
   document.getElementById("search").addEventListener("input", (e) => {
     state.query = e.target.value;

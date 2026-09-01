@@ -20,7 +20,7 @@
     <a href="real-pilot.html" class="icon-btn" style="width:auto;padding:0 12px;display:flex;align-items:center;font-size:12.5px;text-decoration:none;" title="Same real data as a simple sortable list, no map">List view →</a>
     <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">◐</button>
   </header>
-  <div style="font-size:11.5px;color:var(--text-dim);background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 20px;">
+  <div class="info-banner" style="font-size:11.5px;color:var(--text-dim);background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 20px;">
     <b style="color:var(--text);">Real, named Scottsdale restaurants.</b> Scores, ratings, and review counts are computed live by the daily/weekly pipeline from Google Places, the City of Scottsdale's business license records, and each restaurant's own website — never Yelp or Tripadvisor (both block automated fetching, and Yelp's API terms explicitly ban this use case). See <a href="sources.html" style="color:var(--accent);">sources &amp; methodology</a>.
   </div>
 
@@ -31,10 +31,12 @@
   <!-- Mobile-only: list and map are full-screen tabs on a narrow viewport
        instead of both being squeezed into a shared 45vh/55vh split (which
        left neither one usable). Hidden entirely above the 720px breakpoint
-       where the side-by-side layout already works. -->
+       where the side-by-side layout already works. Map is the default pane
+       on mobile (see .layout.mobile-show-list in styles.css) -- List is one
+       tap away, not the other way around. -->
   <div class="mobile-view-toggle" id="mobile-view-toggle">
-    <button type="button" class="mvt-btn active" data-view="list">List</button>
-    <button type="button" class="mvt-btn" data-view="map">Map</button>
+    <button type="button" class="mvt-btn active" data-view="map">Map</button>
+    <button type="button" class="mvt-btn" data-view="list">List</button>
   </div>
 
   <main class="layout">
