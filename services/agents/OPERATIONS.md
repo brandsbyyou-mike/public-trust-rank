@@ -155,11 +155,30 @@ nothing beyond this list needs deciding day to day:
   write only happens after all restaurants in that run finish. Check the
   Actions tab for the failure reason before assuming the data is stale
   for a bad reason rather than a quiet network hiccup.
+- `apps/consumer-web/real-pilot.html` renders the whole roster — every
+  restaurant in `scottsdale-real-snapshot.json`, however many there are —
+  by merging it with `scottsdale-live-scores.json` in the browser at page
+  load. A restaurant with a real, scored entry (`confidence > 0`) shows
+  its score, factor breakdown, delta, and dish mentions; one without a
+  scored entry yet shows the "Not yet scored" placeholder instead of a
+  zero. There's no hardcoded restaurant count or id list in that page
+  anymore, so growing the roster never requires touching it — search and
+  score-descending sort both run client-side over whatever the two JSON
+  files contain.
 - Adding a new restaurant: add it to
   `data/real-pilot/scottsdale-real-snapshot.json` with at least `id`,
-  `name`, `address`, `lat`, `lng`; `website` is optional but improves
-  `siteFreshness`. It picks up both schedules automatically on the next
-  run — no other file needs touching.
+  `name`, `address`. `lat`/`lng` are optional now — the daily job
+  geocodes every restaurant itself from the same Places Text Search call
+  it already makes for `googleRating`/`reviewVolume` (zero extra API
+  cost, see the comment above `fetchGooglePlaces()` in `run.mjs`), with a
+  three-tier fallback (fresh geocode → last known value → a hand-supplied
+  `lat`/`lng` on the snapshot entry, if present → `null`). Any pre-known
+  `place_id` on the entry (as every restaurant added via "Discover
+  Restaurants" carries) skips a redundant lookup on the first run.
+  `website` is optional but improves `siteFreshness`. A new restaurant
+  picks up both schedules automatically on the next run — no other file
+  needs touching, and it shows on `real-pilot.html` immediately as an
+  honest "Not yet scored" placeholder until that first run reaches it.
 - **Growing the roster:** run "Discover Restaurants" from the Actions tab
   (manual trigger only, never scheduled) to pull a real, Google-verified
   candidate list into `data/real-pilot/discovered-candidates.json` — name,

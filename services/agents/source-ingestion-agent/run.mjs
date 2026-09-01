@@ -275,7 +275,8 @@ async function saveLedger(ledger) {
 // budget small (see docs/launch/go-live-cheap.md for the actual cost).
 async function fetchGooglePlaces(name, address, guard) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
-  if (!key) return { rating: null, reviewCount: null, placeId: null, reason: "no GOOGLE_PLACES_API_KEY set" };
+  const empty = { rating: null, reviewCount: null, placeId: null, lat: null, lng: null };
+  if (!key) return { ...empty, reason: "no GOOGLE_PLACES_API_KEY set" };
 
   guard.charge("placesTextSearch"); // throws and stops the whole run if this would exceed a budget cap -- see the Budget guard comment above
 
@@ -285,22 +286,30 @@ async function fetchGooglePlaces(name, address, guard) {
       headers: {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": key,
-        "X-Goog-FieldMask": "places.rating,places.userRatingCount,places.id",
+        // location added alongside rating/userRatingCount/id -- same call,
+        // zero extra API cost, and gives every restaurant (curated by hand
+        // or discovered via discover-restaurants.mjs, which doesn't pull
+        // coordinates) a real geocoded position instead of a hand-picked
+        // neighborhood-center approximation. Google's terms allow caching
+        // lat/lng up to 30 days; refreshing it daily here is well inside that.
+        "X-Goog-FieldMask": "places.rating,places.userRatingCount,places.id,places.location",
       },
       body: JSON.stringify({ textQuery: `${name}, ${address}` }),
     });
-    if (!res.ok) return { rating: null, reviewCount: null, placeId: null, reason: `Places API HTTP ${res.status}` };
+    if (!res.ok) return { ...empty, reason: `Places API HTTP ${res.status}` };
     const json = await res.json();
     const place = json.places?.[0];
-    if (!place) return { rating: null, reviewCount: null, placeId: null, reason: "no place match" };
+    if (!place) return { ...empty, reason: "no place match" };
     return {
       rating: place.rating ?? null,
       reviewCount: place.userRatingCount ?? null,
       placeId: place.id ?? null, // cacheable indefinitely per Places API policy -- see resolvePlaceId() below
+      lat: place.location?.latitude ?? null,
+      lng: place.location?.longitude ?? null,
       reason: null,
     };
   } catch (err) {
-    return { rating: null, reviewCount: null, placeId: null, reason: `fetch failed: ${err.message}` };
+    return { ...empty, reason: `fetch failed: ${err.message}` };
   }
 }
 
@@ -650,6 +659,20 @@ async function ingestOne(restaurant, prior, runContext) {
   // reach reviews, not a scoring signal itself.
   const { placeId } = await resolvePlaceId(restaurant, prior?.place_id ?? null, context);
 
+  // lat/lng: prefer a fresh geocoded position from today's Places lookup
+  // (the same call googleRating/reviewVolume already made -- see
+  // fetchGooglePlaces() -- zero extra API cost); otherwise carry the last
+  // known real position forward; otherwise fall back to whatever the
+  // snapshot itself provides (a hand-picked neighborhood-center
+  // approximation for the original curated set, absent entirely for
+  // restaurants added via discover-restaurants.mjs, which doesn't request
+  // coordinates -- this is what backfills them for real, once a key is set).
+  const freshPlaces = context.placesResult;
+  const lat = freshPlaces?.lat ?? prior?.lat ?? restaurant.lat ?? null;
+  const lng = freshPlaces?.lng ?? prior?.lng ?? restaurant.lng ?? null;
+  const coordsSource =
+    freshPlaces?.lat != null ? "google_places_geocoded" : prior?.lat != null ? "carried_forward" : restaurant.lat != null ? "snapshot_approx" : "none";
+
   // dish_mentions: WEEKLY only (a place's review mix doesn't meaningfully
   // shift day to day), carried forward untouched on days it's not due --
   // same carry-forward pattern as editorialMentions above.
@@ -676,6 +699,9 @@ async function ingestOne(restaurant, prior, runContext) {
     ...result, // score, breakdown, topReasons, confidence -- ready for the frontend to render directly
     factors: factorResults, // per-factor value/note/updated_at -- the audit trail
     place_id: placeId, // cached indefinitely once resolved -- see resolvePlaceId()
+    lat,
+    lng,
+    coords_source: coordsSource,
     dish_mentions: dishMentions, // derived counts only -- see the legal note atop this file
     dish_mentions_updated_at: dishMentionsUpdatedAt,
     dish_mentions_note: dishMentionsNote,
