@@ -763,13 +763,42 @@ async function ingestOne(restaurant, prior, runContext) {
       };
       if (hasReal) confidence += WEIGHTS[factorKey];
     } else if (priorFactor) {
-      // Not due this run -- carry the last real result forward untouched,
-      // including its original timestamp and verified flag, so it's clear
-      // from the data itself when each factor was actually last checked.
-      // `?? false` covers data written before `verified` existed; it just
-      // self-heals the next time that factor is actually due.
-      factorResults[factorKey] = priorFactor;
-      if (priorFactor.verified ?? false) confidence += WEIGHTS[factorKey];
+      // Not due this run -- carry the last real result forward, including
+      // its original timestamp, so it's clear from the data itself when
+      // each factor was actually last checked.
+      //
+      // MIGRATION, found the hard way (2026-09-01): data written before
+      // `verified` existed has no `verified` field at all -- `undefined`,
+      // not `false`. The very first version of this carry-forward code
+      // used `priorFactor.verified ?? false`, which reads a real, correct,
+      // already-fetched value (a real 4.6-star Google rating, a real
+      // verified license) as "unverified" purely because it predates this
+      // field, and zeroes it out of the score. That's exactly the bug this
+      // whole feature exists to prevent, just introduced by the migration
+      // path instead of the pipeline. Every restaurant on the live site
+      // went to confidence 0 / "not yet scored" the moment this shipped,
+      // and would have silently stayed that way until each factor's own
+      // cadence happened to come due again (daily factors: the next Daily
+      // Score Update run).
+      //
+      // Fix: infer verified for legacy rows from `updated_at` alone, the
+      // same signal this file already uses everywhere else to mean "this
+      // was actually checked" -- NOT from the note text. Checked real
+      // production data first: notes like "no Google rating available" or
+      // "no address-confirmed license record found" are genuine, already-
+      // executed checks (they carry a real updated_at) that just came back
+      // negative, exactly the "measured-low, not unfetched" case this
+      // whole feature exists to count -- a note-text guess ("starts with
+      // 'no '") would have wrongly zeroed those back out too. `updated_at`
+      // being set is the one honest signal: it's only ever written at the
+      // moment a fetch actually ran (see every FACTOR_FETCHERS branch).
+      // Write the inferred flag back into factorResults so this
+      // restaurant's data is explicit from this run on -- the inference
+      // only ever has to run once per factor per restaurant.
+      const legacyVerified = priorFactor.updated_at != null;
+      const verified = priorFactor.verified ?? legacyVerified;
+      factorResults[factorKey] = { ...priorFactor, verified };
+      if (verified) confidence += WEIGHTS[factorKey];
     } else {
       // Never fetched (e.g. weekly factor on a restaurant's very first
       // daily-only run, or healthInspection always) -- honest placeholder,
