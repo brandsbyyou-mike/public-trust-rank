@@ -4,36 +4,36 @@
     "real-001": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-002": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 97,
+        "confidence": 0.68
       }
     ],
     "real-003": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-004": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 98,
+        "confidence": 0.14
       }
     ],
     "real-005": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 86,
+        "confidence": 0.14
       }
     ],
     "real-006": [
@@ -46,8 +46,8 @@
     "real-007": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 88,
+        "confidence": 0.14
       }
     ],
     "real-008": [
@@ -60,15 +60,15 @@
     "real-009": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 79,
+        "confidence": 0.14
       }
     ],
     "real-010": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-011": [
@@ -81,197 +81,197 @@
     "real-012": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-013": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 96,
+        "confidence": 0.14
       }
     ],
     "real-014": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-015": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 97,
+        "confidence": 0.14
       }
     ],
     "real-016": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 92,
+        "confidence": 0.14
       }
     ],
     "real-017": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-018": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-019": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 88,
+        "confidence": 0.14
       }
     ],
     "real-020": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-021": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 81,
+        "confidence": 0.14
       }
     ],
     "real-022": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-023": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 81,
+        "confidence": 0.14
       }
     ],
     "real-024": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-025": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-026": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 92,
+        "confidence": 0.14
       }
     ],
     "real-027": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-028": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 80,
+        "confidence": 0.14
       }
     ],
     "real-029": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 99,
+        "confidence": 0.14
       }
     ],
     "real-030": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-031": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-032": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 90,
+        "confidence": 0.14
       }
     ],
     "real-033": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-034": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 96,
+        "confidence": 0.14
       }
     ],
     "real-035": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 83,
+        "confidence": 0.14
       }
     ],
     "real-036": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 93,
+        "confidence": 0.14
       }
     ],
     "real-037": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 78,
+        "confidence": 0.14
       }
     ],
     "real-038": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-039": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 90,
+        "confidence": 0.14
       }
     ],
     "real-040": [
@@ -284,15 +284,15 @@
     "real-041": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 78,
+        "confidence": 0.14
       }
     ],
     "real-042": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 93,
+        "confidence": 0.14
       }
     ],
     "real-043": [
@@ -305,113 +305,113 @@
     "real-044": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 88,
+        "confidence": 0.14
       }
     ],
     "real-045": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 88,
+        "confidence": 0.14
       }
     ],
     "real-046": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 89,
+        "confidence": 0.14
       }
     ],
     "real-047": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 89,
+        "confidence": 0.14
       }
     ],
     "real-048": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 85,
+        "confidence": 0.14
       }
     ],
     "real-049": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 95,
+        "confidence": 0.14
       }
     ],
     "real-050": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 90,
+        "confidence": 0.14
       }
     ],
     "real-051": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 97,
+        "confidence": 0.14
       }
     ],
     "real-052": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-053": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 94,
+        "confidence": 0.14
       }
     ],
     "real-054": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 96,
+        "confidence": 0.14
       }
     ],
     "real-055": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-056": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-057": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-058": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-059": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 90,
+        "confidence": 0.14
       }
     ],
     "real-060": [
@@ -431,8 +431,8 @@
     "real-062": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 94,
+        "confidence": 0.14
       }
     ],
     "real-063": [
@@ -445,92 +445,92 @@
     "real-064": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 85,
+        "confidence": 0.14
       }
     ],
     "real-065": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 96,
+        "confidence": 0.14
       }
     ],
     "real-066": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-067": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 82,
+        "confidence": 0.14
       }
     ],
     "real-068": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 90,
+        "confidence": 0.14
       }
     ],
     "real-069": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 95,
+        "confidence": 0.14
       }
     ],
     "real-070": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-071": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 86,
+        "confidence": 0.14
       }
     ],
     "real-072": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 85,
+        "confidence": 0.14
       }
     ],
     "real-073": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-074": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 83,
+        "confidence": 0.14
       }
     ],
     "real-075": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-076": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 85,
+        "confidence": 0.14
       }
     ],
     "real-077": [
@@ -543,50 +543,50 @@
     "real-078": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-079": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-080": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-081": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-082": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-083": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 82,
+        "confidence": 0.14
       }
     ],
     "real-084": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 80,
+        "confidence": 0.14
       }
     ],
     "real-085": [
@@ -599,64 +599,64 @@
     "real-086": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 85,
+        "confidence": 0.14
       }
     ],
     "real-087": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-088": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-089": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-090": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-091": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 93,
+        "confidence": 0.14
       }
     ],
     "real-092": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 77,
+        "confidence": 0.14
       }
     ],
     "real-093": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-094": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-095": [
@@ -676,29 +676,29 @@
     "real-097": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 80,
+        "confidence": 0.14
       }
     ],
     "real-098": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-099": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 89,
+        "confidence": 0.14
       }
     ],
     "real-100": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 97,
+        "confidence": 0.14
       }
     ],
     "real-101": [
@@ -711,29 +711,29 @@
     "real-102": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-103": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-104": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-105": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-106": [
@@ -767,43 +767,43 @@
     "real-110": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-111": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-112": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-113": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 94,
+        "confidence": 0.14
       }
     ],
     "real-114": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-115": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-116": [
@@ -823,36 +823,36 @@
     "real-118": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-119": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-120": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-121": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-122": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 82,
+        "confidence": 0.14
       }
     ],
     "real-123": [
@@ -865,8 +865,8 @@
     "real-124": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-125": [
@@ -879,15 +879,15 @@
     "real-126": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-127": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-128": [
@@ -907,36 +907,36 @@
     "real-130": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 86,
+        "confidence": 0.14
       }
     ],
     "real-131": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 88,
+        "confidence": 0.14
       }
     ],
     "real-132": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-133": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 81,
+        "confidence": 0.14
       }
     ],
     "real-134": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-135": [
@@ -949,29 +949,29 @@
     "real-136": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-137": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 82,
+        "confidence": 0.14
       }
     ],
     "real-138": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-139": [
       {
         "date": "2026-09-01",
-        "score": 50,
-        "confidence": 0
+        "score": 100,
+        "confidence": 0.14
       }
     ]
   }
