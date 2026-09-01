@@ -143,13 +143,17 @@ function factorDueThisRun(factorKey) {
   return CADENCE[factorKey] === MODE;
 }
 
-// --- Editorial-mentions rotation --------------------------------------
-// How many weekly buckets the roster needs to keep each week's Custom
-// Search usage under CSE_DAILY_BUDGET. A roster at or under the budget
-// needs just 1 bucket -- everyone, every week, same behavior as before
-// this existed.
-function bucketCountFor(totalRestaurants) {
-  return Math.max(1, Math.ceil(totalRestaurants / CSE_DAILY_BUDGET));
+// --- Rotation buckets (editorial mentions AND, as of the pilot quota fix
+// below, Place Details reviews) -----------------------------------------
+// How many weekly buckets the roster needs to keep a given week's usage
+// under some daily budget. A roster at or under the budget needs just 1
+// bucket -- everyone, every week. Shared by editorial mentions (budget:
+// CSE_DAILY_BUDGET) and, since the real GetPlaceRequest quota turned out
+// to be 100/day on this unbilled project (see PLACE_DETAILS_DAILY_BUDGET
+// below), by dish/service mentions too -- same rotation mechanism, two
+// independent bucket counts and rotation indexes.
+function bucketCountFor(totalRestaurants, dailyBudget) {
+  return Math.max(1, Math.ceil(totalRestaurants / dailyBudget));
 }
 
 // A stable "which week is it" counter -- days-since-epoch / 7, not a
@@ -198,6 +202,18 @@ function restaurantBucket(id, bucketCount) {
 const PLACES_TEXT_SEARCH_MONTHLY_CAP = 9000; // 10,000 free; margin for a mid-month key rotation or manual re-runs
 const PLACES_DETAILS_MONTHLY_CAP = 9000; // same margin, separate free-tier bucket
 const CUSTOM_SEARCH_DAILY_CAP = 90; // 100 free/day; the rotation system (CSE_DAILY_BUDGET) should never even approach this
+
+// Real, observed number, not a guess: Google Cloud Console's own Quotas
+// page shows GetPlaceRequest (Place Details) capped at 100/day on this
+// unbilled project -- see the 429/quota-exhaustion comment above
+// fetchPlaceReviews(). This pilot is staying unbilled by choice (2026-09-01
+// decision, not a technical default), so dish/service mentions now rotate
+// through a slice of the roster each week the same way editorialMentions
+// already does, instead of hitting the whole 139-restaurant roster in one
+// run. 90, not 100 -- headroom for the couple of calls the quota-exhausted
+// circuit breaker burns before it trips, and for any other Place Details
+// usage this key might see.
+const PLACE_DETAILS_DAILY_BUDGET = 90;
 
 class BudgetGuardError extends Error {
   constructor(apiType, made, cap, period) {
@@ -793,15 +809,20 @@ async function ingestOne(restaurant, prior, runContext) {
   const coordsSource =
     freshPlaces?.lat != null ? "google_places_geocoded" : prior?.lat != null ? "carried_forward" : restaurant.lat != null ? "snapshot_approx" : "none";
 
-  // dish_mentions: WEEKLY only (a place's review mix doesn't meaningfully
-  // shift day to day), carried forward untouched on days it's not due --
+  // dish_mentions: WEEKLY, AND rotated across a 2-bucket schedule (see
+  // reviewsBucketCount/reviewsRotationIndex above -- the real Place
+  // Details quota can't cover the full roster in one run), carried
+  // forward untouched on weeks/days it's not this restaurant's turn --
   // same carry-forward pattern as editorialMentions above.
   let dishMentions = prior?.dish_mentions ?? [];
   let serviceMentions = prior?.service_mentions ?? [];
   let reviewSample = prior?.recent_reviews ?? { count: 0, avg_rating: null };
   let dishMentionsUpdatedAt = prior?.dish_mentions_updated_at ?? null;
   let dishMentionsNote = prior?.dish_mentions_note ?? "not yet fetched";
-  if ((MODE === "weekly" || MODE === "all") && placeId) {
+  const reviewsDueThisRun =
+    (MODE === "weekly" || MODE === "all") &&
+    restaurantBucket(restaurant.id, runContext.reviewsBucketCount) === runContext.reviewsRotationIndex;
+  if (reviewsDueThisRun && placeId) {
     const { reviews, reason } = await fetchPlaceReviews(placeId, context.guard, context.runState);
     if (reviews) {
       // All three derived from the same fetch; raw `reviews` text goes out
@@ -915,8 +936,18 @@ async function main() {
 
   // Editorial-mentions rotation: figure out this run's bucket once, up
   // front, from the roster size -- see bucketCountFor()/currentRotationIndex().
-  const bucketCount = bucketCountFor(snapshot.restaurants.length);
+  const bucketCount = bucketCountFor(snapshot.restaurants.length, CSE_DAILY_BUDGET);
   const rotationIndex = currentRotationIndex(bucketCount);
+
+  // Dish/service-mentions (Place Details reviews) rotation -- same
+  // mechanism, independent bucket count/index, because the real
+  // GetPlaceRequest quota (100/day, unbilled -- see PLACE_DETAILS_DAILY_BUDGET)
+  // can't cover the full 139-restaurant roster in one run. At 90/week and
+  // 139 restaurants this is 2 buckets, so every restaurant's dish/service
+  // mentions refresh at least every other week instead of every week --
+  // an explicit, deliberate pilot tradeoff (2026-09-01), not a bug.
+  const reviewsBucketCount = bucketCountFor(snapshot.restaurants.length, PLACE_DETAILS_DAILY_BUDGET);
+  const reviewsRotationIndex = currentRotationIndex(reviewsBucketCount);
 
   // Budget guard: per-run sanity caps sized to what THIS roster should ever
   // need in one run (one call per restaurant, plus a small buffer) -- see
@@ -941,7 +972,7 @@ async function main() {
   // restaurant after that fails fast instead of retrying into a wall.
   const runState = { placeDetailsQuotaExhausted: null };
 
-  const runContext = { licenseRecords, bucketCount, rotationIndex, guard, runState };
+  const runContext = { licenseRecords, bucketCount, rotationIndex, reviewsBucketCount, reviewsRotationIndex, guard, runState };
 
   for (const restaurant of snapshot.restaurants) {
     // Sequential, not Promise.all -- basic courtesy to the per-restaurant
@@ -981,7 +1012,7 @@ async function main() {
     JSON.stringify(
       {
         _notice:
-          "Generated by services/agents/source-ingestion-agent/run.mjs. Each factor is either real fetched data or an explicit 0 with a note explaining why -- never a guess. See each restaurant's `factors` field for a per-factor value/note/updated_at audit trail, `previous_score`/`score_delta`/`delta_since` for the real change-since-last-time (from score-history.json, not a demo placeholder), and services/agents/OPERATIONS.md for the daily/weekly cadence this runs on. healthInspection is always 0 today; see source-agent-playbook.md #5. editorialMentions checks a rotating slice of the roster each week once the roster is larger than Custom Search's free-tier budget, not every restaurant every week -- see CSE_DAILY_BUDGET in run.mjs; `factors.editorialMentions.updated_at` on each restaurant is the source of truth for when it was last actually checked. `dish_mentions` is a WEEKLY, NOT rotated (it runs on the separate Places Details free tier, which has far more headroom than Custom Search, so every restaurant gets it every week), derived-only summary of Google's up-to-5 most relevant reviews (term/mentions/avg_rating) -- it does NOT affect `score` (see the DISH MENTIONS comment atop run.mjs for the legal reason raw review text is never stored here).",
+          "Generated by services/agents/source-ingestion-agent/run.mjs. Each factor is either real fetched data or an explicit 0 with a note explaining why -- never a guess. See each restaurant's `factors` field for a per-factor value/note/updated_at audit trail, `previous_score`/`score_delta`/`delta_since` for the real change-since-last-time (from score-history.json, not a demo placeholder), and services/agents/OPERATIONS.md for the daily/weekly cadence this runs on. healthInspection is always 0 today; see source-agent-playbook.md #5. editorialMentions checks a rotating slice of the roster each week once the roster is larger than Custom Search's free-tier budget, not every restaurant every week -- see CSE_DAILY_BUDGET in run.mjs; `factors.editorialMentions.updated_at` on each restaurant is the source of truth for when it was last actually checked. `dish_mentions` is WEEKLY and rotated the same way editorialMentions is (see PLACE_DETAILS_DAILY_BUDGET in run.mjs) -- the real GetPlaceRequest quota on this unbilled project turned out to be 100/day, so each restaurant's dish/service mentions now refresh at least every other week, not every week; `dish_mentions_updated_at` on each restaurant is the source of truth for when it was last actually checked. Derived-only summary of Google's up-to-5 most relevant reviews (term/mentions/avg_rating) -- it does NOT affect `score` (see the DISH MENTIONS comment atop run.mjs for the legal reason raw review text is never stored here).",
         last_run_mode: MODE,
         generated_at: new Date().toISOString(),
         restaurants: results,
