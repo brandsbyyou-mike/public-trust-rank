@@ -325,6 +325,11 @@ async function getPlaces(restaurant, context) {
 // restaurant's very first run, on a weekly-only invocation).
 async function resolvePlaceId(restaurant, priorPlaceId, context) {
   if (priorPlaceId) return { placeId: priorPlaceId, reason: null };
+  // A restaurant added via discover-restaurants.mjs already carries the
+  // place_id Nearby Search found for it -- skip a redundant Text Search
+  // and just confirm it once by using it. (Only relevant on a restaurant's
+  // very first run, same as the priorPlaceId case above.)
+  if (restaurant.place_id) return { placeId: restaurant.place_id, reason: null };
   const places = await getPlaces(restaurant, context);
   return { placeId: places.placeId, reason: places.placeId ? null : places.reason };
 }

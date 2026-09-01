@@ -1,5 +1,5 @@
 {
-  "_notice": "REAL, NAMED restaurants. Every name, address, cuisine, and review-count figure below is a public fact pulled from search results and cited by source URL. What this is NOT: a full Public Trust Score. Star-rating sentiment, review-authenticity, reservation-demand, and freshness data are NOT included here because Yelp and Tripadvisor block automated fetching of their pages (robots.txt) and no licensed API is connected yet (see docs/source-policy/approved-sources.md). Getting real, safe-to-publish scores for real businesses requires either manual verification against the source pages (someone reading the actual page and confirming the number) or a licensed API like Google Places. Publishing a full 50-100 'trust score' for a real business on anything less than that is a defamation risk this file deliberately avoids. Coordinates are neighborhood-center approximations, not geocoded street addresses -- see field note on each entry.",
+  "_notice": "REAL, NAMED restaurants. Every name, address, cuisine, and review-count figure below is a public fact pulled from search results and cited by source URL. What this is NOT: a full Public Trust Score. Star-rating sentiment, review-authenticity, reservation-demand, and freshness data are NOT included here because Yelp and Tripadvisor block automated fetching of their pages (robots.txt) and no licensed API is connected yet (see docs/source-policy/approved-sources.md). Getting real, safe-to-publish scores for real businesses requires either manual verification against the source pages (someone reading the actual page and confirming the number) or a licensed API like Google Places. Publishing a full 50-100 'trust score' for a real business on anything less than that is a defamation risk this file deliberately avoids. Coordinates are neighborhood-center approximations, not geocoded street addresses -- see field note on each entry. Expanded 2026-09-01 from 7 to 139 restaurants via services/agents/source-ingestion-agent/discover-restaurants.mjs (Google Places Nearby Search across a grid covering Scottsdale), reviewed by hand: excluded non-restaurant categories that Google's 'restaurant' type also returns (gas stations, liquor stores, malls, golf clubs, hotels/resorts as such, coffee-only shops) and excluded results whose address is outside Scottsdale, AZ (a few Places near the Scottsdale/Phoenix border share a Phoenix, AZ 85054 mailing address despite the name). Newly added entries carry a pre-resolved place_id (saves a redundant Google Places lookup on the first run) and lack a website field -- siteFreshness stays an honest 'no website URL on file' for them until one is added, same as for several of the original 7.",
   "sourced_date": "2026-08-31",
   "market": "scottsdale-az",
   "category": "restaurants",
@@ -12,7 +12,8 @@
       "address": "7299 N Scottsdale Rd, Scottsdale, AZ 85253",
       "neighborhood_approx": "McCormick Ranch / Camelback Corridor",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.5041, "lng": -111.9302,
+      "lat": 33.5041,
+      "lng": -111.9302,
       "yelp_review_count": 1383,
       "source": "https://www.yelp.com/biz/roka-akor-scottsdale-scottsdale"
     },
@@ -23,7 +24,8 @@
       "address": "15169 N Scottsdale Rd, Scottsdale, AZ 85254",
       "neighborhood_approx": "North Scottsdale / Scottsdale Quarter",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.6247, "lng": -111.9285,
+      "lat": 33.6247,
+      "lng": -111.9285,
       "yelp_review_count": 1425,
       "source": "https://www.yelp.com/biz/dominicks-steakhouse-scottsdale-4",
       "website": "https://www.dominickssteakhouse.com/"
@@ -35,7 +37,8 @@
       "address": "15037 N Scottsdale Rd, Scottsdale, AZ 85254",
       "neighborhood_approx": "North Scottsdale / Scottsdale Quarter",
       "coords_note": "approximate neighborhood center, not geocoded to street address. Note: an OLDER Yelp listing for a prior OBON location shows CLOSED -- this is a real example of the entity-resolution problem docs/architecture describes; the listing above is the current, active one.",
-      "lat": 33.6247, "lng": -111.9265,
+      "lat": 33.6247,
+      "lng": -111.9265,
       "yelp_review_count": 716,
       "source": "https://www.yelp.com/biz/obon-sushi-bar-ramen-scottsdale"
     },
@@ -46,7 +49,8 @@
       "address": "3815 N Brown Ave, Scottsdale, AZ 85251",
       "neighborhood_approx": "Old Town",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.4936, "lng": -111.9271,
+      "lat": 33.4936,
+      "lng": -111.9271,
       "yelp_review_count": 3417,
       "source": "https://www.yelp.com/biz/the-mission-old-town-scottsdale-2",
       "website": "https://www.themissionaz.com/the-mission-old-town-1"
@@ -58,7 +62,8 @@
       "address": "6939 E 1st Ave, Scottsdale, AZ 85251",
       "neighborhood_approx": "Old Town",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.4944, "lng": -111.9214,
+      "lat": 33.4944,
+      "lng": -111.9214,
       "yelp_review_count": 1328,
       "editorial_mention": "Named 'most romantic restaurant in the U.S.' -- Phoenix New Times",
       "source": "https://www.yelp.com/biz/cafe-monarch-scottsdale-14",
@@ -71,7 +76,8 @@
       "address": "7030 E Greenway Pkwy, Scottsdale, AZ 85254",
       "neighborhood_approx": "Kierland",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.6247, "lng": -111.9295,
+      "lat": 33.6247,
+      "lng": -111.9295,
       "yelp_review_count": 1231,
       "source": "https://www.yelp.com/biz/postino-kierland-scottsdale"
     },
@@ -82,9 +88,1066 @@
       "address": "4821 N Scottsdale Rd, Scottsdale, AZ 85251",
       "neighborhood_approx": "Fashion Square / Old Town",
       "coords_note": "approximate neighborhood center, not geocoded to street address",
-      "lat": 33.5022, "lng": -111.9298,
+      "lat": 33.5022,
+      "lng": -111.9298,
       "yelp_review_count": 1135,
       "source": "https://www.yelp.com/biz/postino-highland-scottsdale"
+    },
+    {
+      "id": "real-008",
+      "name": "50 Shades of Rosé",
+      "address": "7419 E Indian Plaza B, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJswJM6XELK4cRSL59TkqAsQ0"
+    },
+    {
+      "id": "real-009",
+      "name": "Amelia's by EAT",
+      "address": "8240 Hayden Rd Unit b 106, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJky6kxtcLK4cR9ct6W8sjmhY"
+    },
+    {
+      "id": "real-010",
+      "name": "Andreoli Italian Grocer",
+      "address": "8880 E Vía Linda, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ86AodjF1K4cRCmC91tTFfPY"
+    },
+    {
+      "id": "real-011",
+      "name": "AZ88",
+      "address": "7353 E Scottsdale Mall, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJSYnAvMALK4cRIVgKZTKIqMk"
+    },
+    {
+      "id": "real-012",
+      "name": "Barrio Queen",
+      "address": "7114 E Stetson Dr Ste 105, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJdyVnir0LK4cRQC0LJRU525E"
+    },
+    {
+      "id": "real-013",
+      "name": "Barro's Pizza",
+      "address": "20701 N Scottsdale Rd #101, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJW0lFNeZ2K4cRfC1iWwIxZvw"
+    },
+    {
+      "id": "real-014",
+      "name": "Benihana",
+      "address": "16403 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJn2pHrSN0K4cRnAobviunxsU"
+    },
+    {
+      "id": "real-015",
+      "name": "Blanco Cocina + Cantina",
+      "address": "6166 N Scottsdale Rd #601, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJEUQnERMLK4cRBBRrMxaBZTA"
+    },
+    {
+      "id": "real-016",
+      "name": "Boondocks Patio & Grill Scottsdale",
+      "address": "4341 N 75th St, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJQTIa0rsLK4cRoe2Hm1MP-Fs"
+    },
+    {
+      "id": "real-017",
+      "name": "Bottled Blonde",
+      "address": "7340 E Indian Plaza #100, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJ6wbYg7wLK4cR9jxNDIlRjWg"
+    },
+    {
+      "id": "real-018",
+      "name": "Breakfast Club",
+      "address": "4400 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJJ6Bhp70LK4cRe8Hs1vcBIsk"
+    },
+    {
+      "id": "real-019",
+      "name": "Butters Pancakes & Cafe",
+      "address": "14795 N Northsight Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Airpark",
+      "place_id": "ChIJn97ySLF1K4cROd-muRSmEWI"
+    },
+    {
+      "id": "real-020",
+      "name": "Butters Pancakes & Café",
+      "address": "8300 Hayden Rd f104, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJ-zuhuNYKK4cR4_x6LHwES7A"
+    },
+    {
+      "id": "real-021",
+      "name": "Cala Scottsdale",
+      "address": "7501 E Camelback Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJWTvP6m8LK4cRSowZv8e3kyk"
+    },
+    {
+      "id": "real-022",
+      "name": "Carlsbad Tavern",
+      "address": "3313 Hayden Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJoYtJls0LK4cRUrTZU3mxPVo"
+    },
+    {
+      "id": "real-023",
+      "name": "CAVA",
+      "address": "14601 N Scottsdale Rd Suite 107, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJddrmsIJ1K4cRn3Ksl4Tqh78"
+    },
+    {
+      "id": "real-024",
+      "name": "Chick-fil-A",
+      "address": "10652 N 89th Pl, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJOQh7uz11K4cRM971BYv_tnU"
+    },
+    {
+      "id": "real-025",
+      "name": "Chick-fil-A",
+      "address": "14995 N 87th St, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Airpark",
+      "place_id": "ChIJfRggBLp1K4cR1iwdd_-oD3w"
+    },
+    {
+      "id": "real-026",
+      "name": "Chipotle Mexican Grill",
+      "address": "20851 N Scottsdale Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJ9QNQK-Z2K4cR2GU3z5nrJbk"
+    },
+    {
+      "id": "real-027",
+      "name": "Chompie's Restaurant, Deli, and Bakery",
+      "address": "9301 E Shea Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ19FeVT91K4cRI5njv8O2Vec"
+    },
+    {
+      "id": "real-028",
+      "name": "Chula Seafood Grayhawk",
+      "address": "20581 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJLTXrB8F3K4cRisoidUws3zI"
+    },
+    {
+      "id": "real-029",
+      "name": "Cien Agaves Tacos & Tequila",
+      "address": "7228 E 1st Ave, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJXxwAnuALK4cRAQsq-JRmEq4"
+    },
+    {
+      "id": "real-030",
+      "name": "Cold Beers & Cheeseburgers",
+      "address": "18529 N Scottsdale Rd Ste 121, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJ3cRGTeZ2K4cRpoefjhgKJKg"
+    },
+    {
+      "id": "real-031",
+      "name": "Cold Beers & Cheeseburgers",
+      "address": "8624 E Shea Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJBzPwojV1K4cR-yHJXvC53vo"
+    },
+    {
+      "id": "real-032",
+      "name": "Collins Brothers Public House",
+      "address": "8220 Hayden Rd, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJgSpAqdYKK4cR2nUGRqi5pew"
+    },
+    {
+      "id": "real-033",
+      "name": "Cooper’s Hawk Winery & Restaurant",
+      "address": "7361 E Frank Lloyd Wright Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJm3EyYJF1K4cRMAAKe50UFMs"
+    },
+    {
+      "id": "real-034",
+      "name": "Culinary Dropout",
+      "address": "7135 E Camelback Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJO5yLk7MLK4cRQq8vQVzxl_w"
+    },
+    {
+      "id": "real-035",
+      "name": "Culinary Dropout",
+      "address": "15125 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJFXRd9n91K4cR4eFXHSar_-4"
+    },
+    {
+      "id": "real-036",
+      "name": "Culver’s",
+      "address": "8668 E Shea Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ308fuSJ1K4cRxtvMxHa47fM"
+    },
+    {
+      "id": "real-037",
+      "name": "Curate Cafe",
+      "address": "20851 N Scottsdale Rd Ste 103, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJh3LpkBR3K4cREIaUCwmOwEU"
+    },
+    {
+      "id": "real-038",
+      "name": "De Babel",
+      "address": "8980 N 90th St #124, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ47LVe8p1K4cRBjrfp0nqMbc"
+    },
+    {
+      "id": "real-039",
+      "name": "Diego Pops",
+      "address": "4338 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJczrRvr0LK4cR2HdDAQ-Mt_o"
+    },
+    {
+      "id": "real-040",
+      "name": "Dierks Bentley's Whiskey Row",
+      "address": "4420 N Saddlebag Trail, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJx5-Of7wLK4cRhbzcpk-JrRE"
+    },
+    {
+      "id": "real-041",
+      "name": "Dodo Bird Kitchen and Cocktails",
+      "address": "7901 E Thomas Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJl1PehNQLK4cRUxBo51B5DaY"
+    },
+    {
+      "id": "real-042",
+      "name": "el CARBÓN Mexican Eatery",
+      "address": "7704 E Doubletree Ranch Rd STE 115, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJS_-eeVN1K4cRsGQHI4MpS7o"
+    },
+    {
+      "id": "real-043",
+      "name": "Élephante Scottsdale",
+      "address": "7014 E Camelback Rd #601, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJfaCZ0vYLK4cRC-3iRV1cKUc"
+    },
+    {
+      "id": "real-044",
+      "name": "Farm and Craft Scottsdale",
+      "address": "4302 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJLZzvxL0LK4cRJfRkgAdfUTY"
+    },
+    {
+      "id": "real-045",
+      "name": "Fat Ox",
+      "address": "6316 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJaQjRkRQLK4cR0TPbTzeCR6E"
+    },
+    {
+      "id": "real-046",
+      "name": "Fate Brewing Company",
+      "address": "1312 N Scottsdale Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJffoao2cJK4cRpDZy6Da-T8E"
+    },
+    {
+      "id": "real-047",
+      "name": "First Watch",
+      "address": "6149 N Scottsdale Rd Ste 109, Scottsdale, AZ 85250",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJGT-6RBILK4cROhlqudQIQtM"
+    },
+    {
+      "id": "real-048",
+      "name": "First Watch",
+      "address": "9325 E Shea Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ128E3GJ1K4cRBxHHPnvvtx0"
+    },
+    {
+      "id": "real-049",
+      "name": "Fleming’s Prime Steakhouse & Wine Bar",
+      "address": "6333 N Scottsdale Rd, Scottsdale, AZ 85250",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJf29SZRQLK4cRSNiYaxURy9Y"
+    },
+    {
+      "id": "real-050",
+      "name": "Flower Child",
+      "address": "10460 N 90th St, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJTbnhHzx1K4cRChg4XaTSrMU"
+    },
+    {
+      "id": "real-051",
+      "name": "Fogo de Chão Brazilian Steakhouse",
+      "address": "6300 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJqY0omh4LK4cRevCIAaO2aG4"
+    },
+    {
+      "id": "real-052",
+      "name": "Giligin's",
+      "address": "4251 N Winfield Scott Plaza, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJZ5bgKbwLK4cRt9p9H-BCDCs"
+    },
+    {
+      "id": "real-053",
+      "name": "Grassroots Kitchen & Tap",
+      "address": "8120 Hayden Rd E-100, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJ7YWkrdYKK4cRn7Zy5PuxyoA"
+    },
+    {
+      "id": "real-054",
+      "name": "Grimaldi's Pizzeria",
+      "address": "4000 N Scottsdale Rd Ste 105, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town East / Marshall Way",
+      "place_id": "ChIJ372vl78LK4cRhU-zgvgRcDg"
+    },
+    {
+      "id": "real-055",
+      "name": "Hash Kitchen",
+      "address": "8777 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJz_-uVch0K4cRpOO6kdSN5Xg"
+    },
+    {
+      "id": "real-056",
+      "name": "Hiro Sushi",
+      "address": "9393 N 90th St, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJWzmkyjZ1K4cRFmlSEiAtBnM"
+    },
+    {
+      "id": "real-057",
+      "name": "Houston's",
+      "address": "6113 N Scottsdale Rd, Scottsdale, AZ 85250",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Camelback Corridor",
+      "place_id": "ChIJQdxFRRILK4cRfWRACdTaILs"
+    },
+    {
+      "id": "real-058",
+      "name": "HULA'S Modern Tiki Scottsdale",
+      "address": "7213 E 1st Ave, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJmUr5nr8LK4cRVYXZRqQmjS0"
+    },
+    {
+      "id": "real-059",
+      "name": "IHOP",
+      "address": "8950 E Mountain View Rd, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJeSCrHTp1K4cRVsvT00PMPnc"
+    },
+    {
+      "id": "real-060",
+      "name": "In-N-Out Burger",
+      "address": "7467 E Frank Lloyd Wright Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJqUWpNSR0K4cRdiWideChliM"
+    },
+    {
+      "id": "real-061",
+      "name": "Isabella's Kitchen",
+      "address": "8623 E Thompson Peak Pkwy, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJo9UJTFp2K4cRYL0O1P1SkXM"
+    },
+    {
+      "id": "real-062",
+      "name": "Jack in the Box",
+      "address": "20385 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJZQHxf_Z2K4cRI0ByJqK5qFA"
+    },
+    {
+      "id": "real-063",
+      "name": "Jalapeño Inferno Takeout and Cantina",
+      "address": "7605 E Pinnacle Peak Rd D1, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJNySUMBB3K4cRXJyuJSjTrc4"
+    },
+    {
+      "id": "real-064",
+      "name": "JoJo Coffeehouse Breakfast & Brunch",
+      "address": "3712 N Scottsdale Rd Ste 110, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJN40pNzwLK4cRgZeAwgRtxxU"
+    },
+    {
+      "id": "real-065",
+      "name": "Juan Jaime's",
+      "address": "20343 Hayden Rd #120, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJaZH6zfV2K4cRDg34gXX0fLU"
+    },
+    {
+      "id": "real-066",
+      "name": "K O'Donnell's Sports Bar & Grill",
+      "address": "14850 N Northsight Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Airpark",
+      "place_id": "ChIJxwl3cLF1K4cRX4cG8AHk0fQ"
+    },
+    {
+      "id": "real-067",
+      "name": "Ling's Wok Shop",
+      "address": "20511 Hayden Rd #100, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJuYfq3o13K4cRMhfoh__GyzE"
+    },
+    {
+      "id": "real-068",
+      "name": "Lo-Lo's Chicken and Waffles",
+      "address": "3133 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJ8Yds5sILK4cRBa1lSUreLTo"
+    },
+    {
+      "id": "real-069",
+      "name": "Local Bistro",
+      "address": "20581 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJwzVeMfd2K4cRNLeOhWxMvi8"
+    },
+    {
+      "id": "real-070",
+      "name": "Los Olivos Mexican Patio",
+      "address": "7328 E 2nd St, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJPeSjxsALK4cRlCEVEgdNf9I"
+    },
+    {
+      "id": "real-071",
+      "name": "Los Sombreros",
+      "address": "2534 N Scottsdale Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJi8el2N0LK4cRqdIXG-E-Jh4"
+    },
+    {
+      "id": "real-072",
+      "name": "Lou Malnati's Pizzeria",
+      "address": "17787 N Scottsdale Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJa_K5RU53K4cRCxt0wmAofx4"
+    },
+    {
+      "id": "real-073",
+      "name": "Luci's at the Grove",
+      "address": "7400 N Vía Paseo Del Sur Ste 102, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJq0ZvAi8LK4cR6wjGd2XDbVQ"
+    },
+    {
+      "id": "real-074",
+      "name": "Lure Fish House",
+      "address": "8877 N Scottsdale Rd #402, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJ8bpMub91K4cRgPohuyZkBf4"
+    },
+    {
+      "id": "real-075",
+      "name": "Maggiano's Little Italy",
+      "address": "16405 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJQZBEwyN0K4cRRMBtUbOUOKI"
+    },
+    {
+      "id": "real-076",
+      "name": "Maple & Ash",
+      "address": "7135 E Camelback Rd #130, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJVVUVQr0LK4cR1JLKzJfvcZU"
+    },
+    {
+      "id": "real-077",
+      "name": "Mastro's Ocean Club",
+      "address": "15045 N Kierland Blvd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJse9FrhV0K4cRk7fWYX-XqBs"
+    },
+    {
+      "id": "real-078",
+      "name": "McDonald's",
+      "address": "8001 E Indian School Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJI44AXcoLK4cRhR-AqrJuqu4"
+    },
+    {
+      "id": "real-079",
+      "name": "McDonald's",
+      "address": "5998 N Granite Reef Rd, Scottsdale, AZ 85250",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJwfqbmv4KK4cRnUKU82Y2hTY"
+    },
+    {
+      "id": "real-080",
+      "name": "McDonald's",
+      "address": "9251 E Shea Blvd, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJsdZ0Qz91K4cRw_g--4VdOzM"
+    },
+    {
+      "id": "real-081",
+      "name": "McDonald's",
+      "address": "2882 N Scottsdale Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJM6hKtCALK4cR8a6nisomebM"
+    },
+    {
+      "id": "real-082",
+      "name": "McDonald's",
+      "address": "1516 Hayden Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJmR6c7HkJK4cRKR3VLkCCVWc"
+    },
+    {
+      "id": "real-083",
+      "name": "Namaste Indian Restaurant",
+      "address": "20851 N Scottsdale Rd #102, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJM2zeRH53K4cRTv7vK1nCTSo"
+    },
+    {
+      "id": "real-084",
+      "name": "Night Owl Pizza & Drinks Scottsdale",
+      "address": "1645 Hayden Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJx377cIMJK4cRE5oCB7OrSwE"
+    },
+    {
+      "id": "real-085",
+      "name": "North Italia",
+      "address": "15024 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJy-Peoz90K4cRMwzUpUNwN2E"
+    },
+    {
+      "id": "real-086",
+      "name": "Ocean 44",
+      "address": "4748 N Goldwater Blvd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJ67qCv5gLK4cRcq6saR9CeNc"
+    },
+    {
+      "id": "real-087",
+      "name": "OHSO Brewery + Distillery",
+      "address": "15681 Hayden Rd #112, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Airpark",
+      "place_id": "ChIJWSgxy8l1K4cRVkWIyshL2bo"
+    },
+    {
+      "id": "real-088",
+      "name": "Olive & Ivy",
+      "address": "7135 E Camelback Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJG6d64JcLK4cRwFU5OGBuWgI"
+    },
+    {
+      "id": "real-089",
+      "name": "Oregano's",
+      "address": "3102 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJGw0gTcALK4cRDJzdIREHudY"
+    },
+    {
+      "id": "real-090",
+      "name": "Oscar's Taco Shop",
+      "address": "21811 N Scottsdale Rd #105, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJQXK1pDh3K4cRBYEx1j2mN5A"
+    },
+    {
+      "id": "real-091",
+      "name": "Panda Express",
+      "address": "2931 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJCZ_tKN0LK4cRrSIY-DxnUiw"
+    },
+    {
+      "id": "real-092",
+      "name": "Panera Bread",
+      "address": "19641 N Scottsdale Rd #100, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJGZ_jZ113K4cRnueRbfZrNAk"
+    },
+    {
+      "id": "real-093",
+      "name": "Parma Italian Roots Italian Restaurant",
+      "address": "20831 N Scottsdale Rd #117, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJCRIJ5ul3K4cRXxIwobhy2j0"
+    },
+    {
+      "id": "real-094",
+      "name": "Paul Martin's American Grill",
+      "address": "6186 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJyxy8_RILK4cRGUPy-EFlsSg"
+    },
+    {
+      "id": "real-095",
+      "name": "Persian Room Fine Dining",
+      "address": "17040 N Scottsdale Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJu_yG9SB0K4cR1az5BI5_w50"
+    },
+    {
+      "id": "real-096",
+      "name": "PHX Beer Co.",
+      "address": "8300 Hayden Rd, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJKVlqC3ILK4cR70OBVHtNB-Q"
+    },
+    {
+      "id": "real-097",
+      "name": "Pitch at Cavasson - Restaurant and Pizzeria",
+      "address": "18750 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJW3yxbpB3K4cRKp7deAVmUEA"
+    },
+    {
+      "id": "real-098",
+      "name": "Pomo Pizzeria Napoletana",
+      "address": "8977 N Scottsdale Rd #504, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJy1Fb1sd0K4cRWe5Ivj9Bh2o"
+    },
+    {
+      "id": "real-099",
+      "name": "Portillo's Scottsdale",
+      "address": "10574 N 90th St, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJd7dzmz51K4cRgZYw_0kIitw"
+    },
+    {
+      "id": "real-100",
+      "name": "Pure Sushi",
+      "address": "20567 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJh6j1xfV2K4cRJh3s5zsss5Y"
+    },
+    {
+      "id": "real-101",
+      "name": "R.T. O'Sullivan's Sports Grill",
+      "address": "7919 E Thomas Rd #101, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJKUro59YLK4cROfChAHTd_v8"
+    },
+    {
+      "id": "real-102",
+      "name": "Rusty Spur Saloon",
+      "address": "7245 E Main St, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJV3Wxfb8LK4cRo840r3xCviU"
+    },
+    {
+      "id": "real-103",
+      "name": "Ruth's Chris Steak House",
+      "address": "7001 N Scottsdale Rd Ste 290, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJmyCESTwLK4cRbiyftX04IK0"
+    },
+    {
+      "id": "real-104",
+      "name": "Salt and Lime Shea",
+      "address": "9397 E Shea Blvd #115, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ-y72tUB1K4cRwp28fYNevSo"
+    },
+    {
+      "id": "real-105",
+      "name": "Salt Cellar Restaurant",
+      "address": "550 Hayden Rd, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJsyY4vXQJK4cRmMlVel-0mBw"
+    },
+    {
+      "id": "real-106",
+      "name": "Señor Taco Express Scottsdale",
+      "address": "23015 N Scottsdale Rd #107, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJmckapnt3K4cRFPKd42_BZeE"
+    },
+    {
+      "id": "real-107",
+      "name": "Shake Shack Salt River",
+      "address": "8810 N 90th St, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJKeLMpId1K4cRnoTbUxspafI"
+    },
+    {
+      "id": "real-108",
+      "name": "Snooze, an A.M. Eatery",
+      "address": "15054 N Scottsdale Rd 110 D1B, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJXWh2RT50K4cReagwMWpdFW4"
+    },
+    {
+      "id": "real-109",
+      "name": "Snooze, an A.M. Eatery",
+      "address": "8612 E Shea Blvd #105, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJm7a2aB51K4cRkHE5DpUnFZQ"
+    },
+    {
+      "id": "real-110",
+      "name": "Social Tap Scottsdale",
+      "address": "4312 N Brown Ave, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJ_ZRoJbwLK4cRnhBnzrk7pwM"
+    },
+    {
+      "id": "real-111",
+      "name": "SOL Mexican Cocina",
+      "address": "15323 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJU9v5mT50K4cR-TpGxuXgKQM"
+    },
+    {
+      "id": "real-112",
+      "name": "SORRENTO ITALIAN RESTAURANT PIZZERIA",
+      "address": "23335 N Scottsdale Rd d105, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJMacz8VF3K4cR0CBHTcMh118"
+    },
+    {
+      "id": "real-113",
+      "name": "Soul Cafe",
+      "address": "7615 E Pinnacle Peak Rd #1, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJo_s75Q93K4cRzytt9vBc-cY"
+    },
+    {
+      "id": "real-114",
+      "name": "Spiga Cucina Italiana",
+      "address": "7500 E Pinnacle Peak Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Grayhawk",
+      "place_id": "ChIJh2qNNBB3K4cRaDoKr1ov8uQ"
+    },
+    {
+      "id": "real-115",
+      "name": "Sugar Bowl",
+      "address": "4005 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Indian School / Hayden",
+      "place_id": "ChIJkzsRmb8LK4cRNEIKoTzxi50"
+    },
+    {
+      "id": "real-116",
+      "name": "SugarJam The Southern Kitchen",
+      "address": "15111 Hayden Rd Suite 170 Suite 170, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJKX6A6k10K4cRehG1cNAYocY"
+    },
+    {
+      "id": "real-117",
+      "name": "SumoMaya",
+      "address": "6560 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJ_cZicxULK4cRAQUhn1rzaGc"
+    },
+    {
+      "id": "real-118",
+      "name": "Sushi Sen Scottsdale",
+      "address": "7001 N Scottsdale Rd Ste 154, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJV-nfnD4LK4cR_SsgamPVMGg"
+    },
+    {
+      "id": "real-119",
+      "name": "Tavern Grille Scottsdale",
+      "address": "8880 E Vía Linda, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJ86AodjF1K4cRPed4x1jDm08"
+    },
+    {
+      "id": "real-120",
+      "name": "The Americano Restaurant",
+      "address": "17797 N Scottsdale Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJB0kF4xl3K4cRgBv3yWGTAmI"
+    },
+    {
+      "id": "real-121",
+      "name": "The Cheesecake Factory",
+      "address": "15230 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJgfaaXj50K4cRU5mkbP8ykfg"
+    },
+    {
+      "id": "real-122",
+      "name": "The Eleanor",
+      "address": "3207 Hayden Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJbd4uluQLK4cRr2jmwbxXKvk"
+    },
+    {
+      "id": "real-123",
+      "name": "The Greene House",
+      "address": "15024 N Scottsdale Rd Ste 100, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJy-Peoz90K4cRON6GPESEdWs"
+    },
+    {
+      "id": "real-124",
+      "name": "The Italiano by Chef Joey",
+      "address": "9301 E Shea Blvd #137, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJq6q6p0B1K4cRVMmolZA8srE"
+    },
+    {
+      "id": "real-125",
+      "name": "The Mission Kierland",
+      "address": "7122 E Greenway Pkwy Ste 140, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJXR3RLz50K4cR_sNP5oM4CMk"
+    },
+    {
+      "id": "real-126",
+      "name": "The Vig",
+      "address": "7345 N Vía Paseo Del Sur, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJiZvPySALK4cRlerTb9dXsQ8"
+    },
+    {
+      "id": "real-127",
+      "name": "Toca Madera Scottsdale",
+      "address": "4736 N Goldwater Blvd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Old Town",
+      "place_id": "ChIJH2JAWVgLK4cR818XpGg0zgM"
+    },
+    {
+      "id": "real-128",
+      "name": "Tommy Bahama Restaurant & Bar",
+      "address": "15205 N Kierland Blvd # 100, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJz2WZ3BV0K4cRGJUX8KX7yNY"
+    },
+    {
+      "id": "real-129",
+      "name": "Toro Scottsdale",
+      "address": "17020 Hayden Rd, Scottsdale, AZ 85255",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "DC Ranch / North Scottsdale",
+      "place_id": "ChIJqZJZkSt0K4cR8vOPYMkEkDA"
+    },
+    {
+      "id": "real-130",
+      "name": "True Food Kitchen",
+      "address": "15191 N Scottsdale Rd #100, Scottsdale, AZ 85254",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Kierland",
+      "place_id": "ChIJfX1BWD50K4cRXadaOqn5CnI"
+    },
+    {
+      "id": "real-131",
+      "name": "Twin Peaks",
+      "address": "8787 E Frank Lloyd Wright Blvd, Scottsdale, AZ 85260",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Airpark",
+      "place_id": "ChIJ4wXhy8d1K4cRo-5CdGLsz0U"
+    },
+    {
+      "id": "real-132",
+      "name": "Uncle Sal's",
+      "address": "3370 Hayden Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJ5ZAQ3s0LK4cRMFSxlazKlyE"
+    },
+    {
+      "id": "real-133",
+      "name": "UNiQ Burger",
+      "address": "7730 E McDowell Rd Suite 108-B, Scottsdale, AZ 85257",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJT2RhxfMJK4cRkPeHLmFdXgA"
+    },
+    {
+      "id": "real-134",
+      "name": "Village Tavern",
+      "address": "8787 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Gainey Ranch",
+      "place_id": "ChIJb8Tf7Mh0K4cRycBs8X-a8Yw"
+    },
+    {
+      "id": "real-135",
+      "name": "Weft & Warp Art Bar + Kitchen",
+      "address": "6114 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJB7wq1xILK4cRSOKJKHY92Xg"
+    },
+    {
+      "id": "real-136",
+      "name": "Whataburger",
+      "address": "9990 N 90th St, Scottsdale, AZ 85258",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Shea Corridor",
+      "place_id": "ChIJi74ugjl1K4cRbcRT64MJlfY"
+    },
+    {
+      "id": "real-137",
+      "name": "Whataburger",
+      "address": "7134 E Thomas Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "South Scottsdale / Pima-Princess",
+      "place_id": "ChIJrytR0WULK4cRIilstQDLCDA"
+    },
+    {
+      "id": "real-138",
+      "name": "Wildflower",
+      "address": "7001 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "McCormick Ranch",
+      "place_id": "ChIJmyCESTwLK4cRFXSihotsaUk"
+    },
+    {
+      "id": "real-139",
+      "name": "Zipps Sports Grill",
+      "address": "7551 E Camelback Rd, Scottsdale, AZ 85251",
+      "discovered_via": "Google Places Nearby Search (discover-restaurants.mjs), reviewed and curated by hand before adding",
+      "found_near": "Old Town core",
+      "place_id": "ChIJv_v6YboLK4cRwShOotBOu4I"
     }
   ]
 }
