@@ -91,15 +91,24 @@ not the real cost of the idea — see the fix below.
   under Custom Search's 100/day free allotment most days; modest overage
   ≈ **$5–10/month**.
 - **Business license data pulled in bulk, not one query per restaurant**
-  — the ArcGIS endpoint found this session (see
-  `source-agent-playbook.md`) can return up to 2,000 records per query.
-  A handful of bulk, paginated queries covers all 800+ restaurants in
-  minutes, not the 13+ hours that 800 sequential one-per-restaurant
-  queries at the documented 60-second crawl delay would take. **Free**,
-  and this is a real operational fix, not just a cost one — the current
-  per-restaurant query pattern in `run.mjs` does not scale past roughly
-  a few dozen restaurants before the crawl-delay pacing alone blows past
-  a reasonable job runtime.
+  — **implemented, not just planned:** `run.mjs`'s `fetchAllScottsdaleLicenses()`
+  pulls the whole ~19,800-record dataset once per daily run via ~20
+  paginated queries (the endpoint's real `maxRecordCount` is **1,000**,
+  confirmed by reading the layer's own metadata directly — not the 2,000
+  this doc originally guessed), with a genuine 60-second pause between
+  pages, then matches every restaurant against it locally. **Free**, and
+  this cost is now fixed regardless of roster size (~20 minutes whether
+  the roster is 7 restaurants or 800) — replacing the old per-restaurant
+  query pattern that would have blown past a reasonable job runtime well
+  before 800 restaurants, and that (found while doing this work) was
+  already only pausing 1 second between queries, not honoring the
+  documented 60-second policy even at 7 restaurants.
+- **Every metered call is budget-guarded** — a hard, code-enforced stop
+  (not just careful math) if any run's usage would exceed a cap set with
+  real margin below each free tier, backed by a persistent, committed
+  ledger of exactly how many calls have been made. See "The budget guard"
+  in `services/agents/OPERATIONS.md`. This is what makes "$0/month" a
+  guarantee rather than an estimate that assumes nothing ever goes wrong.
 - **Map loads** — a function of site visitors, not restaurant count.
   Free under Mapbox's 50,000/month tier unless traffic gets large, in
   which case that's a good problem (real usage) that funds itself.
@@ -114,15 +123,35 @@ $75–100/month**, driven almost entirely by the Places Details factor —
 not the $450–500/month a naive daily-full-refresh design would cost, and
 not free either. That's the honest number.
 
-## The actual recommendation
+## Where the free ceiling actually sits, at the current architecture
 
-Don't jump straight to all 800+. The existing phased plan
-(`docs/launch/scottsdale-pilot-plan.md`, and the "concierge MVP" note in
-the root `README.md`) already says this for a reason: validate the model
-on a curated, free set first — does the ranking match what people
-already believe about a place, does the daily job run reliably for
-weeks unattended — before taking on a real monthly bill. $75–100/month
-is genuinely cheap for a functioning citywide product, but it's not free,
-and paying it before the pilot has proven itself is the wrong order.
-Expand to full-city once the 7–30 restaurant version has run clean for
-several weeks, not before.
+Not all-or-nothing between "7-restaurant pilot" and "800-restaurant,
+$75-100/month" — there's a real $0/month tier in between, and this is
+where the pilot was deliberately grown to (2026-09-01):
+
+- **Places Text Search** (rating + review count, deduped to one call per
+  restaurant per daily run — see `getPlaces()` in `run.mjs`): 10,000
+  free/month → roughly **300 restaurants** at daily cadence, with margin
+  left for each restaurant's one-time `place_id` resolution.
+- **Places Details** (dish-mention review scan, weekly): 10,000 free/month,
+  separate bucket → not the binding constraint until ~2,300 restaurants.
+- **Custom Search** (editorial mentions): 100 free/day. Below the ~90
+  restaurant mark, every restaurant still gets checked every week. Above
+  it, `run.mjs` rotates a slice of the roster through each week instead
+  (see `CSE_DAILY_BUDGET`) so the roster can keep growing toward ~300
+  without this becoming a hard ceiling — each restaurant's editorial
+  check just gets less frequent (roughly monthly instead of weekly),
+  which is an acceptable tradeoff on this factor specifically: it's the
+  lowest-weighted signal in the scoring model, and a restaurant getting
+  news coverage is a rare event regardless of how often it's checked for.
+- **Business license lookup**: fixed ~20-minute bulk cost regardless of
+  roster size (see above) — not a constraint at any restaurant count this
+  pilot is likely to reach.
+
+**So: up to roughly 250-300 real Scottsdale restaurants, broadly covering
+the city rather than one curated pocket of it, stays $0/month** with the
+architecture in this repo today. Past that, Places Text Search becomes the
+real cost driver, and the Place-Details-instead-of-Text-Search
+optimization sketched earlier in this doc (and the $75-100/month full-city
+number above it) is where that conversation picks back up — not needed at
+today's scale, worth revisiting if the roster grows past ~300.

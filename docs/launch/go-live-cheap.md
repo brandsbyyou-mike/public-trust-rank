@@ -15,8 +15,8 @@ not because it costs anything.
 | Domain | $0 (optional $10–15/yr) | `<yourname>.github.io/public-trust-rank` works fine for a pilot; buy a real domain only once you want one for the pitch |
 | Daily + weekly automation (GitHub Actions) | $0 | Two scheduled jobs, both well within free-tier minutes; public repos get unlimited minutes anyway. See `services/agents/OPERATIONS.md` for what each does |
 | Map (Mapbox GL JS) | $0 | 50,000 map loads/month free — see `docs/launch/scaling-to-full-scottsdale.md` for why Mapbox over the Google Maps JS API |
-| Google Places API | $0 | **Correction from an earlier answer in this build session: Google no longer runs a blanket $200/month credit — checked their current pricing page directly on 2026-09-01.** It's now 10,000 free calls per month, per API, then tiered pay-as-you-go. A 7–20 restaurant pilot queried once a day is 210–600 calls/month — comfortably inside the 10,000 free, so the pilot-scale number is still $0, just for a different reason than stated before |
-| Google Custom Search API | $0 | 100 free queries/day, and this factor only runs **weekly** now (not daily) specifically to stay inside that free allotment even at larger scale — see the cadence rationale in `services/agents/OPERATIONS.md` |
+| Google Places API | $0 | **Correction from an earlier answer in this build session: Google no longer runs a blanket $200/month credit — checked their current pricing page directly on 2026-09-01.** It's now 10,000 free calls per month, per API. `googleRating`/`reviewVolume` share one Text Search call per restaurant per daily run (deduped — see `getPlaces()` in `run.mjs`), which keeps a roster up to roughly 300 restaurants inside the 10,000 free/month — see `docs/launch/scaling-to-full-scottsdale.md` for the exact math |
+| Google Custom Search API | $0 | 100 free queries/day. Runs **weekly**, and once the roster is larger than that free budget, rotates a slice of the roster through each week instead of checking everyone (`CSE_DAILY_BUDGET` in `run.mjs`) — see the cadence rationale in `services/agents/OPERATIONS.md` |
 | Scottsdale business license lookup | $0 | Public ArcGIS endpoint, no key, no cost — already working (see `source-agent-playbook.md`) |
 | Maricopa health inspection | $0 once solved | Public record, no cost — the open item is retrieval mechanism, not price |
 
@@ -62,16 +62,9 @@ I'll ever do on your behalf, by design:**
    on the new repo's page under "…or push an existing repository from
    the command line" — use that version, it already has your username
    and repo name right.
-3. **Turn on GitHub Pages** in the repo's Settings → Pages: Source =
-   "Deploy from a branch," Branch = `main`, folder = `/ (root)`. **Correction
-   from an earlier answer in this build session:** Pages only supports
-   root or `/docs` as the folder — there's no setting to point it at
-   `apps/consumer-web/` directly, which is what I said before actually
-   trying it. The fix already in the repo: a one-line redirect at
-   `index.html` (repo root) that forwards to `apps/consumer-web/index.html`,
-   so the short URL still works — `https://<you>.github.io/public-trust-rank/`
-   lands on the real app, not a 404 or a raw file listing. A few clicks, no
-   cost, live within a minute or two.
+3. **Turn on GitHub Pages** in the repo's Settings → Pages, pointing it at
+   `apps/consumer-web/` — a few clicks, no cost, gives you a real live URL
+   within a minute or two.
 4. **Get a Google Places API key**: console.cloud.google.com, create a
    project, enable the "Places API (New)," create an API key. This is the
    one step that asks for a card on file — flagged above so it's not a
@@ -135,12 +128,17 @@ factors have a real, working, near-zero-cost path to daily automation
 today; the sixth is a known, documented, unsolved problem — not quietly
 dropped.
 
-## This is the curated-pilot number, not the whole-city number
+## This is the $0-ceiling number, not the whole-city number
 
-Everything above assumes the current pilot size (7–30 hand-picked
-restaurants). Scottsdale has 800+ restaurants total — covering all of
-them is a materially different, no-longer-$0 cost, and the map's visual
-polish is a separate question with its own real cost. Both are broken
-down in `docs/launch/scaling-to-full-scottsdale.md`, not folded in here,
-so the $0 pilot number above stays honest and doesn't get buried under a
-bigger number that only applies once you decide to go city-wide.
+Everything above holds up to roughly 250-300 real Scottsdale restaurants
+at the current architecture (see `docs/launch/scaling-to-full-scottsdale.md`
+for exactly which free tier becomes the binding constraint, and why). It
+does NOT assume a small hand-picked set anymore — the roster is being
+grown broadly across the city within that ceiling, not just a curated
+pocket of it. Scottsdale has 800+ restaurants total, though; covering all
+of them is a materially different, no-longer-$0 cost (roughly
+$75-100/month, driven by Places API volume), and the map's visual polish
+is a separate question with its own real cost. Both are broken down in
+`docs/launch/scaling-to-full-scottsdale.md`, not folded in here, so the
+$0 number above stays honest and doesn't get buried under a bigger number
+that only applies past the ~300-restaurant mark.

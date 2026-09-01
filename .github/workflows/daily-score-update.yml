@@ -21,6 +21,13 @@
 # weekly schedule -- see weekly-editorial-update.yml -- and are carried
 # forward untouched by this job. Full cadence rationale in
 # services/agents/OPERATIONS.md.
+#
+# Every metered API call this job makes goes through the budget guard in
+# run.mjs first (see the "Budget guard" comment near the top of that file):
+# if a call would exceed a hard, safely-below-free-tier cap, the whole run
+# stops immediately and this step exits non-zero -- which means the commit
+# step below never runs, so a runaway/looping run can never push partial or
+# excess-usage data. Yesterday's good data just stays live.
 
 name: Daily Score Update
 

@@ -5,17 +5,23 @@
 # so checking it daily buys nothing a weekly check doesn't. Splitting it
 # out onto its own schedule matters for two real reasons, not just
 # tidiness: it keeps Google Custom Search usage inside the free 100/day
-# allotment even at full-Scottsdale scale (see
-# docs/launch/scaling-to-full-scottsdale.md), and it keeps this factor's
-# `updated_at` timestamp honest -- it should say "checked this week," not
-# imply a daily check that never added new information.
+# allotment even at full-Scottsdale scale, and it keeps this factor's
+# `updated_at` timestamp honest -- it should say "checked this week" (or,
+# once the roster is large, "checked this rotation"), not imply a daily
+# check that never added new information. Once the roster is bigger than
+# Custom Search's free-tier budget, this run only checks a rotating slice
+# of the roster each week instead of everyone -- see CSE_DAILY_BUDGET and
+# the rotation comment in run.mjs.
 #
 # Runs services/agents/source-ingestion-agent/run.mjs in "weekly" mode,
-# which fetches ONLY editorialMentions and carries every other factor
-# forward untouched from whatever the daily job last found. Requires
-# GOOGLE_CSE_KEY and GOOGLE_CSE_CX as repo secrets (see
-# docs/launch/go-live-cheap.md) -- runs fine with neither set, it just
-# leaves editorialMentions at its last known value with a logged reason.
+# which fetches editorialMentions (rotated) plus place_id resolution and
+# dish-mention review scanning, and carries every other factor forward
+# untouched from whatever the daily job last found. Requires GOOGLE_CSE_KEY,
+# GOOGLE_CSE_CX, and GOOGLE_PLACES_API_KEY as repo secrets (see
+# docs/launch/go-live-cheap.md) -- runs fine with any of them unset, it just
+# leaves the affected factor at its last known value with a logged reason.
+# Every metered call here goes through the same budget guard as the daily
+# job -- see the "Budget guard" comment in run.mjs.
 
 name: Weekly Editorial Update
 
@@ -48,6 +54,7 @@ jobs:
         env:
           GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
           GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }} # place_id resolution + dish-mention review scan -- see the DISH MENTIONS comment in run.mjs
         run: node services/agents/source-ingestion-agent/run.mjs weekly
 
       - name: Commit updated data

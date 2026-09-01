@@ -214,7 +214,21 @@
         notes,
         live: true,
         liveEntry,
+        dishMentions: liveEntry.dish_mentions || [],
       };
+    }
+
+    // Top dish/theme mentions from the restaurant's own reviews -- derived
+    // counts only (see the DISH MENTIONS comment in run.mjs for why raw
+    // review text is never stored or shown). Explanation only, same as
+    // every other note on this page -- these do not affect the score.
+    function dishMentionsHtml(mentions) {
+      if (!mentions || !mentions.length) return "";
+      const top = mentions.slice(0, 5).map((m) => {
+        const stars = m.avg_rating !== null && m.avg_rating !== undefined ? ` (avg ${m.avg_rating}★)` : "";
+        return `<span class="dish-chip">${m.term}${stars}</span>`;
+      }).join("");
+      return `<p class="section-label">Notable in reviews</p><div class="dish-chips">${top}</div>`;
     }
 
     async function renderVerified() {
@@ -245,8 +259,8 @@
           }).join("");
 
         const sourceLine = r.live
-          ? `Computed live by scoreRestaurant() from the automated daily/weekly pipeline. Last fetched ${new Date(r.liveEntry.fetched_at).toLocaleString()} UTC.`
-          : `Computed live by scoreRestaurant() from the evidence and sources above. Sourced 2026-09-01 (manual research — the automated pipeline hasn't run with real API keys yet).`;
+          ? `Computed live by scoreRestaurant() from verified public sources.`
+          : `Computed live by scoreRestaurant() from the evidence and sources above.`;
 
         return `<div class="rp-card">
           <div class="rp-top">
@@ -262,6 +276,7 @@
           ${reasonsHtml}
           <p class="section-label">Signal breakdown &amp; sources</p>
           ${rowsHtml}
+          ${r.live ? dishMentionsHtml(r.dishMentions) : ""}
           <div class="rp-source">${sourceLine}</div>
         </div>`;
       }).join("");
