@@ -1,7 +1,12 @@
 {
+  "_notice": "Real, persistent record of metered Google API calls made by services/agents/source-ingestion-agent/run.mjs, kept so the budget guard (see the comment above BudgetGuardError in run.mjs) always knows exactly how many calls have been made against each free tier. Only updated on a run that completes successfully -- a run the guard stops mid-way exits non-zero without committing anything, so old data (including this ledger) stays exactly as it was until a human checks why. placesTextSearch/placesDetails reset monthly; customSearch resets daily.",
   "placesNearbySearch": {
     "period": "2026-09",
     "count": 15
   },
-  "updated_at": "2026-09-01T17:15:31.288Z"
+  "updated_at": "2026-09-01T17:54:27.822Z",
+  "placesTextSearch": {
+    "period": "2026-09",
+    "count": 139
+  }
 }
