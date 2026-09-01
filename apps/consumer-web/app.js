@@ -117,7 +117,7 @@ function initMap() {
   mapboxgl.accessToken = token;
   map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/mapbox/streets-v12",
+    style: "mapbox://styles/mapbox/satellite-streets-v12", // satellite imagery + roads/labels, like Google Maps' satellite mode
     center: SCOTTSDALE_CENTER_LNGLAT,
     zoom: 11,
   });
