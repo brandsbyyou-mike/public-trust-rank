@@ -16,4 +16,4 @@
 // token below in place -- no build step, no copying to a different
 // filename needed.
 
-window.MAPBOX_ACCESS_TOKEN = "pk.PASTE_YOUR_MAPBOX_PUBLIC_TOKEN_HERE";
+window.MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoicHVibGljcmFuazEyMzQ1IiwiYSI6ImNtdGkxZTRwbzAxb3gzMHEwaGY0bXhicnYifQ.03uSWrKZo9PJI96DZ0XPUw";
