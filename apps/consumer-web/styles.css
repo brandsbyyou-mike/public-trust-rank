@@ -287,6 +287,11 @@ body {
 }
 .factor-fill { height: 100%; background: var(--accent); }
 .factor-pct { text-align: right; color: var(--text-dim); font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.factor-source { font-size: 11px; color: var(--text-dim); margin: -5px 0 10px; padding-left: 138px; }
+
+.score-badge.unscored { background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--line); font-size: 11px; }
+.card.unscored { opacity: 0.62; }
+.card-delta.unscored { color: var(--text-dim); font-style: italic; }
 
 .dish-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .dish-chip {

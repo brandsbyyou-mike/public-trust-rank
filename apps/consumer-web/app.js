@@ -48,30 +48,67 @@ function initTheme() {
   });
 }
 
-// --- Deterministic "yesterday" delta for demo purposes --------------------
-// Real system: this comes from services/agents/ storing yesterday's score.
-// Here it's derived from the id so the demo is stable across reloads.
-function fakeYesterdayDelta(id, score) {
-  let hash = 0;
-  for (const ch of id) hash = (hash * 31 + ch.charCodeAt(0)) % 997;
-  const delta = (hash % 7) - 3; // -3..+3
-  return { delta, yesterday: score - delta };
+// --- Data load -------------------------------------------------------------
+// Real, named Scottsdale restaurants -- the same two files real-pilot.html
+// reads, merged the same way: identity (name, address, cuisine when known)
+// comes from the snapshot; score, breakdown, and confidence come from the
+// live pipeline's evidence, scored client-side via scoreRestaurant() so the
+// number always reflects the current scoring formula, not a stale cached
+// one. A restaurant the pipeline hasn't reached yet (confidence 0, or no
+// live entry at all) renders as an honest "not yet scored" placeholder --
+// no map pin, no invented number.
+const SNAPSHOT_PATH = "../../data/real-pilot/scottsdale-real-snapshot.json";
+const LIVE_DATA_PATH = "../../data/real-pilot/scottsdale-live-scores.json";
+
+async function loadJson(path) {
+  try {
+    const res = await fetch(path, { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
 
-// --- Data load -------------------------------------------------------------
+function buildRestaurant(staticEntry, liveEntry) {
+  const lat = liveEntry?.lat ?? staticEntry.lat ?? null;
+  const lng = liveEntry?.lng ?? staticEntry.lng ?? null;
+  const base = {
+    id: staticEntry.id,
+    name: staticEntry.name,
+    address: staticEntry.address,
+    cuisine: staticEntry.cuisine || null,
+    lat,
+    lng,
+  };
+
+  const scored = liveEntry && liveEntry.confidence > 0;
+  if (!scored) return { ...base, scored: false };
+
+  const result = scoreRestaurant(liveEntry.evidence);
+  return {
+    ...base,
+    name: liveEntry.name || staticEntry.name,
+    scored: true,
+    ...result, // score, breakdown, topReasons, confidence
+    factors: liveEntry.factors || {},
+    dishMentions: liveEntry.dish_mentions || [],
+    delta: liveEntry.score_delta ?? null,
+    deltaSince: liveEntry.delta_since ?? null,
+  };
+}
+
 async function loadData() {
-  const res = await fetch("../../data/seeds/scottsdale-restaurants.json");
-  const json = await res.json();
+  const [snapshot, live] = await Promise.all([loadJson(SNAPSHOT_PATH), loadJson(LIVE_DATA_PATH)]);
+  const liveById = new Map((live?.restaurants || []).map((r) => [r.id, r]));
+  const restaurants = snapshot?.restaurants || [];
 
-  state.restaurants = json.restaurants.map((r) => {
-    const result = scoreRestaurant(r.evidence);
-    const { delta } = fakeYesterdayDelta(r.id, result.score);
-    return { ...r, ...result, delta };
-  });
+  state.restaurants = restaurants.map((s) => buildRestaurant(s, liveById.get(s.id)));
 
-  state.cuisines = ["All", ...new Set(state.restaurants.map((r) => r.cuisine))].sort(
-    (a, b) => (a === "All" ? -1 : b === "All" ? 1 : a.localeCompare(b))
-  );
+  state.cuisines = [
+    "All",
+    ...new Set(state.restaurants.map((r) => r.cuisine).filter(Boolean)),
+  ].sort((a, b) => (a === "All" ? -1 : b === "All" ? 1 : a.localeCompare(b)));
 }
 
 // --- Map (Mapbox GL JS) -----------------------------------------------------
@@ -117,7 +154,7 @@ function initMap() {
   mapboxgl.accessToken = token;
   map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/mapbox/satellite-streets-v12", // satellite imagery + roads/labels, like Google Maps' satellite mode
+    style: "mapbox://styles/mapbox/streets-v12",
     center: SCOTTSDALE_CENTER_LNGLAT,
     zoom: 11,
   });
@@ -163,6 +200,10 @@ function renderMarkers(list) {
   state.markers.clear();
 
   for (const r of list) {
+    // Skip restaurants with no score yet or no resolved coordinates --
+    // a pin has to show a real number and sit at a real place, never a
+    // placeholder in either spot.
+    if (!r.scored || r.lat == null || r.lng == null) continue;
     const el = pinElement(r.score);
     el.addEventListener("click", () => openDetail(r.id));
     const marker = new mapboxgl.Marker({ element: el, anchor: "bottom" })
@@ -173,10 +214,15 @@ function renderMarkers(list) {
 }
 
 // --- List ---------------------------------------------------------------
-function deltaLabel(delta) {
-  if (delta > 0) return { cls: "up", text: `▲ ${delta} since yesterday` };
-  if (delta < 0) return { cls: "down", text: `▼ ${Math.abs(delta)} since yesterday` };
-  return { cls: "flat", text: "— no change since yesterday" };
+// Real day-over-day change, from score-history.json via the pipeline --
+// "since <date>" is a calendar date the score actually changed against,
+// not a fetch timestamp (see the note above fetchGooglePlaces() in
+// run.mjs for why fetch timing itself is never surfaced in the UI).
+function deltaLabel(r) {
+  if (r.delta === null || r.delta === undefined) return null;
+  if (r.delta > 0) return { cls: "up", text: `▲ ${r.delta} since ${r.deltaSince}` };
+  if (r.delta < 0) return { cls: "down", text: `▼ ${Math.abs(r.delta)} since ${r.deltaSince}` };
+  return { cls: "flat", text: `No change since ${r.deltaSince}` };
 }
 
 function renderList(list) {
@@ -187,26 +233,42 @@ function renderList(list) {
     return;
   }
   for (const r of list) {
-    const d = deltaLabel(r.delta);
+    const metaHtml = [r.cuisine, r.address].filter(Boolean).join(" · ");
+    const card = document.createElement("div");
+    card.dataset.id = r.id;
+
+    if (!r.scored) {
+      card.className = "card unscored";
+      card.innerHTML = `
+        <div class="score-badge unscored">—</div>
+        <div class="card-body">
+          <p class="card-name">${r.name}</p>
+          <p class="card-meta">${metaHtml}</p>
+          <p class="card-delta unscored">Not yet scored — picked up by the next pipeline run</p>
+        </div>`;
+      card.addEventListener("click", () => openDetail(r.id));
+      el.appendChild(card);
+      continue;
+    }
+
+    const d = deltaLabel(r);
     // Distance and the day-over-day delta are two different, both-useful
     // facts -- show both when a location is available instead of one
     // replacing the other. Distance up top (what "Near me" was asked for),
     // delta right under it (the score-freshness signal, which matters more
     // day to day than proximity).
     const distanceHtml =
-      state.userLocation != null
+      state.userLocation != null && r._distanceMiles != null
         ? `<p class="card-delta flat">${r._distanceMiles.toFixed(1)} mi away</p>`
         : "";
-    const card = document.createElement("div");
     card.className = "card";
-    card.dataset.id = r.id;
     card.innerHTML = `
       <div class="score-badge">${r.score}</div>
       <div class="card-body">
         <p class="card-name">${r.name}</p>
-        <p class="card-meta">${r.cuisine} · ${r.neighborhood} · ${"$".repeat(r.priceLevel)}</p>
+        <p class="card-meta">${metaHtml}</p>
         ${distanceHtml}
-        <p class="card-delta ${d.cls}">${d.text}</p>
+        ${d ? `<p class="card-delta ${d.cls}">${d.text}</p>` : ""}
       </div>`;
     card.addEventListener("click", () => openDetail(r.id));
     el.appendChild(card);
@@ -214,6 +276,15 @@ function renderList(list) {
 }
 
 // --- Detail panel ---------------------------------------------------------
+function dishMentionsHtml(mentions) {
+  if (!mentions || !mentions.length) return "";
+  const top = mentions.slice(0, 5).map((m) => {
+    const stars = m.avg_rating !== null && m.avg_rating !== undefined ? ` (avg ${m.avg_rating}★)` : "";
+    return `<span class="dish-chip">${m.term}${stars}</span>`;
+  }).join("");
+  return `<p class="section-label">Notable in reviews</p><div class="dish-chips">${top}</div>`;
+}
+
 function openDetail(id) {
   const r = state.restaurants.find((x) => x.id === id);
   if (!r) return;
@@ -221,40 +292,56 @@ function openDetail(id) {
   document.querySelectorAll(".card").forEach((c) => c.classList.toggle("active", c.dataset.id === id));
 
   const panel = document.getElementById("detail-panel");
+
+  if (!r.scored) {
+    panel.innerHTML = `
+      <button class="detail-close" id="detail-close" aria-label="Close">✕</button>
+      <p class="card-meta" style="margin-top:0;">${[r.cuisine, r.address].filter(Boolean).join(" · ")}</p>
+      <h2 style="margin:2px 0 0;font-size:20px;">${r.name}</h2>
+      <span class="confidence-badge" style="margin-top:14px;">Not yet scored — picked up by the next pipeline run</span>
+    `;
+    document.getElementById("detail-close").addEventListener("click", closeDetail);
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+    document.getElementById("detail-scrim").classList.add("open");
+    if (map && r.lat != null && r.lng != null) map.flyTo({ center: [r.lng, r.lat], essential: true });
+    return;
+  }
+
   const factorsHtml = Object.entries(r.breakdown)
     .sort((a, b) => b[1].contribution - a[1].contribution)
     .map(([factor, b]) => {
       const pct = Math.round(b.value * 100);
+      const note = r.factors[factor]?.note || "not available yet";
       return `<div class="factor-row">
         <span>${FACTOR_LABELS[factor]}</span>
         <span class="factor-track"><span class="factor-fill" style="width:${pct}%"></span></span>
         <span class="factor-pct">${pct}%</span>
-      </div>`;
+      </div>
+      <p class="factor-source">${note}</p>`;
     })
     .join("");
 
   const reasonsHtml = r.topReasons.map((line) => `<div class="reason-line">${line}</div>`).join("");
   const confidencePct = Math.round(r.confidence * 100);
-  const today = new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  const d = deltaLabel(r);
 
   panel.innerHTML = `
     <button class="detail-close" id="detail-close" aria-label="Close">✕</button>
-    <p class="card-meta" style="margin-top:0;">${r.cuisine} · ${r.neighborhood}</p>
+    <p class="card-meta" style="margin-top:0;">${[r.cuisine, r.address].filter(Boolean).join(" · ")}</p>
     <h2 style="margin:2px 0 0;font-size:20px;">${r.name}</h2>
     <div class="detail-score-row">
       <span class="detail-score">${r.score}</span>
-      <div>
-        <div class="card-delta ${deltaLabel(r.delta).cls}">${deltaLabel(r.delta).text}</div>
-        <div class="detail-updated">Updated ${today}</div>
-      </div>
+      ${d ? `<div class="card-delta ${d.cls}">${d.text}</div>` : ""}
     </div>
     <span class="confidence-badge">${confidencePct}% data confidence</span>
 
     <p class="section-label">Why this score</p>
     ${reasonsHtml}
 
-    <p class="section-label">Signal breakdown</p>
+    <p class="section-label">Signal breakdown &amp; sources</p>
     ${factorsHtml}
+    ${dishMentionsHtml(r.dishMentions)}
 
     <p class="no-sponsor-note">No paid placement. This score is not affected by advertising, subscription tier, or claimed-listing status — the ranking model has no field for any of those.</p>
   `;
@@ -264,7 +351,7 @@ function openDetail(id) {
   panel.setAttribute("aria-hidden", "false");
   document.getElementById("detail-scrim").classList.add("open");
 
-  if (map) map.flyTo({ center: [r.lng, r.lat], essential: true });
+  if (map && r.lat != null && r.lng != null) map.flyTo({ center: [r.lng, r.lat], essential: true });
 }
 
 function closeDetail() {
@@ -294,15 +381,37 @@ function applyFilters() {
   const q = state.query.trim().toLowerCase();
   const filtered = state.restaurants
     .filter((r) => state.activeCuisine === "All" || r.cuisine === state.activeCuisine)
-    .filter((r) => !q || r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q) || r.neighborhood.toLowerCase().includes(q));
+    .filter(
+      (r) =>
+        !q ||
+        r.name.toLowerCase().includes(q) ||
+        (r.cuisine || "").toLowerCase().includes(q) ||
+        (r.address || "").toLowerCase().includes(q)
+    );
 
   if (state.userLocation) {
     for (const r of filtered) {
-      r._distanceMiles = distanceMiles(state.userLocation.lat, state.userLocation.lng, r.lat, r.lng);
+      r._distanceMiles =
+        r.lat != null && r.lng != null
+          ? distanceMiles(state.userLocation.lat, state.userLocation.lng, r.lat, r.lng)
+          : null;
     }
-    filtered.sort((a, b) => a._distanceMiles - b._distanceMiles);
+    // Restaurants with no resolved coordinates yet (a fresh addition the
+    // pipeline hasn't geocoded) sort to the end instead of breaking the
+    // distance sort or claiming a false distance.
+    filtered.sort((a, b) => {
+      if (a._distanceMiles == null && b._distanceMiles == null) return 0;
+      if (a._distanceMiles == null) return 1;
+      if (b._distanceMiles == null) return -1;
+      return a._distanceMiles - b._distanceMiles;
+    });
   } else {
-    filtered.sort((a, b) => b.score - a.score);
+    // Scored restaurants first, highest score first; anything not yet
+    // scored falls to the end rather than sorting as a false zero.
+    filtered.sort((a, b) => {
+      if (a.scored && b.scored) return b.score - a.score;
+      return a.scored ? -1 : b.scored ? 1 : 0;
+    });
   }
 
   renderList(filtered);
