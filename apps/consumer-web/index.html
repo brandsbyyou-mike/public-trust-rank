@@ -28,6 +28,15 @@
 
   <div class="filters" id="filters"></div>
 
+  <!-- Mobile-only: list and map are full-screen tabs on a narrow viewport
+       instead of both being squeezed into a shared 45vh/55vh split (which
+       left neither one usable). Hidden entirely above the 720px breakpoint
+       where the side-by-side layout already works. -->
+  <div class="mobile-view-toggle" id="mobile-view-toggle">
+    <button type="button" class="mvt-btn active" data-view="list">List</button>
+    <button type="button" class="mvt-btn" data-view="map">Map</button>
+  </div>
+
   <main class="layout">
     <aside class="list" id="list" aria-label="Ranked restaurants"></aside>
     <section class="map-wrap">

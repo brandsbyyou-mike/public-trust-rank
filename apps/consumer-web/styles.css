@@ -313,9 +313,43 @@ body {
   padding-top: 12px;
 }
 
+.mobile-view-toggle { display: none; }
+
 @media (max-width: 720px) {
-  .layout { grid-template-columns: 1fr; grid-template-rows: 45vh 1fr; }
-  .list { border-right: none; border-bottom: 1px solid var(--line); }
+  .mobile-view-toggle {
+    display: flex;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .mvt-btn {
+    flex: 1;
+    padding: 9px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--text-dim);
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .mvt-btn.active {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* One full-height pane at a time instead of a cramped 45vh/55vh split --
+     .list is the default pane; .layout.mobile-show-map flips which one is
+     visible. Both keep rendering their content underneath (markers/cards
+     stay populated), only visibility changes, so switching tabs is instant. */
+  .layout { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  .list { border-right: none; border-bottom: none; display: block; }
+  .map-wrap { display: none; }
+  .layout.mobile-show-map .list { display: none; }
+  .layout.mobile-show-map .map-wrap { display: block; }
 }
 
 /* Intentionally unobtrusive: methodology/source disclosure, not part of the

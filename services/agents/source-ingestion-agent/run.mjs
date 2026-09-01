@@ -362,25 +362,51 @@ async function resolvePlaceId(restaurant, priorPlaceId, context) {
 // used in-memory only by extractMentions()/summarizeReviewSample() below
 // and never returned from this function or written anywhere; see the
 // legal note at the top of this file for why that matters.
+// Real, observed behavior, not a hypothetical: the first two weekly runs
+// (2026-09-01) got HTTP 429 from Place Details on 23/139 and then 134/139
+// restaurants -- Place Details has a tighter per-second rate ceiling than
+// Text Search, and running through 139 restaurants back to back (even with
+// the 250ms per-restaurant pause below) outran it. Weekly has no time
+// pressure, so retrying with backoff is the right fix, not a bigger
+// concern -- a few extra minutes on a job that runs once a week.
+const PLACE_DETAILS_MAX_ATTEMPTS = 3;
+const PLACE_DETAILS_BACKOFF_MS = [1500, 3000]; // wait before attempt 2, before attempt 3
+
 async function fetchPlaceReviews(placeId, guard) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key) return { reviews: null, reason: "no GOOGLE_PLACES_API_KEY set" };
   if (!placeId) return { reviews: null, reason: "no place_id resolved yet" };
 
-  guard.charge("placesDetails"); // see the Budget guard comment above fetchGooglePlaces()
-
-  try {
-    const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
-      headers: {
-        "X-Goog-Api-Key": key,
-        "X-Goog-FieldMask": "reviews.text,reviews.rating",
-      },
-    });
-    if (!res.ok) return { reviews: null, reason: `Place Details HTTP ${res.status}` };
-    const json = await res.json();
-    return { reviews: json.reviews ?? [], reason: null };
-  } catch (err) {
-    return { reviews: null, reason: `fetch failed: ${err.message}` };
+  for (let attempt = 1; attempt <= PLACE_DETAILS_MAX_ATTEMPTS; attempt++) {
+    // Charged per real network attempt, retries included -- the ledger's
+    // job is to know exactly how many calls actually went out, not just
+    // how many restaurants were processed. The per-run cap accounts for
+    // this (see makeBudgetGuard's caller in main()).
+    guard.charge("placesDetails"); // see the Budget guard comment above fetchGooglePlaces()
+    try {
+      const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
+        headers: {
+          "X-Goog-Api-Key": key,
+          "X-Goog-FieldMask": "reviews.text,reviews.rating",
+        },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        return { reviews: json.reviews ?? [], reason: null };
+      }
+      // Only 429 is worth retrying -- it's Google saying "too fast," not
+      // "wrong." Anything else (404, 403, ...) is permanent for this
+      // restaurant this run; fail fast instead of burning retries on it.
+      if (res.status !== 429 || attempt === PLACE_DETAILS_MAX_ATTEMPTS) {
+        return {
+          reviews: null,
+          reason: `Place Details HTTP ${res.status}${attempt > 1 ? ` (after ${attempt} attempts)` : ""}`,
+        };
+      }
+    } catch (err) {
+      if (attempt === PLACE_DETAILS_MAX_ATTEMPTS) return { reviews: null, reason: `fetch failed: ${err.message}` };
+    }
+    await new Promise((r) => setTimeout(r, PLACE_DETAILS_BACKOFF_MS[attempt - 1]));
   }
 }
 
@@ -830,7 +856,14 @@ async function main() {
   const ledger = await loadLedger();
   const guard = makeBudgetGuard(ledger, {
     placesTextSearch: snapshot.restaurants.length + 25,
-    placesDetails: snapshot.restaurants.length + 10,
+    // x3 -- fetchPlaceReviews() now retries up to PLACE_DETAILS_MAX_ATTEMPTS
+    // times on a real, observed HTTP 429 (Place Details' rate ceiling),
+    // and the ledger is charged per attempt, not per restaurant. Even a
+    // run where every restaurant gets rate-limited on every attempt still
+    // has a hard, bounded ceiling here -- this isn't "no limit," it's
+    // "sized for the worst realistic case," same sanity-cap purpose as
+    // before.
+    placesDetails: snapshot.restaurants.length * PLACE_DETAILS_MAX_ATTEMPTS + 10,
     customSearch: CUSTOM_SEARCH_DAILY_CAP,
   });
 

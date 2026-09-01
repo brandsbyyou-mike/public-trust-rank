@@ -48,6 +48,31 @@ function initTheme() {
   });
 }
 
+// --- Mobile view toggle ----------------------------------------------------
+// Below the 720px breakpoint, list and map are full-screen tabs (see
+// styles.css) instead of both sharing a cramped 45vh/55vh split. No-ops
+// harmlessly above that width since the toggle bar is hidden by CSS and
+// .layout never gets the mobile-show-map class from anything else.
+function initMobileViewToggle() {
+  const toggle = document.getElementById("mobile-view-toggle");
+  const layout = document.querySelector(".layout");
+  if (!toggle || !layout) return;
+
+  toggle.querySelectorAll(".mvt-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggle.querySelectorAll(".mvt-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      const showMap = btn.dataset.view === "map";
+      layout.classList.toggle("mobile-show-map", showMap);
+      // Mapbox GL sizes its canvas from the container's dimensions at the
+      // moment it last rendered; a container that was display:none has no
+      // dimensions, so the map needs an explicit resize the first time it
+      // becomes visible or it renders blank/cropped until manually panned.
+      if (showMap && map) map.resize();
+    });
+  });
+}
+
 // --- Data load -------------------------------------------------------------
 // Real, named Scottsdale restaurants -- the same two files real-pilot.html
 // reads, merged the same way: identity (name, address, cuisine when known)
@@ -437,6 +462,7 @@ function applyFilters() {
 async function main() {
   initTheme();
   initMap();
+  initMobileViewToggle();
   await loadData();
   applyFilters();
 
