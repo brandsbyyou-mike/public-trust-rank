@@ -62,9 +62,16 @@ I'll ever do on your behalf, by design:**
    on the new repo's page under "…or push an existing repository from
    the command line" — use that version, it already has your username
    and repo name right.
-3. **Turn on GitHub Pages** in the repo's Settings → Pages, pointing it at
-   `apps/consumer-web/` — a few clicks, no cost, gives you a real live URL
-   within a minute or two.
+3. **Turn on GitHub Pages** in the repo's Settings → Pages: Source =
+   "Deploy from a branch," Branch = `main`, folder = `/ (root)`. **Correction
+   from an earlier answer in this build session:** Pages only supports
+   root or `/docs` as the folder — there's no setting to point it at
+   `apps/consumer-web/` directly, which is what I said before actually
+   trying it. The fix already in the repo: a one-line redirect at
+   `index.html` (repo root) that forwards to `apps/consumer-web/index.html`,
+   so the short URL still works — `https://<you>.github.io/public-trust-rank/`
+   lands on the real app, not a 404 or a raw file listing. A few clicks, no
+   cost, live within a minute or two.
 4. **Get a Google Places API key**: console.cloud.google.com, create a
    project, enable the "Places API (New)," create an API key. This is the
    one step that asks for a card on file — flagged above so it's not a
