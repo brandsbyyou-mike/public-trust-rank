@@ -103,14 +103,23 @@
     // Top dish/theme mentions from the restaurant's own reviews -- derived
     // counts only (see the DISH MENTIONS comment in run.mjs for why raw
     // review text is never stored or shown). Explanation only -- these do
-    // not affect the score.
-    function dishMentionsHtml(mentions) {
+    // not affect the score. Same rendering for both the food-term list and
+    // the service/experience-term list, just a different heading.
+    function mentionChipsHtml(label, mentions) {
       if (!mentions || !mentions.length) return "";
       const top = mentions.slice(0, 5).map((m) => {
         const stars = m.avg_rating !== null && m.avg_rating !== undefined ? ` (avg ${m.avg_rating}★)` : "";
         return `<span class="dish-chip">${m.term}${stars}</span>`;
       }).join("");
-      return `<p class="section-label">Notable in reviews</p><div class="dish-chips">${top}</div>`;
+      return `<p class="section-label">${label}</p><div class="dish-chips">${top}</div>`;
+    }
+
+    // The overall average of the same up-to-5 reviews used for the mention
+    // chips above -- Google's own star ratings, not a text summary, so it
+    // stays inside the same "derived numbers only, never raw text" rule.
+    function recentReviewsHtml(sample) {
+      if (!sample || !sample.count || sample.avg_rating === null || sample.avg_rating === undefined) return "";
+      return `<p class="card-delta flat">Recent reviews: ${sample.avg_rating}★ avg (${sample.count} scanned)</p>`;
     }
 
     // Merges the hand-curated identity (name, address) from the snapshot
@@ -134,6 +143,8 @@
         liveEntry,
         factors: liveEntry.factors || {},
         dishMentions: liveEntry.dish_mentions || [],
+        serviceMentions: liveEntry.service_mentions || [],
+        recentReviews: liveEntry.recent_reviews || null,
       };
     }
 
@@ -180,7 +191,9 @@
         ${reasonsHtml}
         <p class="section-label">Signal breakdown &amp; sources</p>
         ${rowsHtml}
-        ${dishMentionsHtml(r.dishMentions)}
+        ${recentReviewsHtml(r.recentReviews)}
+        ${mentionChipsHtml("Notable in reviews", r.dishMentions)}
+        ${mentionChipsHtml("Service &amp; experience", r.serviceMentions)}
         <div class="rp-source">Computed live by scoreRestaurant() from verified public sources.</div>
       </div>`;
     }

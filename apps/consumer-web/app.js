@@ -93,6 +93,8 @@ function buildRestaurant(staticEntry, liveEntry) {
     ...result, // score, breakdown, topReasons, confidence
     factors: liveEntry.factors || {},
     dishMentions: liveEntry.dish_mentions || [],
+    serviceMentions: liveEntry.service_mentions || [],
+    recentReviews: liveEntry.recent_reviews || null,
     delta: liveEntry.score_delta ?? null,
     deltaSince: liveEntry.delta_since ?? null,
   };
@@ -276,13 +278,24 @@ function renderList(list) {
 }
 
 // --- Detail panel ---------------------------------------------------------
-function dishMentionsHtml(mentions) {
+// Same rendering for the food-term list and the service/experience-term
+// list, just a different heading -- both are derived counts from the same
+// up-to-5 reviews, never raw text (see the DISH MENTIONS comment in
+// run.mjs).
+function mentionChipsHtml(label, mentions) {
   if (!mentions || !mentions.length) return "";
   const top = mentions.slice(0, 5).map((m) => {
     const stars = m.avg_rating !== null && m.avg_rating !== undefined ? ` (avg ${m.avg_rating}★)` : "";
     return `<span class="dish-chip">${m.term}${stars}</span>`;
   }).join("");
-  return `<p class="section-label">Notable in reviews</p><div class="dish-chips">${top}</div>`;
+  return `<p class="section-label">${label}</p><div class="dish-chips">${top}</div>`;
+}
+
+// The overall average of that same review sample -- Google's own star
+// ratings, not a text summary, so it stays inside the same rule.
+function recentReviewsHtml(sample) {
+  if (!sample || !sample.count || sample.avg_rating === null || sample.avg_rating === undefined) return "";
+  return `<p class="card-delta flat">Recent reviews: ${sample.avg_rating}★ avg (${sample.count} scanned)</p>`;
 }
 
 function openDetail(id) {
@@ -341,7 +354,9 @@ function openDetail(id) {
 
     <p class="section-label">Signal breakdown &amp; sources</p>
     ${factorsHtml}
-    ${dishMentionsHtml(r.dishMentions)}
+    ${recentReviewsHtml(r.recentReviews)}
+    ${mentionChipsHtml("Notable in reviews", r.dishMentions)}
+    ${mentionChipsHtml("Service &amp; experience", r.serviceMentions)}
 
     <p class="no-sponsor-note">No paid placement. This score is not affected by advertising, subscription tier, or claimed-listing status — the ranking model has no field for any of those.</p>
   `;

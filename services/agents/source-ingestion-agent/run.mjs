@@ -59,10 +59,12 @@
  * that 5-review cap is Google's own limit, not something more engineering
  * gets past; there is no endpoint that returns "all" reviews, same reason
  * a Yelp scraper was ruled out in docs/source-policy/approved-sources.md).
- * Those review texts are scanned in-memory against DISH_LEXICON below,
- * tallied into a small `dish_mentions` array (term, count, avg star rating
- * from the reviews that mentioned it), and the raw review text is then
- * DISCARDED -- never written to disk, never committed. This matters
+ * Those review texts are scanned in-memory against DISH_LEXICON and
+ * SERVICE_LEXICON below, tallied into small `dish_mentions` /
+ * `service_mentions` arrays (term, count, avg star rating from the
+ * reviews that mentioned it) plus a `recent_reviews` overall average
+ * (Google's own star ratings, no text involved), and the raw review text
+ * is then DISCARDED -- never written to disk, never committed. This matters
  * because Google's Maps Platform Service Terms only carve out two caching
  * exceptions: place_id (indefinite) and lat/lng (30 days). Everything else
  * from the Places API, review text included, falls under "must not
@@ -82,11 +84,23 @@
 // grow. Add a term here and it starts getting tracked on the next weekly
 // run, no other code changes needed. Keep terms lowercase, singular where
 // natural (matching is substring-based against lowercased review text).
+// Two groups: DISH_LEXICON (what people ordered) and SERVICE_LEXICON
+// (how the experience went) -- kept separate only so the UI can label them
+// differently ("Notable in reviews" vs "Service & experience"); both are
+// scanned and discarded the same way, same legal boundary either way.
 const DISH_LEXICON = Object.freeze([
   "steak", "ribeye", "filet", "burger", "wings", "pizza", "pasta",
-  "spaghetti", "ramen", "sushi", "tacos", "salad", "salmon", "shrimp",
-  "lobster", "risotto", "gnocchi", "carbonara", "tiramisu", "cheesecake",
-  "dessert", "cocktail", "wine list", "brunch", "service", "wait time",
+  "spaghetti", "ramen", "sushi", "yellowtail", "tuna", "poke", "tempura",
+  "tacos", "salad", "salmon", "shrimp", "crab cake", "oyster",
+  "lobster", "risotto", "gnocchi", "carbonara", "guacamole", "hummus",
+  "pad thai", "mac and cheese", "fries", "tiramisu", "cheesecake",
+  "dessert", "cocktail", "margarita", "martini", "mimosa", "wine list", "brunch",
+]);
+
+const SERVICE_LEXICON = Object.freeze([
+  "service", "customer service", "friendly staff", "attentive",
+  "slow service", "rude", "wait time", "long wait", "short wait",
+  "seated quickly", "reservation", "noisy", "cozy", "parking",
 ]);
 
 import { readFile, writeFile } from "node:fs/promises";
@@ -345,9 +359,9 @@ async function resolvePlaceId(restaurant, priorPlaceId, context) {
 
 // --- Reviews / dish mentions (Google Places Details) -- WEEKLY cadence ----
 // Up to 5 reviews per place -- Google's own cap, not ours. Review text is
-// used in-memory only by extractDishMentions() below and never returned
-// from this function or written anywhere; see the legal note at the top
-// of this file for why that matters.
+// used in-memory only by extractMentions()/summarizeReviewSample() below
+// and never returned from this function or written anywhere; see the
+// legal note at the top of this file for why that matters.
 async function fetchPlaceReviews(placeId, guard) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key) return { reviews: null, reason: "no GOOGLE_PLACES_API_KEY set" };
@@ -378,13 +392,13 @@ async function fetchPlaceReviews(placeId, guard) {
 // guessing, and it's a real signal Google already collected. Returns
 // derived counts only; the `reviews` array passed in is never persisted
 // by the caller.
-function extractDishMentions(reviews) {
+function extractMentions(reviews, lexicon) {
   const tally = new Map(); // term -> { mentions, ratingSum }
   for (const review of reviews) {
     const text = (review.text?.text || "").toLowerCase();
     const rating = review.rating ?? null;
     if (!text) continue;
-    for (const term of DISH_LEXICON) {
+    for (const term of lexicon) {
       if (text.includes(term)) {
         const entry = tally.get(term) || { mentions: 0, ratingSum: 0, ratingCount: 0 };
         entry.mentions += 1;
@@ -403,6 +417,17 @@ function extractDishMentions(reviews) {
       avg_rating: e.ratingCount ? Math.round((e.ratingSum / e.ratingCount) * 10) / 10 : null,
     }))
     .sort((a, b) => b.mentions - a.mentions);
+}
+
+// Overall average of the same up-to-5 reviews, independent of any keyword
+// match -- a real, derived "recent reviews" signal (Google's own star
+// ratings, not text) that costs nothing extra since the reviews were
+// already fetched for dish_mentions. Discarded along with the raw text.
+function summarizeReviewSample(reviews) {
+  const rated = reviews.filter((r) => r.rating != null);
+  if (!rated.length) return { count: reviews.length, avg_rating: null };
+  const avg = rated.reduce((sum, r) => sum + r.rating, 0) / rated.length;
+  return { count: reviews.length, avg_rating: Math.round(avg * 10) / 10 };
 }
 
 // --- Scottsdale business license (bulk, whole-dataset) --------------------
@@ -677,12 +702,19 @@ async function ingestOne(restaurant, prior, runContext) {
   // shift day to day), carried forward untouched on days it's not due --
   // same carry-forward pattern as editorialMentions above.
   let dishMentions = prior?.dish_mentions ?? [];
+  let serviceMentions = prior?.service_mentions ?? [];
+  let reviewSample = prior?.recent_reviews ?? { count: 0, avg_rating: null };
   let dishMentionsUpdatedAt = prior?.dish_mentions_updated_at ?? null;
   let dishMentionsNote = prior?.dish_mentions_note ?? "not yet fetched";
   if ((MODE === "weekly" || MODE === "all") && placeId) {
     const { reviews, reason } = await fetchPlaceReviews(placeId, context.guard);
     if (reviews) {
-      dishMentions = extractDishMentions(reviews); // raw `reviews` text goes out of scope right here -- never persisted
+      // All three derived from the same fetch; raw `reviews` text goes out
+      // of scope right after this block -- never persisted, per the legal
+      // note atop this file.
+      dishMentions = extractMentions(reviews, DISH_LEXICON);
+      serviceMentions = extractMentions(reviews, SERVICE_LEXICON);
+      reviewSample = summarizeReviewSample(reviews);
       dishMentionsUpdatedAt = new Date().toISOString();
       dishMentionsNote = reviews.length
         ? `scanned ${reviews.length} review(s) from Google's most-relevant set`
@@ -703,6 +735,8 @@ async function ingestOne(restaurant, prior, runContext) {
     lng,
     coords_source: coordsSource,
     dish_mentions: dishMentions, // derived counts only -- see the legal note atop this file
+    service_mentions: serviceMentions, // same source/method, service/experience terms instead of food
+    recent_reviews: reviewSample, // { count, avg_rating } -- Google's own star ratings, no text
     dish_mentions_updated_at: dishMentionsUpdatedAt,
     dish_mentions_note: dishMentionsNote,
     last_run_mode: MODE,
