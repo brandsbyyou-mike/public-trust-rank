@@ -1,0 +1,54 @@
+{
+  "_notice": "Generated and appended to by services/agents/source-ingestion-agent/run.mjs. One entry per restaurant per UTC calendar date (idempotent -- a same-day re-run replaces that day's entry rather than duplicating it), capped at the most recent 180 days per restaurant. This file is the system's real memory: scottsdale-live-scores.json's previous_score/score_delta/delta_since fields are computed from it on every run. See services/agents/OPERATIONS.md.",
+  "restaurants": {
+    "real-001": [
+      {
+        "date": "2026-09-01",
+        "score": 76,
+        "confidence": 0.56
+      }
+    ],
+    "real-002": [
+      {
+        "date": "2026-09-01",
+        "score": 82,
+        "confidence": 0.68
+      }
+    ],
+    "real-003": [
+      {
+        "date": "2026-09-01",
+        "score": 72,
+        "confidence": 0.56
+      }
+    ],
+    "real-004": [
+      {
+        "date": "2026-09-01",
+        "score": 78,
+        "confidence": 0.56
+      }
+    ],
+    "real-005": [
+      {
+        "date": "2026-09-01",
+        "score": 76,
+        "confidence": 0.56
+      }
+    ],
+    "real-006": [
+      {
+        "date": "2026-09-01",
+        "score": 72,
+        "confidence": 0.42
+      }
+    ],
+    "real-007": [
+      {
+        "date": "2026-09-01",
+        "score": 77,
+        "confidence": 0.56
+      }
+    ]
+  }
+}
