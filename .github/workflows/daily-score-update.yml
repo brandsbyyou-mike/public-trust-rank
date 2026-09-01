@@ -1,0 +1,54 @@
+# Daily Score Update — the actual free mechanism for "updates once a day"
+#
+# GitHub Actions scheduled workflows are free for a repo like this one
+# (well within the free-tier minutes for a single daily job). This is the
+# real, no-cost answer to "how does the daily refresh actually run without
+# paying for a server" — put this repo on GitHub, add one secret, and this
+# job runs on schedule with no hosting bill.
+#
+# STATUS: the ingestion script (services/agents/source-ingestion-agent/run.mjs)
+# is real, written, and runs even with zero secrets set -- it just leaves
+# every factor it can't reach at 0 with a logged reason instead of failing.
+# Add GOOGLE_PLACES_API_KEY (and optionally GOOGLE_CSE_KEY / GOOGLE_CSE_CX)
+# as repo secrets to fill in the factors that need them. Health inspection
+# stays unfilled either way -- see source-agent-playbook.md #5. Do not tell
+# a buyer this is fully live until it has run green at least once with real
+# secrets set and someone has checked data/real-pilot/scottsdale-live-scores.json
+# by hand.
+#
+# This job covers the DAILY-cadence factors only (Google rating, review
+# volume, license, site freshness). Editorial mentions run on their own
+# weekly schedule -- see weekly-editorial-update.yml -- and are carried
+# forward untouched by this job. Full cadence rationale in
+# services/agents/OPERATIONS.md.
+
+name: Daily Score Update
+
+on:
+  schedule:
+    # 09:00 UTC daily (~2am Phoenix, no DST). Adjust as needed.
+    - cron: "0 9 * * *"
+  workflow_dispatch: {} # lets you trigger it by hand from the Actions tab
+
+jobs:
+  update-scores:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run source ingestion (daily factors)
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+        run: node services/agents/source-ingestion-agent/run.mjs daily
+
+      - name: Commit updated data
+        run: |
+          git config user.name "public-trust-rank-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Daily score update $(date -u +%Y-%m-%d)"
+          git push

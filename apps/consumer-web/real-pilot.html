@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Public Trust Rank — Real Pilot Snapshot</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 20px 60px; }
+  .banner { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 13px; color: var(--text-dim); margin-bottom: 22px; }
+  .banner b { color: var(--text); }
+  .rp-card { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; background: var(--surface-2); }
+  .rp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .rp-name { font-size: 16px; font-weight: 700; margin: 0; }
+  .rp-meta { color: var(--text-dim); font-size: 12.5px; margin: 3px 0 0; }
+  .rp-index { font-family: "IBM Plex Mono", monospace; font-weight: 700; font-size: 22px; color: var(--accent); flex-shrink: 0; }
+  .rp-source { font-size: 11.5px; margin-top: 8px; }
+  .rp-source a { color: var(--accent); text-decoration: none; }
+  .rp-editorial { font-size: 12px; margin-top: 6px; color: var(--text); font-style: italic; }
+  .back-link { display: inline-block; margin-bottom: 16px; font-size: 13px; color: var(--accent); text-decoration: none; }
+  .verified-section { margin-bottom: 30px; }
+  .verified-intro { font-size: 12.5px; color: var(--text-dim); margin: 4px 0 16px; }
+  .vf-row { display: grid; grid-template-columns: 132px 1fr 34px; align-items: center; gap: 8px; font-size: 12.5px; margin-bottom: 3px; }
+  .vf-source { font-size: 11px; color: var(--text-dim); margin: 0 0 10px; padding-left: 140px; }
+  .vf-source:last-of-type { margin-bottom: 4px; }
+</style>
+</head>
+<body style="display:block;overflow-y:auto;">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      <span class="brand-name">Public Trust Rank</span>
+      <span class="brand-market">Scottsdale · Real Pilot Snapshot</span>
+    </div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">◐</button>
+  </header>
+  <div class="wrap">
+    <a class="back-link" href="index.html">&larr; Back to full scoring demo (fictional data)</a>
+    <div class="banner">
+      <b>Real, named Scottsdale restaurants. Partial data, by design.</b><br />
+      Every name, address, cuisine, and review count below is a public fact,
+      sourced and cited. Yelp is permanently excluded as a data source (their
+      API terms explicitly ban this use case; Tripadvisor and Yelp both block
+      automated fetching too), and no Google Places API key is wired in yet.
+      Two restaurants below now have a real, five-of-six-factor score — see
+      "Verified full-score examples" — obtained by manual, cited lookups this
+      pilot proved out; the remaining five still show the review-volume-only
+      Public Engagement Index until the same lookups are run for them. See
+      <code>docs/launch/real-pilot-snapshot.md</code> for the full
+      methodology note. Sourced 2026-08-31 (verified pair updated 2026-09-01).
+    </div>
+
+    <div class="verified-section">
+      <p class="section-label" style="margin-top:0;">Verified full-score examples (2 of 7)</p>
+      <p class="verified-intro">
+        These two have five of six factors backed by real, cited evidence —
+        not just review volume — computed live by the same
+        <code>scoreRestaurant()</code> function as the rest of this site.
+        Health inspection is still missing for both; see the source note on
+        that factor for why, and <code>services/agents/source-agent-playbook.md</code>
+        for exactly how the other four were obtained. The five restaurants
+        further down still show review-volume only.
+      </p>
+      <div id="verified-list"></div>
+    </div>
+
+    <p class="section-label">Public Engagement Index — review volume only (all 7)</p>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    const DATA = {"_notice": "REAL, NAMED restaurants. Every name, address, cuisine, and review-count figure below is a public fact pulled from search results and cited by source URL. What this is NOT: a full Public Trust Score. Star-rating sentiment, review-authenticity, reservation-demand, and freshness data are NOT included here because Yelp and Tripadvisor block automated fetching of their pages (robots.txt) and no licensed API is connected yet (see docs/source-policy/approved-sources.md). Getting real, safe-to-publish scores for real businesses requires either manual verification against the source pages (someone reading the actual page and confirming the number) or a licensed API like Google Places. Publishing a full 50-100 'trust score' for a real business on anything less than that is a defamation risk this file deliberately avoids. Coordinates are neighborhood-center approximations, not geocoded street addresses -- see field note on each entry.", "sourced_date": "2026-08-31", "market": "scottsdale-az", "category": "restaurants", "methodology": "engagement_index_only", "restaurants": [{"id": "real-001", "name": "Roka Akor", "cuisine": "Japanese / Steak / Sushi", "address": "7299 N Scottsdale Rd, Scottsdale, AZ 85253", "neighborhood_approx": "McCormick Ranch / Camelback Corridor", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.5041, "lng": -111.9302, "yelp_review_count": 1383, "source": "https://www.yelp.com/biz/roka-akor-scottsdale-scottsdale"}, {"id": "real-002", "name": "Dominick's Steakhouse", "cuisine": "Steakhouse", "address": "15169 N Scottsdale Rd, Scottsdale, AZ 85254", "neighborhood_approx": "North Scottsdale / Scottsdale Quarter", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.6247, "lng": -111.9285, "yelp_review_count": 1425, "source": "https://www.yelp.com/biz/dominicks-steakhouse-scottsdale-4"}, {"id": "real-003", "name": "OBON Sushi Bar Ramen", "cuisine": "Japanese / Ramen / Sushi", "address": "15037 N Scottsdale Rd, Scottsdale, AZ 85254", "neighborhood_approx": "North Scottsdale / Scottsdale Quarter", "coords_note": "approximate neighborhood center, not geocoded to street address. Note: an OLDER Yelp listing for a prior OBON location shows CLOSED -- this is a real example of the entity-resolution problem docs/architecture describes; the listing above is the current, active one.", "lat": 33.6247, "lng": -111.9265, "yelp_review_count": 716, "source": "https://www.yelp.com/biz/obon-sushi-bar-ramen-scottsdale"}, {"id": "real-004", "name": "The Mission Old Town", "cuisine": "Latin American", "address": "3815 N Brown Ave, Scottsdale, AZ 85251", "neighborhood_approx": "Old Town", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.4936, "lng": -111.9271, "yelp_review_count": 3417, "source": "https://www.yelp.com/biz/the-mission-old-town-scottsdale-2"}, {"id": "real-005", "name": "Cafe Monarch", "cuisine": "New American", "address": "6939 E 1st Ave, Scottsdale, AZ 85251", "neighborhood_approx": "Old Town", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.4944, "lng": -111.9214, "yelp_review_count": 1328, "editorial_mention": "Named 'most romantic restaurant in the U.S.' -- Phoenix New Times", "source": "https://www.yelp.com/biz/cafe-monarch-scottsdale-14", "editorial_source": "https://www.phoenixnewtimes.com/food-drink/scottsdales-cafe-monarch-named-most-romantic-restaurant-in-u-s-40640283/"}, {"id": "real-006", "name": "Postino Kierland", "cuisine": "Wine Bar / Small Plates", "address": "7030 E Greenway Pkwy, Scottsdale, AZ 85254", "neighborhood_approx": "Kierland", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.6247, "lng": -111.9295, "yelp_review_count": 1231, "source": "https://www.yelp.com/biz/postino-kierland-scottsdale"}, {"id": "real-007", "name": "Postino Highland", "cuisine": "Wine Bar / Small Plates", "address": "4821 N Scottsdale Rd, Scottsdale, AZ 85251", "neighborhood_approx": "Fashion Square / Old Town", "coords_note": "approximate neighborhood center, not geocoded to street address", "lat": 33.5022, "lng": -111.9298, "yelp_review_count": 1135, "source": "https://www.yelp.com/biz/postino-highland-scottsdale"}]};
+
+    function initTheme() {
+      try { const saved = localStorage.getItem("ptr-theme"); if (saved) document.documentElement.setAttribute("data-theme", saved); } catch(e){}
+      document.getElementById("theme-toggle").addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("ptr-theme", next); } catch(e){}
+      });
+    }
+
+    function computeEngagementIndex(restaurants) {
+      const counts = restaurants.map(r => r.yelp_review_count);
+      const min = Math.min(...counts), max = Math.max(...counts), span = (max - min) || 1;
+      const result = new Map();
+      for (const r of restaurants) {
+        const pct = (r.yelp_review_count - min) / span;
+        result.set(r.id, { index: Math.round(50 + pct * 50), percentile: Math.round(pct * 100) });
+      }
+      return result;
+    }
+
+    function render() {
+      const indexed = computeEngagementIndex(DATA.restaurants);
+      const sorted = [...DATA.restaurants].sort((a, b) => indexed.get(b.id).index - indexed.get(a.id).index);
+      const el = document.getElementById("list");
+      el.innerHTML = sorted.map(r => {
+        const { index, percentile } = indexed.get(r.id);
+        return `<div class="rp-card">
+          <div class="rp-top">
+            <div>
+              <p class="rp-name">${r.name}</p>
+              <p class="rp-meta">${r.cuisine} &middot; ${r.address}</p>
+              <p class="rp-meta">${r.yelp_review_count.toLocaleString()} public reviews (Yelp) &middot; ${percentile}th percentile of this set</p>
+              ${r.editorial_mention ? `<p class="rp-editorial">"${r.editorial_mention}"</p>` : ""}
+            </div>
+            <div class="rp-index">${index}</div>
+          </div>
+          <div class="rp-source">Source: <a href="${r.source}" target="_blank" rel="noopener">${r.source}</a>${r.editorial_source ? ` &middot; <a href="${r.editorial_source}" target="_blank" rel="noopener">editorial source</a>` : ""}</div>
+        </div>`;
+      }).join("");
+    }
+
+    initTheme();
+    render();
+  </script>
+
+  <script type="module">
+    import { scoreRestaurant, FACTOR_LABELS } from "../../services/ranking-engine/scoring.mjs";
+
+    // Real path in to the automated pipeline's own output. Missing entirely
+    // pre-launch (no live file yet), or present with every factor at an
+    // honest 0 (real keys not wired in yet) -- both are expected states,
+    // not errors, and both fall back to the manually-verified example below
+    // rather than showing a blank or misleadingly-zero card.
+    const LIVE_DATA_PATH = "../../data/real-pilot/scottsdale-live-scores.json";
+
+    const VERIFIED = [
+      {
+        id: "real-002",
+        name: "Dominick's Steakhouse",
+        cuisine: "Steakhouse",
+        address: "15169 N Scottsdale Rd, Scottsdale, AZ 85254",
+        evidence: {
+          googleRating: 0.94, reviewVolume: 0.26, healthInspection: 0,
+          licenseVerified: 0.9, siteFreshness: 0.85, editorialMentions: 0.6,
+          confidence: 0.83,
+        },
+        notes: {
+          googleRating: "4.7/5, cited as the Google rating by a restaurant aggregator site (gayot.com separately scored it 13/20 “Good”) — not pulled from the Places API directly, no key wired in yet.",
+          reviewVolume: "1,425 Yelp-cited reviews, position within this 7-restaurant set (see index below).",
+          healthInspection: "Not available. Maricopa County's inspection tool loads results by JavaScript; a plain fetch returns the empty search form, not results.",
+          licenseVerified: "City of Scottsdale business-license record: status Active, licensed since 2011 — queried directly from the city's ArcGIS endpoint, confirmed by matching address.",
+          siteFreshness: "dominickssteakhouse.com: page last-modified 2026-07-20, linked menu PDFs dated within the last few months.",
+          editorialMentions: "Phoenix New Times feature, Scottsdale Lifestyles Magazine feature, and the restaurant's own press page.",
+        },
+      },
+      {
+        id: "real-004",
+        name: "The Mission Old Town",
+        cuisine: "Latin American",
+        address: "3815 N Brown Ave, Scottsdale, AZ 85251",
+        evidence: {
+          googleRating: 0.88, reviewVolume: 1.0, healthInspection: 0,
+          licenseVerified: 0.95, siteFreshness: 0.5, editorialMentions: 0.55,
+          confidence: 0.83,
+        },
+        notes: {
+          googleRating: "4.4/5 from a restaurant aggregator site; that source didn't explicitly attribute the number to Google, so this citation is weaker than Dominick's — flagged, not hidden.",
+          reviewVolume: "3,417 Yelp-cited reviews — the highest of this 7-restaurant set.",
+          healthInspection: "Not available, same reason as Dominick's above.",
+          licenseVerified: "City of Scottsdale business-license record for “THE MISSION RESTAURANT”: status Active, licensed since 2008 — exact address match confirmed (3815 N Brown Ave).",
+          siteFreshness: "themissionaz.com: mixed signal — some menu PDFs still linked from 2025, current hours listed, a 2026-dated menu also present in navigation, and a stale “opening Winter 2025” line still live on the page — weaker and less consistent than Dominick's.",
+          editorialMentions: "Multiple Phoenix New Times pieces (including a recent expansion story) and a Food Network restaurant listing.",
+        },
+      },
+    ];
+
+    // Live pipeline output supersedes the manual example only once it has
+    // real evidence behind it (confidence > 0) -- a run with no API keys
+    // set yet still writes a file, but every factor in it is an honest 0
+    // with a "no ... key set" reason, and the hand-verified example is
+    // strictly more informative than that until real keys are live.
+    async function loadLiveData() {
+      try {
+        const res = await fetch(LIVE_DATA_PATH, { cache: "no-store" });
+        if (!res.ok) return null;
+        return await res.json();
+      } catch {
+        return null; // no live file yet (pre-launch) -- fall back silently
+      }
+    }
+
+    function deltaHtml(entry) {
+      if (!entry || entry.score_delta === null || entry.score_delta === undefined) return "";
+      const d = entry.score_delta;
+      const cls = d > 0 ? "up" : d < 0 ? "down" : "flat";
+      const text =
+        d === 0
+          ? `No change since ${entry.delta_since}`
+          : `${d > 0 ? "▲" : "▼"} ${Math.abs(d)} since ${entry.delta_since}`;
+      return `<p class="card-delta ${cls}">${text}</p>`;
+    }
+
+    // Builds the render-ready shape from a live pipeline entry, preferring
+    // each factor's own real `note` (the actual audit trail) and only
+    // falling back to the manually-researched note for a factor the live
+    // run hasn't successfully fetched yet, so the page never shows a blank
+    // explanation where a good one already exists.
+    function fromLive(liveEntry, staticEntry) {
+      const notes = {};
+      for (const key of Object.keys(FACTOR_LABELS)) {
+        const f = liveEntry.factors?.[key];
+        const hasRealNote = f?.note && !f.note.startsWith("no ") && f.note !== "not yet fetched";
+        notes[key] = hasRealNote ? f.note : staticEntry?.notes?.[key] || f?.note || "not available yet";
+      }
+      return {
+        name: liveEntry.name,
+        cuisine: staticEntry?.cuisine || "",
+        address: staticEntry?.address || "",
+        evidence: liveEntry.evidence,
+        notes,
+        live: true,
+        liveEntry,
+      };
+    }
+
+    async function renderVerified() {
+      const el = document.getElementById("verified-list");
+      const live = await loadLiveData();
+      const liveById = new Map((live?.restaurants || []).map((r) => [r.id, r]));
+
+      const rows = VERIFIED.map((staticEntry) => {
+        const liveEntry = liveById.get(staticEntry.id);
+        const useLive = liveEntry && liveEntry.confidence > 0;
+        return useLive ? fromLive(liveEntry, staticEntry) : { ...staticEntry, live: false };
+      });
+
+      el.innerHTML = rows.map((r) => {
+        const result = scoreRestaurant(r.evidence);
+        const confidencePct = Math.round(result.confidence * 100);
+        const reasonsHtml = result.topReasons.map((line) => `<div class="reason-line">${line}</div>`).join("");
+        const rowsHtml = Object.entries(result.breakdown)
+          .sort((a, b) => b[1].contribution - a[1].contribution)
+          .map(([factor, b]) => {
+            const pct = Math.round(b.value * 100);
+            return `<div class="vf-row">
+              <span>${FACTOR_LABELS[factor]}</span>
+              <span class="factor-track"><span class="factor-fill" style="width:${pct}%"></span></span>
+              <span class="factor-pct">${pct}%</span>
+            </div>
+            <p class="vf-source">${r.notes[factor]}</p>`;
+          }).join("");
+
+        const sourceLine = r.live
+          ? `Computed live by scoreRestaurant() from the automated daily/weekly pipeline. Last fetched ${new Date(r.liveEntry.fetched_at).toLocaleString()} UTC.`
+          : `Computed live by scoreRestaurant() from the evidence and sources above. Sourced 2026-09-01 (manual research — the automated pipeline hasn't run with real API keys yet).`;
+
+        return `<div class="rp-card">
+          <div class="rp-top">
+            <div>
+              <p class="rp-name">${r.name}</p>
+              <p class="rp-meta">${r.cuisine} &middot; ${r.address}</p>
+            </div>
+            <div class="rp-index">${result.score}</div>
+          </div>
+          ${r.live ? deltaHtml(r.liveEntry) : ""}
+          <span class="confidence-badge">${confidencePct}% data confidence${r.live ? "" : " — 5 of 6 factors verified"}</span>
+          <p class="section-label">Why this score</p>
+          ${reasonsHtml}
+          <p class="section-label">Signal breakdown &amp; sources</p>
+          ${rowsHtml}
+          <div class="rp-source">${sourceLine}</div>
+        </div>`;
+      }).join("");
+    }
+
+    renderVerified();
+  </script>
+
+  <a href="sources.html" class="methodology-link">sources &amp; methodology</a>
+</body>
+</html>

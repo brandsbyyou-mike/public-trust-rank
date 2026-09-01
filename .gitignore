@@ -1,0 +1,8 @@
+# OS / editor cruft only. data/real-pilot/scottsdale-live-scores.json and
+# data/real-pilot/score-history.json are DELIBERATELY tracked, not ignored --
+# the daily/weekly GitHub Actions jobs commit changes to them on purpose.
+# That commit history is the proof this pilot updates itself, live, every
+# day (see docs/launch/go-live-cheap.md). Never add data/ here.
+.DS_Store
+node_modules/
+*.log

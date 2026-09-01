@@ -1,0 +1,90 @@
+{
+  "_notice": "REAL, NAMED restaurants. Every name, address, cuisine, and review-count figure below is a public fact pulled from search results and cited by source URL. What this is NOT: a full Public Trust Score. Star-rating sentiment, review-authenticity, reservation-demand, and freshness data are NOT included here because Yelp and Tripadvisor block automated fetching of their pages (robots.txt) and no licensed API is connected yet (see docs/source-policy/approved-sources.md). Getting real, safe-to-publish scores for real businesses requires either manual verification against the source pages (someone reading the actual page and confirming the number) or a licensed API like Google Places. Publishing a full 50-100 'trust score' for a real business on anything less than that is a defamation risk this file deliberately avoids. Coordinates are neighborhood-center approximations, not geocoded street addresses -- see field note on each entry.",
+  "sourced_date": "2026-08-31",
+  "market": "scottsdale-az",
+  "category": "restaurants",
+  "methodology": "engagement_index_only",
+  "restaurants": [
+    {
+      "id": "real-001",
+      "name": "Roka Akor",
+      "cuisine": "Japanese / Steak / Sushi",
+      "address": "7299 N Scottsdale Rd, Scottsdale, AZ 85253",
+      "neighborhood_approx": "McCormick Ranch / Camelback Corridor",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.5041, "lng": -111.9302,
+      "yelp_review_count": 1383,
+      "source": "https://www.yelp.com/biz/roka-akor-scottsdale-scottsdale"
+    },
+    {
+      "id": "real-002",
+      "name": "Dominick's Steakhouse",
+      "cuisine": "Steakhouse",
+      "address": "15169 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "neighborhood_approx": "North Scottsdale / Scottsdale Quarter",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.6247, "lng": -111.9285,
+      "yelp_review_count": 1425,
+      "source": "https://www.yelp.com/biz/dominicks-steakhouse-scottsdale-4",
+      "website": "https://www.dominickssteakhouse.com/"
+    },
+    {
+      "id": "real-003",
+      "name": "OBON Sushi Bar Ramen",
+      "cuisine": "Japanese / Ramen / Sushi",
+      "address": "15037 N Scottsdale Rd, Scottsdale, AZ 85254",
+      "neighborhood_approx": "North Scottsdale / Scottsdale Quarter",
+      "coords_note": "approximate neighborhood center, not geocoded to street address. Note: an OLDER Yelp listing for a prior OBON location shows CLOSED -- this is a real example of the entity-resolution problem docs/architecture describes; the listing above is the current, active one.",
+      "lat": 33.6247, "lng": -111.9265,
+      "yelp_review_count": 716,
+      "source": "https://www.yelp.com/biz/obon-sushi-bar-ramen-scottsdale"
+    },
+    {
+      "id": "real-004",
+      "name": "The Mission Old Town",
+      "cuisine": "Latin American",
+      "address": "3815 N Brown Ave, Scottsdale, AZ 85251",
+      "neighborhood_approx": "Old Town",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.4936, "lng": -111.9271,
+      "yelp_review_count": 3417,
+      "source": "https://www.yelp.com/biz/the-mission-old-town-scottsdale-2",
+      "website": "https://www.themissionaz.com/the-mission-old-town-1"
+    },
+    {
+      "id": "real-005",
+      "name": "Cafe Monarch",
+      "cuisine": "New American",
+      "address": "6939 E 1st Ave, Scottsdale, AZ 85251",
+      "neighborhood_approx": "Old Town",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.4944, "lng": -111.9214,
+      "yelp_review_count": 1328,
+      "editorial_mention": "Named 'most romantic restaurant in the U.S.' -- Phoenix New Times",
+      "source": "https://www.yelp.com/biz/cafe-monarch-scottsdale-14",
+      "editorial_source": "https://www.phoenixnewtimes.com/food-drink/scottsdales-cafe-monarch-named-most-romantic-restaurant-in-u-s-40640283/"
+    },
+    {
+      "id": "real-006",
+      "name": "Postino Kierland",
+      "cuisine": "Wine Bar / Small Plates",
+      "address": "7030 E Greenway Pkwy, Scottsdale, AZ 85254",
+      "neighborhood_approx": "Kierland",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.6247, "lng": -111.9295,
+      "yelp_review_count": 1231,
+      "source": "https://www.yelp.com/biz/postino-kierland-scottsdale"
+    },
+    {
+      "id": "real-007",
+      "name": "Postino Highland",
+      "cuisine": "Wine Bar / Small Plates",
+      "address": "4821 N Scottsdale Rd, Scottsdale, AZ 85251",
+      "neighborhood_approx": "Fashion Square / Old Town",
+      "coords_note": "approximate neighborhood center, not geocoded to street address",
+      "lat": 33.5022, "lng": -111.9298,
+      "yelp_review_count": 1135,
+      "source": "https://www.yelp.com/biz/postino-highland-scottsdale"
+    }
+  ]
+}

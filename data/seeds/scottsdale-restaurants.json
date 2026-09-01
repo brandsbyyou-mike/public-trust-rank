@@ -1,0 +1,224 @@
+{
+  "_notice": "DEMO SEED DATA. Restaurant names below are invented for the pilot demo and do not refer to real Scottsdale businesses. Do not attach these scores to real business names in any public-facing build. Coordinates are approximate points within Scottsdale, AZ for map placement only. 'evidence' values are 0-1 normalized inputs to services/ranking-engine/scoring.mjs (v3 factor set: googleRating, reviewVolume, healthInspection, licenseVerified, siteFreshness, editorialMentions) -- they are illustrative, not derived from real crawled data.",
+  "market": "scottsdale-az",
+  "category": "restaurants",
+  "scoring_version": "v3",
+  "restaurants": [
+    {
+      "id": "r-001",
+      "name": "Copperline Sushi Bar",
+      "cuisine": "Sushi",
+      "neighborhood": "Old Town",
+      "lat": 33.4936,
+      "lng": -111.9261,
+      "priceLevel": 3,
+      "evidence": {
+        "googleRating": 0.91,
+        "reviewVolume": 0.74,
+        "healthInspection": 0.95,
+        "siteFreshness": 0.7,
+        "editorialMentions": 0.65,
+        "confidence": 0.85,
+        "licenseVerified": 0.98
+      }
+    },
+    {
+      "id": "r-002",
+      "name": "Trattoria Camelback",
+      "cuisine": "Italian",
+      "neighborhood": "Camelback Corridor",
+      "lat": 33.5041,
+      "lng": -111.9302,
+      "priceLevel": 3,
+      "evidence": {
+        "googleRating": 0.86,
+        "reviewVolume": 0.55,
+        "healthInspection": 0.85,
+        "siteFreshness": 0.62,
+        "editorialMentions": 0.58,
+        "confidence": 0.8,
+        "licenseVerified": 0.81
+      }
+    },
+    {
+      "id": "r-003",
+      "name": "Desert Coal Steakhouse",
+      "cuisine": "Steakhouse",
+      "neighborhood": "Fashion Square",
+      "lat": 33.5022,
+      "lng": -111.9298,
+      "priceLevel": 4,
+      "evidence": {
+        "googleRating": 0.78,
+        "reviewVolume": 0.4,
+        "healthInspection": 0.9,
+        "siteFreshness": 0.55,
+        "editorialMentions": 0.72,
+        "confidence": 0.78,
+        "licenseVerified": 0.83
+      }
+    },
+    {
+      "id": "r-004",
+      "name": "Casa Verbena",
+      "cuisine": "Mexican",
+      "neighborhood": "South Scottsdale",
+      "lat": 33.4653,
+      "lng": -111.9265,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.88,
+        "reviewVolume": 0.68,
+        "healthInspection": 0.75,
+        "siteFreshness": 0.45,
+        "editorialMentions": 0.4,
+        "confidence": 0.72,
+        "licenseVerified": 0.8
+      }
+    },
+    {
+      "id": "r-005",
+      "name": "Kierland Ramen House",
+      "cuisine": "Ramen",
+      "neighborhood": "Kierland",
+      "lat": 33.6247,
+      "lng": -111.9285,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.83,
+        "reviewVolume": 0.6,
+        "healthInspection": 0.8,
+        "siteFreshness": 0.58,
+        "editorialMentions": 0.3,
+        "confidence": 0.7,
+        "licenseVerified": 0.88
+      }
+    },
+    {
+      "id": "r-006",
+      "name": "The Brunch Society",
+      "cuisine": "Brunch & Cafe",
+      "neighborhood": "Old Town",
+      "lat": 33.4951,
+      "lng": -111.9231,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.8,
+        "reviewVolume": 0.77,
+        "healthInspection": 0.7,
+        "siteFreshness": 0.65,
+        "editorialMentions": 0.35,
+        "confidence": 0.68,
+        "licenseVerified": 0.8
+      }
+    },
+    {
+      "id": "r-007",
+      "name": "Smoked & Slow BBQ Co.",
+      "cuisine": "BBQ",
+      "neighborhood": "South Scottsdale",
+      "lat": 33.4585,
+      "lng": -111.9134,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.75,
+        "reviewVolume": 0.5,
+        "healthInspection": 0.72,
+        "siteFreshness": 0.4,
+        "editorialMentions": 0.25,
+        "confidence": 0.6,
+        "licenseVerified": 0.82
+      }
+    },
+    {
+      "id": "r-008",
+      "name": "Saltgrass Seafood Table",
+      "cuisine": "Seafood",
+      "neighborhood": "Fashion Square",
+      "lat": 33.5008,
+      "lng": -111.9272,
+      "priceLevel": 4,
+      "evidence": {
+        "googleRating": 0.72,
+        "reviewVolume": 0.35,
+        "healthInspection": 0.68,
+        "siteFreshness": 0.5,
+        "editorialMentions": 0.6,
+        "confidence": 0.65,
+        "licenseVerified": 0.66
+      }
+    },
+    {
+      "id": "r-009",
+      "name": "DC Ranch Pizzeria",
+      "cuisine": "Pizza",
+      "neighborhood": "DC Ranch",
+      "lat": 33.6459,
+      "lng": -111.8938,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.7,
+        "reviewVolume": 0.3,
+        "healthInspection": 0.65,
+        "siteFreshness": 0.35,
+        "editorialMentions": 0.2,
+        "confidence": 0.55,
+        "licenseVerified": 0.69
+      }
+    },
+    {
+      "id": "r-010",
+      "name": "Root & Bloom Kitchen",
+      "cuisine": "Vegan",
+      "neighborhood": "Old Town",
+      "lat": 33.4923,
+      "lng": -111.9279,
+      "priceLevel": 2,
+      "evidence": {
+        "googleRating": 0.85,
+        "reviewVolume": 0.65,
+        "healthInspection": 0.88,
+        "siteFreshness": 0.6,
+        "editorialMentions": 0.45,
+        "confidence": 0.75,
+        "licenseVerified": 0.82
+      }
+    },
+    {
+      "id": "r-011",
+      "name": "North Scottsdale Wine Room",
+      "cuisine": "Wine Bar & Small Plates",
+      "neighborhood": "North Scottsdale",
+      "lat": 33.6685,
+      "lng": -111.8813,
+      "priceLevel": 3,
+      "evidence": {
+        "googleRating": 0.66,
+        "reviewVolume": 0.25,
+        "healthInspection": 0.6,
+        "siteFreshness": 0.3,
+        "editorialMentions": 0.2,
+        "confidence": 0.5,
+        "licenseVerified": 0.61
+      }
+    },
+    {
+      "id": "r-012",
+      "name": "Agave & Ash",
+      "cuisine": "Southwest / New American",
+      "neighborhood": "Old Town",
+      "lat": 33.4944,
+      "lng": -111.9214,
+      "priceLevel": 3,
+      "evidence": {
+        "googleRating": 0.93,
+        "reviewVolume": 0.85,
+        "healthInspection": 0.97,
+        "siteFreshness": 0.78,
+        "editorialMentions": 0.8,
+        "confidence": 0.9,
+        "licenseVerified": 0.98
+      }
+    }
+  ]
+}

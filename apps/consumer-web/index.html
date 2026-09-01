@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Public Trust Rank — Scottsdale</title>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      <span class="brand-name">Public Trust Rank</span>
+      <span class="brand-market">Scottsdale · Restaurants</span>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="Search sushi, Italian, a restaurant name…" autocomplete="off" />
+    </div>
+    <a href="real-pilot.html" class="icon-btn" style="width:auto;padding:0 12px;display:flex;align-items:center;font-size:12.5px;text-decoration:none;" title="Real named Scottsdale restaurants, sourced">Real pilot →</a>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">◐</button>
+  </header>
+  <div style="font-size:11.5px;color:var(--text-dim);background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 20px;">
+    <b style="color:var(--text);">Demo mode</b> — restaurant names below are fictional (invented for this demo). For real, named Scottsdale restaurants with cited sources, see <a href="real-pilot.html" style="color:var(--accent);">Real Pilot Snapshot</a>.
+  </div>
+
+  <div id="locate-status" style="display:none;font-size:11.5px;color:var(--text-dim);background:var(--surface-2);border-bottom:1px solid var(--line);padding:6px 20px;"></div>
+
+  <div class="filters" id="filters"></div>
+
+  <main class="layout">
+    <aside class="list" id="list" aria-label="Ranked restaurants"></aside>
+    <section class="map-wrap">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <div class="detail-scrim" id="detail-scrim"></div>
+  <aside class="detail-panel" id="detail-panel" aria-hidden="true"></aside>
+
+  <a href="sources.html" class="methodology-link">sources &amp; methodology</a>
+
+  <script src="config.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

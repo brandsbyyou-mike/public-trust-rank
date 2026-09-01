@@ -1,0 +1,51 @@
+# Weekly Editorial Update — the other half of the cadence split.
+#
+# Editorial/press mentions don't change day to day the way a rating or
+# review count can -- a restaurant getting a news feature is a rare event,
+# so checking it daily buys nothing a weekly check doesn't. Splitting it
+# out onto its own schedule matters for two real reasons, not just
+# tidiness: it keeps Google Custom Search usage inside the free 100/day
+# allotment even at full-Scottsdale scale (see
+# docs/launch/scaling-to-full-scottsdale.md), and it keeps this factor's
+# `updated_at` timestamp honest -- it should say "checked this week," not
+# imply a daily check that never added new information.
+#
+# Runs services/agents/source-ingestion-agent/run.mjs in "weekly" mode,
+# which fetches ONLY editorialMentions and carries every other factor
+# forward untouched from whatever the daily job last found. Requires
+# GOOGLE_CSE_KEY and GOOGLE_CSE_CX as repo secrets (see
+# docs/launch/go-live-cheap.md) -- runs fine with neither set, it just
+# leaves editorialMentions at its last known value with a logged reason.
+
+name: Weekly Editorial Update
+
+on:
+  schedule:
+    # 10:00 UTC every Sunday -- after Saturday's daily job, one day of
+    # separation so the two jobs never race on the same output file.
+    - cron: "0 10 * * 0"
+  workflow_dispatch: {}
+
+jobs:
+  update-editorial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run source ingestion (weekly factors)
+        env:
+          GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
+          GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX }}
+        run: node services/agents/source-ingestion-agent/run.mjs weekly
+
+      - name: Commit updated data
+        run: |
+          git config user.name "public-trust-rank-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Weekly editorial update $(date -u +%Y-%m-%d)"
+          git push

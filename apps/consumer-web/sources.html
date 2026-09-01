@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Public Trust Rank — Sources &amp; Methodology</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 20px 60px; font-size: 12.5px; line-height: 1.55; color: var(--text-dim); }
+  .wrap h1 { font-size: 15px; color: var(--text); margin: 0 0 4px; }
+  .wrap p.stamp { font-size: 11px; margin: 0 0 22px; }
+  .wrap h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); margin: 26px 0 8px; }
+  .wrap ul { margin: 0 0 4px; padding-left: 18px; }
+  .wrap li { margin-bottom: 6px; }
+  .wrap li b { color: var(--text); }
+  .src-note { font-size: 11px; margin-top: 2px; }
+  .back-link { display: inline-block; margin-bottom: 16px; font-size: 12px; color: var(--accent); text-decoration: none; }
+  .excluded { opacity: 0.85; }
+</style>
+</head>
+<body style="display:block;overflow-y:auto;">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      <span class="brand-name">Public Trust Rank</span>
+      <span class="brand-market">Sources &amp; Methodology</span>
+    </div>
+  </header>
+  <div class="wrap">
+    <a class="back-link" href="index.html">&larr; Back</a>
+    <h1>What this ranking is built from</h1>
+    <p class="stamp">Published for verification, not promotion. Every source below was checked
+      against its own terms of use or robots.txt before being included or excluded — see the
+      full trail in <code>docs/source-policy/approved-sources.md</code>. Last reviewed 2026-08-31.</p>
+
+    <h2>Used in the score</h2>
+    <ul>
+      <li><b>Google Places</b> — star rating and public review count.</li>
+      <li><b>County health department</b> — public restaurant inspection records.</li>
+      <li><b>City open-data business license record</b> — active status and tenure.</li>
+      <li><b>The restaurant's own website</b> — used only to check that hours, menu, and
+        contact info are current. Praise or testimonials a restaurant publishes about itself
+        are not counted toward the score, since a business chooses what to display about
+        itself and that isn't independent evidence.
+        <div class="src-note">Not a sentiment input — see note below.</div>
+      </li>
+      <li><b>News and editorial coverage</b> — found via a general search API, including local
+        news station reporting, not limited to any one outlet.</li>
+    </ul>
+
+    <h2>Deliberately not used</h2>
+    <ul class="excluded">
+      <li>Yelp and Tripadvisor — both restrict automated use of their data for a ranking
+        product like this one in their own terms.</li>
+      <li>Better Business Bureau — its review and directory pages are closed to automated
+        access.</li>
+      <li>Reservation-platform availability or "how many tables are open right now" —
+        no platform offers this without a signed partnership agreement, and no compliant way
+        to measure real-time demand independently exists yet. Checked, not guessed.</li>
+      <li>Any paid placement, subscription tier, or ad spend — there is no field for this in
+        the underlying data model. A business cannot buy a higher score.</li>
+    </ul>
+
+    <h2>Why this page exists</h2>
+    <p>Not every visitor needs to see this to use the ranking, which is why it isn't on the
+      main pages — but nothing here is hidden. Anyone who wants to check that a source wasn't
+      quietly excluded because it was inconvenient, or included because it was easy, can read
+      exactly what was checked and why.</p>
+  </div>
+</body>
+</html>
