@@ -45,11 +45,23 @@ I'll ever do on your behalf, by design:**
 
 1. **Create a free GitHub account** (if you don't have one) at github.com,
    and a new repository — public is fine and is what keeps Actions free.
-2. **Push this folder to that repository.** From a terminal in the
-   `public-trust-rank` folder: `git init`, `git add .`, `git commit -m
-   "initial"`, then follow GitHub's own "push an existing repository"
-   instructions for the exact remote commands (they generate these for
-   you when you create the repo).
+   **Do not check "Initialize this repository with a README"** — this
+   folder already has one, and an unrelated initial commit on GitHub's
+   side just means an extra merge step for no reason.
+2. **Push this folder to that repository.** This folder is already a git
+   repository with one commit (`git init` / `git add .` / `git commit`
+   were run as part of preparing it — check with `git log` from inside
+   the `public-trust-rank` folder if you want to see it) — so this step
+   is just pointing it at GitHub and pushing, not starting from scratch:
+   ```bash
+   cd public-trust-rank
+   git remote add origin https://github.com/<you>/<repo-name>.git
+   git push -u origin main
+   ```
+   GitHub shows you this exact command (with your real URL filled in)
+   on the new repo's page under "…or push an existing repository from
+   the command line" — use that version, it already has your username
+   and repo name right.
 3. **Turn on GitHub Pages** in the repo's Settings → Pages, pointing it at
    `apps/consumer-web/` — a few clicks, no cost, gives you a real live URL
    within a minute or two.
@@ -96,6 +108,12 @@ unattended" proof this pilot needs.
   fresh `generated_at` timestamp and, for each restaurant, either real
   fetched values or an honest 0 with a reason — visible receipts, not a
   black box.
+- After the second day it's run, a real `score_delta` on every
+  restaurant — "▲ 2 since 2026-09-01," not a demo placeholder — computed
+  from `data/real-pilot/score-history.json`, which the pipeline now
+  writes and appends to on every run. That file is this system's actual
+  memory: it's how "change since yesterday" stays true even across a
+  manual re-run, a failed job retried the next day, or months of runs.
 
 ## What still won't be solved by any of this
 
