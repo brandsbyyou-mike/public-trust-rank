@@ -349,12 +349,15 @@ function openDetail(id) {
   const factorsHtml = Object.entries(r.breakdown)
     .sort((a, b) => b[1].contribution - a[1].contribution)
     .map(([factor, b]) => {
-      const pct = Math.round(b.value * 100);
+      // b.known === false means this factor was never counted toward the
+      // score (see scoring.mjs) -- "—" says that honestly; "0%" would read
+      // as "measured and found lacking," which isn't what happened.
+      const pct = b.known ? Math.round(b.value * 100) : null;
       const note = r.factors[factor]?.note || "not available yet";
       return `<div class="factor-row">
         <span>${FACTOR_LABELS[factor]}</span>
-        <span class="factor-track"><span class="factor-fill" style="width:${pct}%"></span></span>
-        <span class="factor-pct">${pct}%</span>
+        <span class="factor-track"><span class="factor-fill" style="width:${pct ?? 0}%"></span></span>
+        <span class="factor-pct">${pct !== null ? `${pct}%` : "—"}</span>
       </div>
       <p class="factor-source">${note}</p>`;
     })

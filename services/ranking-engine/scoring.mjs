@@ -27,6 +27,24 @@
  * care where the evidence came from — seed JSON today, a real API call
  * tomorrow, same function either way.
  *
+ * UNVERIFIED vs. MEASURED-LOW, and why the score is renormalized:
+ * A factor the pipeline has never actually verified for this restaurant
+ * (health inspection has no automated source yet; editorial mentions
+ * hasn't reached this restaurant's weekly rotation slot) comes in as
+ * `null`/`undefined` -- not 0. A factor that WAS checked and genuinely
+ * came back low (a real Google rating of 2.9, a real Custom Search that
+ * found zero press mentions) is a real number, including a real 0, and
+ * counts normally. The score is the weighted average over only the
+ * factors that are actually known, renormalized against the weight that's
+ * covered -- an unfetched factor is excluded from the math entirely, not
+ * counted as the worst possible outcome. A restaurant should never score
+ * lower because OUR data pipeline hasn't reached a factor yet; that gap
+ * belongs in the confidence badge and the "why this score" text (see
+ * explain() below), not baked into the number as a penalty. The real
+ * tradeoff, worth knowing: an early score based on partial coverage can
+ * move (usually down) once a currently-unknown factor gets verified for
+ * the first time -- that's the honest cost of not guessing, not a bug.
+ *
  * Output: a score from 50 (floor) to 100, plus a breakdown and a short list
  * of plain-language reasons, so every number on screen is explainable back
  * to its inputs.
@@ -77,15 +95,28 @@ function clamp01(n) {
 export function scoreRestaurant(evidence = {}) {
   const breakdown = {};
   let weightedSum = 0;
+  let knownWeight = 0; // sum of weights actually backed by verified evidence
 
   for (const [factor, weight] of Object.entries(WEIGHTS)) {
-    const value = clamp01(evidence[factor]);
-    breakdown[factor] = { value, weight, contribution: value * weight };
-    weightedSum += value * weight;
+    const raw = evidence[factor];
+    const known = raw !== null && raw !== undefined;
+    const value = known ? clamp01(raw) : null;
+    breakdown[factor] = { value, weight, known, contribution: known ? value * weight : 0 };
+    if (known) {
+      weightedSum += value * weight;
+      knownWeight += weight;
+    }
   }
 
-  const score = Math.round(FLOOR + weightedSum * (CEILING - FLOOR));
-  const confidence = clamp01(evidence.confidence ?? 0.75);
+  // Renormalized average over known factors only -- see the file header
+  // for why. knownWeight === 0 (nothing verified yet at all) floors at 50
+  // rather than dividing by zero.
+  const normalizedAvg = knownWeight > 0 ? weightedSum / knownWeight : 0;
+  const score = Math.round(FLOOR + normalizedAvg * (CEILING - FLOOR));
+  // Prefer the ingestion layer's own confidence (identical coverage
+  // computation, kept in sync deliberately) and fall back to knownWeight
+  // here for any evidence object that doesn't carry one.
+  const confidence = clamp01(evidence.confidence ?? knownWeight);
   const topReasons = explain(breakdown, evidence);
 
   return { score, breakdown, topReasons, confidence };
@@ -98,25 +129,42 @@ export function scoreRestaurant(evidence = {}) {
  * can't accidentally regress into a wall of text.
  */
 function explain(breakdown, evidence) {
-  const ranked = Object.entries(breakdown)
-    .map(([factor, b]) => ({ factor, ...b }))
-    .sort((a, b) => b.contribution - a.contribution);
+  const entries = Object.entries(breakdown).map(([factor, b]) => ({ factor, ...b }));
+  const known = entries.filter((b) => b.known).sort((a, b) => b.contribution - a.contribution);
+  const unknown = entries.filter((b) => !b.known);
 
   const reasons = [];
-  const strongest = ranked[0];
-  const weakest = ranked[ranked.length - 1];
+
+  // Disclosure comes first and is never bumped by the slice(0, 3) below --
+  // this is the one line that directly answers "why isn't this restaurant
+  // being judged on all six factors," so it doesn't lose a slot to a
+  // "strong signal" callout that's less important to understand the score.
+  if (unknown.length) {
+    const labels = unknown.map((b) => FACTOR_LABELS[b.factor]).join(" and ");
+    reasons.push(
+      `${labels} not yet verified — score reflects the ${known.length} of ${entries.length} signals that are (unverified factors aren't counted against it).`
+    );
+  }
+
+  if (known.length === 0) {
+    reasons.push("No signals verified yet — this restaurant hasn't been reached by the pipeline.");
+    return reasons.slice(0, 3);
+  }
+
+  const strongest = known[0];
+  const weakest = known[known.length - 1];
 
   if (strongest.value >= 0.7) {
     reasons.push(`${FACTOR_LABELS[strongest.factor]} is strong (${Math.round(strongest.value * 100)}%).`);
   }
-  if (evidence.healthInspection !== undefined && evidence.healthInspection >= 0.85) {
+  if (evidence.healthInspection != null && evidence.healthInspection >= 0.85) {
     reasons.push("Clean recent health inspection record.");
   }
-  if (evidence.licenseVerified !== undefined && evidence.licenseVerified >= 0.9) {
+  if (evidence.licenseVerified != null && evidence.licenseVerified >= 0.9) {
     reasons.push("Verified, active city business license.");
   }
-  if (weakest.value <= 0.35) {
-    reasons.push(`${FACTOR_LABELS[weakest.factor]} is the weakest signal (${Math.round(weakest.value * 100)}%).`);
+  if (weakest.value <= 0.35 && weakest.factor !== strongest.factor) {
+    reasons.push(`${FACTOR_LABELS[weakest.factor]} is the weakest verified signal (${Math.round(weakest.value * 100)}%).`);
   }
   if (reasons.length === 0) {
     reasons.push("Signals are steady across the board — no single factor is driving the score.");

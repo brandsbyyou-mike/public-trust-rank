@@ -362,22 +362,45 @@ async function resolvePlaceId(restaurant, priorPlaceId, context) {
 // used in-memory only by extractMentions()/summarizeReviewSample() below
 // and never returned from this function or written anywhere; see the
 // legal note at the top of this file for why that matters.
-// Real, observed behavior, not a hypothetical: the first two weekly runs
-// (2026-09-01) got HTTP 429 from Place Details on 23/139 and then 134/139
-// restaurants -- Place Details has a tighter per-second rate ceiling than
-// Text Search, and running through 139 restaurants back to back (even with
-// the 250ms per-restaurant pause below) outran it. Weekly has no time
-// pressure, so retrying with backoff is the right fix, not a bigger
-// concern -- a few extra minutes on a job that runs once a week.
-const PLACE_DETAILS_MAX_ATTEMPTS = 3;
-const PLACE_DETAILS_BACKOFF_MS = [1500, 3000]; // wait before attempt 2, before attempt 3
+//
+// Real, observed behavior across three independent weekly runs, and the
+// correction to the diagnosis after the first fix attempt:
+//   run 1: 23/139 failed HTTP 429
+//   run 2: 134/139 failed HTTP 429
+//   run 3 (after adding the retry-with-backoff below): 139/139 failed,
+//          every one "(after 3 attempts)" -- i.e. still 429 on every retry.
+// A monotonically WORSENING failure rate across separate runs, and a fix
+// that tripled the request volume per restaurant (1 attempt -> up to 3)
+// and made things worse rather than better, does not look like a per-
+// second burst-pacing problem (that would fail at a roughly constant
+// rate every run, and backoff would have helped at least partially). It
+// looks like a QUOTA being consumed across runs -- daily or monthly --
+// and the retries just spent that shrinking quota three times faster.
+// This function no longer guesses which it is: it captures Google's own
+// JSON error body (error.status / error.message) so the next run's data
+// says definitively "RESOURCE_EXHAUSTED" (quota) vs. a plain rate limit,
+// and it stops retrying for the rest of the run the moment the FIRST
+// quota-shaped 429 shows up -- burning three more requests per remaining
+// restaurant on a quota that's already exhausted cannot succeed, only
+// waste budget and time. A plain rate-limit 429 (no quota signal in the
+// body) still gets a short, bounded retry.
+const PLACE_DETAILS_MAX_ATTEMPTS = 2;
+const PLACE_DETAILS_BACKOFF_MS = [2500]; // wait before attempt 2
 
-async function fetchPlaceReviews(placeId, guard) {
+async function fetchPlaceReviews(placeId, guard, runState) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   if (!key) return { reviews: null, reason: "no GOOGLE_PLACES_API_KEY set" };
   if (!placeId) return { reviews: null, reason: "no place_id resolved yet" };
 
-  for (let attempt = 1; attempt <= PLACE_DETAILS_MAX_ATTEMPTS; attempt++) {
+  // Circuit breaker: once this run has seen one quota-exhausted 429, every
+  // later restaurant fails fast with zero network calls instead of
+  // burning more of an already-exhausted quota. See the comment above.
+  if (runState?.placeDetailsQuotaExhausted) {
+    return { reviews: null, reason: `Place Details quota exhausted this run (${runState.placeDetailsQuotaExhausted})` };
+  }
+
+  const maxAttempts = PLACE_DETAILS_MAX_ATTEMPTS;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     // Charged per real network attempt, retries included -- the ledger's
     // job is to know exactly how many calls actually went out, not just
     // how many restaurants were processed. The per-run cap accounts for
@@ -394,19 +417,56 @@ async function fetchPlaceReviews(placeId, guard) {
         const json = await res.json();
         return { reviews: json.reviews ?? [], reason: null };
       }
-      // Only 429 is worth retrying -- it's Google saying "too fast," not
-      // "wrong." Anything else (404, 403, ...) is permanent for this
-      // restaurant this run; fail fast instead of burning retries on it.
-      if (res.status !== 429 || attempt === PLACE_DETAILS_MAX_ATTEMPTS) {
-        return {
-          reviews: null,
-          reason: `Place Details HTTP ${res.status}${attempt > 1 ? ` (after ${attempt} attempts)` : ""}`,
-        };
+
+      // Read Google's own error body -- this is the diagnostic the last
+      // fix attempt was missing. error.status is a real enum: things like
+      // RESOURCE_EXHAUSTED (quota) read very differently from
+      // PERMISSION_DENIED or plain rate limiting, and error.message often
+      // names the exact quota metric.
+      let googleStatus = null;
+      let googleMessage = null;
+      try {
+        const body = await res.json();
+        googleStatus = body?.error?.status ?? null;
+        googleMessage = body?.error?.message ?? null;
+      } catch {
+        // body wasn't JSON (or was empty) -- fall through with nulls, the
+        // HTTP status code alone still gets recorded below.
       }
+
+      if (res.status === 429) {
+        const looksLikeQuota =
+          googleStatus === "RESOURCE_EXHAUSTED" ||
+          /quota/i.test(googleMessage || "");
+        if (looksLikeQuota && runState) {
+          runState.placeDetailsQuotaExhausted = googleMessage || googleStatus || "429, no error body";
+        }
+        if (looksLikeQuota || attempt === maxAttempts) {
+          return {
+            reviews: null,
+            reason: `Place Details HTTP 429${googleStatus ? ` (${googleStatus})` : ""}${
+              googleMessage ? `: ${googleMessage}` : ""
+            }${attempt > 1 ? ` [attempt ${attempt}/${maxAttempts}]` : ""}`,
+          };
+        }
+        // Not obviously a quota error -- worth one short retry as plain
+        // rate limiting.
+        await new Promise((r) => setTimeout(r, PLACE_DETAILS_BACKOFF_MS[attempt - 1]));
+        continue;
+      }
+
+      // Anything other than 429 (404, 403, ...) is permanent for this
+      // restaurant this run; fail fast instead of burning retries on it.
+      return {
+        reviews: null,
+        reason: `Place Details HTTP ${res.status}${googleStatus ? ` (${googleStatus})` : ""}${
+          googleMessage ? `: ${googleMessage}` : ""
+        }`,
+      };
     } catch (err) {
-      if (attempt === PLACE_DETAILS_MAX_ATTEMPTS) return { reviews: null, reason: `fetch failed: ${err.message}` };
+      if (attempt === maxAttempts) return { reviews: null, reason: `fetch failed: ${err.message}` };
+      await new Promise((r) => setTimeout(r, PLACE_DETAILS_BACKOFF_MS[attempt - 1]));
     }
-    await new Promise((r) => setTimeout(r, PLACE_DETAILS_BACKOFF_MS[attempt - 1]));
   }
 }
 
@@ -668,7 +728,7 @@ const FACTOR_FETCHERS = {
 async function ingestOne(restaurant, prior, runContext) {
   const factorResults = {};
   let confidence = 0;
-  const context = { licenseRecords: runContext.licenseRecords, guard: runContext.guard }; // per-restaurant scratch (e.g. placesResult cache)
+  const context = { licenseRecords: runContext.licenseRecords, guard: runContext.guard, runState: runContext.runState }; // per-restaurant scratch (e.g. placesResult cache)
 
   for (const factorKey of Object.keys(CADENCE)) {
     const priorFactor = prior?.factors?.[factorKey];
@@ -683,24 +743,33 @@ async function ingestOne(restaurant, prior, runContext) {
         value: computed.value,
         note: computed.note,
         updated_at: new Date().toISOString(),
+        verified: hasReal, // real, checked evidence vs. an honest placeholder -- see scoring.mjs's file header
       };
       if (hasReal) confidence += WEIGHTS[factorKey];
     } else if (priorFactor) {
       // Not due this run -- carry the last real result forward untouched,
-      // including its original timestamp, so it's clear from the data
-      // itself when each factor was actually last checked.
+      // including its original timestamp and verified flag, so it's clear
+      // from the data itself when each factor was actually last checked.
+      // `?? false` covers data written before `verified` existed; it just
+      // self-heals the next time that factor is actually due.
       factorResults[factorKey] = priorFactor;
-      if (priorFactor.note && !priorFactor.note.startsWith("no ") && !priorFactor.note.includes("not implemented")) {
-        confidence += WEIGHTS[factorKey];
-      }
+      if (priorFactor.verified ?? false) confidence += WEIGHTS[factorKey];
     } else {
       // Never fetched (e.g. weekly factor on a restaurant's very first
-      // daily-only run, or healthInspection always) -- honest zero.
-      factorResults[factorKey] = { value: 0, note: "not yet fetched", updated_at: null };
+      // daily-only run, or healthInspection always) -- honest placeholder,
+      // NOT verified, so it's excluded from the score rather than counted
+      // as a confirmed 0 (see scoring.mjs).
+      factorResults[factorKey] = { value: 0, note: "not yet fetched", updated_at: null, verified: false };
     }
   }
 
-  const evidence = Object.fromEntries(Object.entries(factorResults).map(([k, v]) => [k, v.value]));
+  // verified factors pass their real value through; everything else goes
+  // in as null so scoreRestaurant() excludes it from the score instead of
+  // treating "we haven't checked" as "confirmed worst case." See the file
+  // header in services/ranking-engine/scoring.mjs.
+  const evidence = Object.fromEntries(
+    Object.entries(factorResults).map(([k, v]) => [k, v.verified ? v.value : null])
+  );
   evidence.confidence = Math.round(confidence * 100) / 100;
 
   const result = scoreRestaurant(evidence);
@@ -733,7 +802,7 @@ async function ingestOne(restaurant, prior, runContext) {
   let dishMentionsUpdatedAt = prior?.dish_mentions_updated_at ?? null;
   let dishMentionsNote = prior?.dish_mentions_note ?? "not yet fetched";
   if ((MODE === "weekly" || MODE === "all") && placeId) {
-    const { reviews, reason } = await fetchPlaceReviews(placeId, context.guard);
+    const { reviews, reason } = await fetchPlaceReviews(placeId, context.guard, context.runState);
     if (reviews) {
       // All three derived from the same fetch; raw `reviews` text goes out
       // of scope right after this block -- never persisted, per the legal
@@ -856,18 +925,23 @@ async function main() {
   const ledger = await loadLedger();
   const guard = makeBudgetGuard(ledger, {
     placesTextSearch: snapshot.restaurants.length + 25,
-    // x3 -- fetchPlaceReviews() now retries up to PLACE_DETAILS_MAX_ATTEMPTS
-    // times on a real, observed HTTP 429 (Place Details' rate ceiling),
-    // and the ledger is charged per attempt, not per restaurant. Even a
-    // run where every restaurant gets rate-limited on every attempt still
-    // has a hard, bounded ceiling here -- this isn't "no limit," it's
-    // "sized for the worst realistic case," same sanity-cap purpose as
-    // before.
+    // x2 -- fetchPlaceReviews() retries at most once on a plain (non-quota)
+    // 429, and the ledger is charged per attempt, not per restaurant. The
+    // quota-exhausted circuit breaker (see fetchPlaceReviews) means a run
+    // that hits a real quota wall stops issuing new Places Details calls
+    // almost immediately instead of paying this ceiling out in full -- this
+    // is still a "sized for the worst realistic case" sanity cap, not the
+    // expected steady-state cost.
     placesDetails: snapshot.restaurants.length * PLACE_DETAILS_MAX_ATTEMPTS + 10,
     customSearch: CUSTOM_SEARCH_DAILY_CAP,
   });
 
-  const runContext = { licenseRecords, bucketCount, rotationIndex, guard };
+  // Shared, mutable, per-run only -- lets fetchPlaceReviews() flip a
+  // circuit breaker the first time it sees a quota-shaped 429, so every
+  // restaurant after that fails fast instead of retrying into a wall.
+  const runState = { placeDetailsQuotaExhausted: null };
+
+  const runContext = { licenseRecords, bucketCount, rotationIndex, guard, runState };
 
   for (const restaurant of snapshot.restaurants) {
     // Sequential, not Promise.all -- basic courtesy to the per-restaurant
