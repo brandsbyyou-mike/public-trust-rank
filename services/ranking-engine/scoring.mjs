@@ -35,15 +35,33 @@
  * came back low (a real Google rating of 2.9, a real Custom Search that
  * found zero press mentions) is a real number, including a real 0, and
  * counts normally. The score is the weighted average over only the
- * factors that are actually known, renormalized against the weight that's
- * covered -- an unfetched factor is excluded from the math entirely, not
- * counted as the worst possible outcome. A restaurant should never score
- * lower because OUR data pipeline hasn't reached a factor yet; that gap
- * belongs in the confidence badge and the "why this score" text (see
- * explain() below), not baked into the number as a penalty. The real
- * tradeoff, worth knowing: an early score based on partial coverage can
- * move (usually down) once a currently-unknown factor gets verified for
- * the first time -- that's the honest cost of not guessing, not a bug.
+ * factors that are actually known -- an unfetched factor is excluded from
+ * the math entirely, not counted as the worst possible outcome. A
+ * restaurant should never score lower because OUR data pipeline hasn't
+ * reached a factor yet; that gap belongs in the confidence badge and the
+ * "why this score" text (see explain() below), not baked into the number
+ * as a penalty. The real tradeoff, worth knowing: an early score based on
+ * partial coverage can move once a currently-unknown factor gets verified
+ * for the first time -- that's the honest cost of not guessing, not a bug.
+ *
+ * THIN-EVIDENCE SHRINKAGE (added after a real, observed failure: a
+ * restaurant with exactly one verified factor -- its business license,
+ * which happened to be a perfect 1.0 -- scored a perfect 100, outranking
+ * restaurants with four real verified factors including actual Google
+ * ratings and review counts). A pure renormalized average has no sense of
+ * sample size: one lucky factor and six consistently-good factors can
+ * produce the identical "perfect" average, which is exactly backwards for
+ * a site whose whole pitch is that the number can be trusted. The fix is
+ * the standard one for small-sample averages (the same idea behind IMDB's
+ * weighted rating and a Bayesian/Wilson-score average): blend the real
+ * evidence average with a fixed amount of fictional "neutral" evidence
+ * (see THIN_EVIDENCE_PRIOR_WEIGHT below) before turning it into a score.
+ * A restaurant with only a little evidence gets pulled hard toward
+ * neutral; a restaurant with most of the roster's achievable evidence
+ * (health inspection has no source yet for ANYONE, so 100% coverage isn't
+ * achievable today) is barely nudged. This does NOT touch confidence --
+ * that's still the raw, honest coverage number in the UI -- it only stops
+ * a thin sample from posing as a confident one in the score itself.
  *
  * Output: a score from 50 (floor) to 100, plus a breakdown and a short list
  * of plain-language reasons, so every number on screen is explainable back
@@ -79,6 +97,17 @@ export const FACTOR_SOURCES = Object.freeze({
 
 const FLOOR = 50;
 const CEILING = 100;
+const NEUTRAL = 0.5; // the "we don't know yet" prior a thin sample gets pulled toward
+
+// How much fictional neutral evidence to blend in -- see the THIN-EVIDENCE
+// SHRINKAGE file header comment for why this exists at all. Sized to
+// roughly two average factor weights (WEIGHTS values run 0.12-0.26,
+// averaging ~0.167): enough that a restaurant with just one real factor
+// verified (knownWeight ~0.12-0.26) is dominated by the prior and pulled
+// hard toward neutral, while a restaurant near the roster's actual
+// achievable ceiling (~0.82 -- healthInspection has no source for anyone
+// yet) is only lightly nudged, not flattened.
+const THIN_EVIDENCE_PRIOR_WEIGHT = 0.3;
 
 function clamp01(n) {
   if (typeof n !== "number" || Number.isNaN(n)) return 0;
@@ -108,11 +137,16 @@ export function scoreRestaurant(evidence = {}) {
     }
   }
 
-  // Renormalized average over known factors only -- see the file header
-  // for why. knownWeight === 0 (nothing verified yet at all) floors at 50
-  // rather than dividing by zero.
-  const normalizedAvg = knownWeight > 0 ? weightedSum / knownWeight : 0;
-  const score = Math.round(FLOOR + normalizedAvg * (CEILING - FLOOR));
+  // Bayesian-shrunk average over known factors -- see THIN-EVIDENCE
+  // SHRINKAGE in the file header. Blending in THIN_EVIDENCE_PRIOR_WEIGHT
+  // of fictional evidence at NEUTRAL before dividing means knownWeight===0
+  // (nothing verified at all) already lands at exactly NEUTRAL -- FLOOR +
+  // 0.5*(CEILING-FLOOR) === 75 -- rather than needing a separate branch,
+  // though app.js still gates on confidence>0 to show "not yet scored"
+  // instead of a number for that case, so this 75 is never actually shown.
+  const shrunkAvg =
+    (weightedSum + THIN_EVIDENCE_PRIOR_WEIGHT * NEUTRAL) / (knownWeight + THIN_EVIDENCE_PRIOR_WEIGHT);
+  const score = Math.round(FLOOR + shrunkAvg * (CEILING - FLOOR));
   // Prefer the ingestion layer's own confidence (identical coverage
   // computation, kept in sync deliberately) and fall back to knownWeight
   // here for any evidence object that doesn't carry one.
