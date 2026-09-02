@@ -6,6 +6,11 @@
         "date": "2026-09-01",
         "score": 93,
         "confidence": 0.56
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-002": [
@@ -13,6 +18,11 @@
         "date": "2026-09-01",
         "score": 97,
         "confidence": 0.68
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-003": [
@@ -20,6 +30,11 @@
         "date": "2026-09-01",
         "score": 87,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-004": [
@@ -27,6 +42,11 @@
         "date": "2026-09-01",
         "score": 98,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-005": [
@@ -34,6 +54,11 @@
         "date": "2026-09-01",
         "score": 86,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.56
       }
     ],
     "real-006": [
@@ -41,6 +66,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.42
       }
     ],
     "real-007": [
@@ -48,6 +78,11 @@
         "date": "2026-09-01",
         "score": 88,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-008": [
@@ -55,6 +90,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 80,
+        "confidence": 0.42
       }
     ],
     "real-009": [
@@ -62,6 +102,11 @@
         "date": "2026-09-01",
         "score": 79,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 80,
+        "confidence": 0.56
       }
     ],
     "real-010": [
@@ -69,6 +114,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.56
       }
     ],
     "real-011": [
@@ -76,6 +126,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.42
       }
     ],
     "real-012": [
@@ -83,6 +138,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-013": [
@@ -90,6 +150,11 @@
         "date": "2026-09-01",
         "score": 96,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 85,
+        "confidence": 0.56
       }
     ],
     "real-014": [
@@ -97,6 +162,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-015": [
@@ -104,6 +174,11 @@
         "date": "2026-09-01",
         "score": 97,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-016": [
@@ -111,6 +186,11 @@
         "date": "2026-09-01",
         "score": 92,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-017": [
@@ -118,6 +198,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-018": [
@@ -125,6 +210,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-019": [
@@ -132,11 +222,21 @@
         "date": "2026-09-01",
         "score": 88,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-020": [
       {
         "date": "2026-09-01",
+        "score": 97,
+        "confidence": 0.56
+      },
+      {
+        "date": "2026-09-02",
         "score": 97,
         "confidence": 0.56
       }
@@ -146,6 +246,11 @@
         "date": "2026-09-01",
         "score": 81,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-022": [
@@ -153,6 +258,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.56
       }
     ],
     "real-023": [
@@ -160,6 +270,11 @@
         "date": "2026-09-01",
         "score": 81,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.56
       }
     ],
     "real-024": [
@@ -167,6 +282,11 @@
         "date": "2026-09-01",
         "score": 87,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.56
       }
     ],
     "real-025": [
@@ -174,6 +294,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-026": [
@@ -181,6 +306,11 @@
         "date": "2026-09-01",
         "score": 92,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 81,
+        "confidence": 0.56
       }
     ],
     "real-027": [
@@ -188,6 +318,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-028": [
@@ -195,6 +330,11 @@
         "date": "2026-09-01",
         "score": 80,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 82,
+        "confidence": 0.56
       }
     ],
     "real-029": [
@@ -202,6 +342,11 @@
         "date": "2026-09-01",
         "score": 99,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-030": [
@@ -209,6 +354,11 @@
         "date": "2026-09-01",
         "score": 87,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.56
       }
     ],
     "real-031": [
@@ -216,6 +366,11 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.56
       }
     ],
     "real-032": [
@@ -223,6 +378,11 @@
         "date": "2026-09-01",
         "score": 90,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.56
       }
     ],
     "real-033": [
@@ -230,6 +390,11 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 89,
+        "confidence": 0.56
       }
     ],
     "real-034": [
@@ -237,6 +402,11 @@
         "date": "2026-09-01",
         "score": 96,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-035": [
@@ -244,6 +414,11 @@
         "date": "2026-09-01",
         "score": 83,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-036": [
@@ -251,6 +426,11 @@
         "date": "2026-09-01",
         "score": 93,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-037": [
@@ -258,6 +438,11 @@
         "date": "2026-09-01",
         "score": 78,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 80,
+        "confidence": 0.56
       }
     ],
     "real-038": [
@@ -265,6 +450,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-039": [
@@ -272,6 +462,11 @@
         "date": "2026-09-01",
         "score": 90,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.56
       }
     ],
     "real-040": [
@@ -279,6 +474,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 88,
+        "confidence": 0.42
       }
     ],
     "real-041": [
@@ -286,6 +486,11 @@
         "date": "2026-09-01",
         "score": 78,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 81,
+        "confidence": 0.56
       }
     ],
     "real-042": [
@@ -293,6 +498,11 @@
         "date": "2026-09-01",
         "score": 93,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.56
       }
     ],
     "real-043": [
@@ -300,6 +510,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 85,
+        "confidence": 0.42
       }
     ],
     "real-044": [
@@ -307,6 +522,11 @@
         "date": "2026-09-01",
         "score": 88,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-045": [
@@ -314,6 +534,11 @@
         "date": "2026-09-01",
         "score": 88,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 89,
+        "confidence": 0.56
       }
     ],
     "real-046": [
@@ -321,6 +546,11 @@
         "date": "2026-09-01",
         "score": 89,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.56
       }
     ],
     "real-047": [
@@ -328,6 +558,11 @@
         "date": "2026-09-01",
         "score": 89,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-048": [
@@ -335,6 +570,11 @@
         "date": "2026-09-01",
         "score": 85,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-049": [
@@ -342,6 +582,11 @@
         "date": "2026-09-01",
         "score": 95,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-050": [
@@ -349,6 +594,11 @@
         "date": "2026-09-01",
         "score": 90,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-051": [
@@ -356,6 +606,11 @@
         "date": "2026-09-01",
         "score": 97,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-052": [
@@ -363,6 +618,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-053": [
@@ -370,6 +630,11 @@
         "date": "2026-09-01",
         "score": 94,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-054": [
@@ -377,6 +642,11 @@
         "date": "2026-09-01",
         "score": 96,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-055": [
@@ -384,6 +654,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-056": [
@@ -391,6 +666,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.56
       }
     ],
     "real-057": [
@@ -398,6 +678,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-058": [
@@ -405,6 +690,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-059": [
@@ -412,6 +702,11 @@
         "date": "2026-09-01",
         "score": 90,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.56
       }
     ],
     "real-060": [
@@ -419,6 +714,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.42
       }
     ],
     "real-061": [
@@ -426,6 +726,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.42
       }
     ],
     "real-062": [
@@ -433,6 +738,11 @@
         "date": "2026-09-01",
         "score": 94,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.56
       }
     ],
     "real-063": [
@@ -440,6 +750,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 79,
+        "confidence": 0.42
       }
     ],
     "real-064": [
@@ -447,6 +762,11 @@
         "date": "2026-09-01",
         "score": 85,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.56
       }
     ],
     "real-065": [
@@ -454,6 +774,11 @@
         "date": "2026-09-01",
         "score": 96,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-066": [
@@ -461,6 +786,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-067": [
@@ -468,6 +798,11 @@
         "date": "2026-09-01",
         "score": 82,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 80,
+        "confidence": 0.56
       }
     ],
     "real-068": [
@@ -475,6 +810,11 @@
         "date": "2026-09-01",
         "score": 90,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.56
       }
     ],
     "real-069": [
@@ -482,6 +822,11 @@
         "date": "2026-09-01",
         "score": 95,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-070": [
@@ -489,6 +834,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-071": [
@@ -496,6 +846,11 @@
         "date": "2026-09-01",
         "score": 86,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.56
       }
     ],
     "real-072": [
@@ -503,6 +858,11 @@
         "date": "2026-09-01",
         "score": 85,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-073": [
@@ -510,6 +870,11 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 85,
+        "confidence": 0.56
       }
     ],
     "real-074": [
@@ -517,6 +882,11 @@
         "date": "2026-09-01",
         "score": 83,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.56
       }
     ],
     "real-075": [
@@ -524,6 +894,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.56
       }
     ],
     "real-076": [
@@ -531,6 +906,11 @@
         "date": "2026-09-01",
         "score": 85,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-077": [
@@ -538,6 +918,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.42
       }
     ],
     "real-078": [
@@ -545,6 +930,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-079": [
@@ -552,6 +942,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 77,
+        "confidence": 0.56
       }
     ],
     "real-080": [
@@ -559,6 +954,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 72,
+        "confidence": 0.56
       }
     ],
     "real-081": [
@@ -566,6 +966,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 82,
+        "confidence": 0.56
       }
     ],
     "real-082": [
@@ -573,6 +978,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 82,
+        "confidence": 0.56
       }
     ],
     "real-083": [
@@ -580,6 +990,11 @@
         "date": "2026-09-01",
         "score": 82,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 83,
+        "confidence": 0.56
       }
     ],
     "real-084": [
@@ -587,6 +1002,11 @@
         "date": "2026-09-01",
         "score": 80,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.56
       }
     ],
     "real-085": [
@@ -594,6 +1014,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 90,
+        "confidence": 0.42
       }
     ],
     "real-086": [
@@ -601,6 +1026,11 @@
         "date": "2026-09-01",
         "score": 85,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-087": [
@@ -608,6 +1038,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-088": [
@@ -615,6 +1050,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 98,
+        "confidence": 0.56
       }
     ],
     "real-089": [
@@ -622,6 +1062,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-090": [
@@ -629,6 +1074,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 76,
+        "confidence": 0.56
       }
     ],
     "real-091": [
@@ -636,6 +1086,11 @@
         "date": "2026-09-01",
         "score": 93,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.56
       }
     ],
     "real-092": [
@@ -643,6 +1098,11 @@
         "date": "2026-09-01",
         "score": 77,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 74,
+        "confidence": 0.56
       }
     ],
     "real-093": [
@@ -650,6 +1110,11 @@
         "date": "2026-09-01",
         "score": 87,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 83,
+        "confidence": 0.56
       }
     ],
     "real-094": [
@@ -657,6 +1122,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 92,
+        "confidence": 0.56
       }
     ],
     "real-095": [
@@ -664,6 +1134,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.42
       }
     ],
     "real-096": [
@@ -671,6 +1146,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 81,
+        "confidence": 0.42
       }
     ],
     "real-097": [
@@ -678,6 +1158,11 @@
         "date": "2026-09-01",
         "score": 80,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 79,
+        "confidence": 0.56
       }
     ],
     "real-098": [
@@ -685,6 +1170,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-099": [
@@ -692,6 +1182,11 @@
         "date": "2026-09-01",
         "score": 89,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 95,
+        "confidence": 0.56
       }
     ],
     "real-100": [
@@ -699,6 +1194,11 @@
         "date": "2026-09-01",
         "score": 97,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.56
       }
     ],
     "real-101": [
@@ -706,6 +1206,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 85,
+        "confidence": 0.42
       }
     ],
     "real-102": [
@@ -713,6 +1218,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 85,
+        "confidence": 0.56
       }
     ],
     "real-103": [
@@ -720,6 +1230,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-104": [
@@ -727,6 +1242,11 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 88,
+        "confidence": 0.56
       }
     ],
     "real-105": [
@@ -734,6 +1254,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.56
       }
     ],
     "real-106": [
@@ -741,6 +1266,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 79,
+        "confidence": 0.42
       }
     ],
     "real-107": [
@@ -748,6 +1278,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 78,
+        "confidence": 0.42
       }
     ],
     "real-108": [
@@ -755,6 +1290,11 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 94,
+        "confidence": 0.42
       }
     ],
     "real-109": [
@@ -762,11 +1302,21 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.42
       }
     ],
     "real-110": [
       {
         "date": "2026-09-01",
+        "score": 87,
+        "confidence": 0.56
+      },
+      {
+        "date": "2026-09-02",
         "score": 87,
         "confidence": 0.56
       }
@@ -776,6 +1326,11 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ],
     "real-112": [
@@ -783,6 +1338,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 74,
+        "confidence": 0.56
       }
     ],
     "real-113": [
@@ -790,6 +1350,11 @@
         "date": "2026-09-01",
         "score": 94,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.56
       }
     ],
     "real-114": [
@@ -797,11 +1362,21 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 82,
+        "confidence": 0.56
       }
     ],
     "real-115": [
       {
         "date": "2026-09-01",
+        "score": 100,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 100,
         "confidence": 0.14
       }
@@ -811,11 +1386,21 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 97,
+        "confidence": 0.42
       }
     ],
     "real-117": [
       {
         "date": "2026-09-01",
+        "score": 50,
+        "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
         "score": 50,
         "confidence": 0
       }
@@ -825,11 +1410,21 @@
         "date": "2026-09-01",
         "score": 87,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 87,
+        "confidence": 0.14
       }
     ],
     "real-119": [
       {
         "date": "2026-09-01",
+        "score": 55,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 55,
         "confidence": 0.14
       }
@@ -839,11 +1434,21 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 84,
+        "confidence": 0.14
       }
     ],
     "real-121": [
       {
         "date": "2026-09-01",
+        "score": 55,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 55,
         "confidence": 0.14
       }
@@ -853,11 +1458,21 @@
         "date": "2026-09-01",
         "score": 82,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 82,
+        "confidence": 0.14
       }
     ],
     "real-123": [
       {
         "date": "2026-09-01",
+        "score": 50,
+        "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
         "score": 50,
         "confidence": 0
       }
@@ -867,11 +1482,21 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 91,
+        "confidence": 0.14
       }
     ],
     "real-125": [
       {
         "date": "2026-09-01",
+        "score": 50,
+        "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
         "score": 50,
         "confidence": 0
       }
@@ -881,11 +1506,21 @@
         "date": "2026-09-01",
         "score": 91,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 89,
+        "confidence": 0.56
       }
     ],
     "real-127": [
       {
         "date": "2026-09-01",
+        "score": 84,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 84,
         "confidence": 0.14
       }
@@ -895,11 +1530,21 @@
         "date": "2026-09-01",
         "score": 50,
         "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.42
       }
     ],
     "real-129": [
       {
         "date": "2026-09-01",
+        "score": 50,
+        "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
         "score": 50,
         "confidence": 0
       }
@@ -909,11 +1554,21 @@
         "date": "2026-09-01",
         "score": 86,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 86,
+        "confidence": 0.14
       }
     ],
     "real-131": [
       {
         "date": "2026-09-01",
+        "score": 88,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 88,
         "confidence": 0.14
       }
@@ -923,11 +1578,21 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 100,
+        "confidence": 0.14
       }
     ],
     "real-133": [
       {
         "date": "2026-09-01",
+        "score": 81,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 81,
         "confidence": 0.14
       }
@@ -937,11 +1602,21 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 96,
+        "confidence": 0.56
       }
     ],
     "real-135": [
       {
         "date": "2026-09-01",
+        "score": 50,
+        "confidence": 0
+      },
+      {
+        "date": "2026-09-02",
         "score": 50,
         "confidence": 0
       }
@@ -951,11 +1626,21 @@
         "date": "2026-09-01",
         "score": 84,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 88,
+        "confidence": 0.56
       }
     ],
     "real-137": [
       {
         "date": "2026-09-01",
+        "score": 82,
+        "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
         "score": 82,
         "confidence": 0.14
       }
@@ -965,6 +1650,11 @@
         "date": "2026-09-01",
         "score": 55,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 55,
+        "confidence": 0.14
       }
     ],
     "real-139": [
@@ -972,6 +1662,11 @@
         "date": "2026-09-01",
         "score": 100,
         "confidence": 0.14
+      },
+      {
+        "date": "2026-09-02",
+        "score": 93,
+        "confidence": 0.56
       }
     ]
   }
