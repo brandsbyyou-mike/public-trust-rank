@@ -303,10 +303,37 @@ async function saveLedger(ledger) {
 // rating + userRatingCount straight off the result. No separate Details
 // call needed for just these two fields, which keeps the free-tier
 // budget small (see docs/launch/go-live-cheap.md for the actual cost).
-async function fetchGooglePlaces(name, address, guard) {
+//
+// DIAGNOSTIC CAPTURE + CIRCUIT BREAKER (added 2026-09-02, same treatment
+// fetchPlaceReviews()/Place Details already got): a real run left 19 of
+// 139 restaurants with "no Google rating available" -- including national
+// chains (The Cheesecake Factory, Whataburger, True Food Kitchen) that are
+// certainly on Google, and clustered at the alphabetical tail (S through
+// W) of the sequential per-restaurant loop in main(). That shape --
+// consistently-findable places, bunched at the END of a long sequential
+// run -- is the signature of a quota running out partway through, not of
+// those 19 restaurants being individually unfindable. But the generic
+// `Places API HTTP ${res.status}` this function used to return collapses
+// a real quota error, a plain rate limit, and a transient 5xx into the
+// same indistinguishable string, so that was a real, verified pattern
+// with no confirmed cause -- exactly the gap already fixed for Place
+// Details was still open here. This reads Google's own JSON error body
+// (error.status/error.message) the same way, and trips a per-run circuit
+// breaker on the first quota-shaped 429 so the rest of the run fails fast
+// instead of burning more of an already-exhausted quota one restaurant at
+// a time. Next real run's notes will say definitively whether this was
+// quota (RESOURCE_EXHAUSTED) or something else -- see
+// docs/launch/go-live-cheap.md for what to do once that's confirmed (most
+// likely: the same daily-budget-and-rotation treatment already applied to
+// Place Details, sized to whatever the real cap turns out to be).
+async function fetchGooglePlaces(name, address, guard, runState) {
   const key = process.env.GOOGLE_PLACES_API_KEY;
   const empty = { rating: null, reviewCount: null, placeId: null, lat: null, lng: null };
   if (!key) return { ...empty, reason: "no GOOGLE_PLACES_API_KEY set" };
+
+  if (runState?.textSearchQuotaExhausted) {
+    return { ...empty, reason: `Places Text Search quota exhausted this run (${runState.textSearchQuotaExhausted})` };
+  }
 
   guard.charge("placesTextSearch"); // throws and stops the whole run if this would exceed a budget cap -- see the Budget guard comment above
 
@@ -326,7 +353,31 @@ async function fetchGooglePlaces(name, address, guard) {
       },
       body: JSON.stringify({ textQuery: `${name}, ${address}` }),
     });
-    if (!res.ok) return { ...empty, reason: `Places API HTTP ${res.status}` };
+    if (!res.ok) {
+      // Read Google's own error body -- same diagnostic fetchPlaceReviews()
+      // already captures for Place Details. error.status is a real enum
+      // (RESOURCE_EXHAUSTED reads very differently from PERMISSION_DENIED
+      // or a plain rate limit) and error.message often names the exact
+      // quota metric that was exceeded.
+      let googleStatus = null;
+      let googleMessage = null;
+      try {
+        const errJson = await res.json();
+        googleStatus = errJson?.error?.status ?? null;
+        googleMessage = errJson?.error?.message ?? null;
+      } catch {
+        // Body wasn't JSON (or was empty) -- fall through with the plain
+        // HTTP status, still better than nothing.
+      }
+      if (res.status === 429) {
+        const looksLikeQuota = googleStatus === "RESOURCE_EXHAUSTED" || /quota/i.test(googleMessage || "");
+        if (looksLikeQuota && runState) {
+          runState.textSearchQuotaExhausted = googleMessage || googleStatus || "429, no error body";
+        }
+      }
+      const detail = googleStatus || googleMessage ? ` (${[googleStatus, googleMessage].filter(Boolean).join(": ")})` : "";
+      return { ...empty, reason: `Places API HTTP ${res.status}${detail}` };
+    }
     const json = await res.json();
     const place = json.places?.[0];
     if (!place) return { ...empty, reason: "no place match" };
@@ -350,7 +401,7 @@ async function fetchGooglePlaces(name, address, guard) {
 // factors, and place-id resolution below, share it.
 async function getPlaces(restaurant, context) {
   if (!context.placesResult) {
-    context.placesResult = await fetchGooglePlaces(restaurant.name, restaurant.address, context.guard);
+    context.placesResult = await fetchGooglePlaces(restaurant.name, restaurant.address, context.guard, context.runState);
   }
   return context.placesResult;
 }
@@ -690,16 +741,24 @@ function editorialScore({ hitCount }) {
   return { value: 0.8, note: `${hitCount}+ hits` };
 }
 
-function reviewVolumeScore(reviewCount) {
-  if (reviewCount === null) return { value: 0, note: "no review count available" };
+// `reason` is fetchGooglePlaces()'s own diagnosis (HTTP status, "no place
+// match", a network error, or -- once added below -- a real Google
+// quota-exhaustion error body) -- see the note above FACTOR_FETCHERS.
+// Surfacing it here means "no review count available" in the UI/audit
+// trail actually says WHY, instead of collapsing every possible cause
+// into one indistinguishable generic string (the same diagnostic-
+// blindness gap that was already fixed for Place Details/reviews, now
+// closed here too, 2026-09-02).
+function reviewVolumeScore(reviewCount, reason) {
+  if (reviewCount === null) return { value: 0, note: reason ? `no review count available (${reason})` : "no review count available" };
   // Fixed scale, not batch-relative -- so this number means the same
   // thing regardless of which or how many other restaurants are in the
   // run. 2,000 reviews caps out at 1.0; tune if the market's norms differ.
   return { value: Math.min(1, reviewCount / 2000), note: `${reviewCount} reviews` };
 }
 
-function ratingScore(rating) {
-  if (rating === null) return { value: 0, note: "no Google rating available" };
+function ratingScore(rating, reason) {
+  if (rating === null) return { value: 0, note: reason ? `no Google rating available (${reason})` : "no Google rating available" };
   return { value: Math.round((rating / 5) * 100) / 100, note: `${rating}/5` };
 }
 
@@ -710,11 +769,11 @@ function ratingScore(rating) {
 const FACTOR_FETCHERS = {
   async googleRating(restaurant, _prior, context) {
     const places = await getPlaces(restaurant, context);
-    return { computed: ratingScore(places.rating), hasReal: places.rating !== null };
+    return { computed: ratingScore(places.rating, places.reason), hasReal: places.rating !== null };
   },
   async reviewVolume(restaurant, _prior, context) {
     const places = await getPlaces(restaurant, context);
-    return { computed: reviewVolumeScore(places.reviewCount), hasReal: places.reviewCount !== null };
+    return { computed: reviewVolumeScore(places.reviewCount, places.reason), hasReal: places.reviewCount !== null };
   },
   async licenseVerified(restaurant, _prior, context) {
     const license = matchScottsdaleLicense(context.licenseRecords, restaurant.name, restaurant.address);
@@ -996,10 +1055,13 @@ async function main() {
     customSearch: CUSTOM_SEARCH_DAILY_CAP,
   });
 
-  // Shared, mutable, per-run only -- lets fetchPlaceReviews() flip a
-  // circuit breaker the first time it sees a quota-shaped 429, so every
-  // restaurant after that fails fast instead of retrying into a wall.
-  const runState = { placeDetailsQuotaExhausted: null };
+  // Shared, mutable, per-run only -- lets fetchPlaceReviews() AND
+  // fetchGooglePlaces() each flip their own circuit breaker the first
+  // time they see a quota-shaped 429, so every restaurant after that
+  // fails fast instead of retrying into a wall. Two independent flags --
+  // Text Search and Place Details are separate Google quotas, so one
+  // being exhausted says nothing about the other.
+  const runState = { placeDetailsQuotaExhausted: null, textSearchQuotaExhausted: null };
 
   const runContext = { licenseRecords, bucketCount, rotationIndex, reviewsBucketCount, reviewsRotationIndex, guard, runState };
 
