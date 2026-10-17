@@ -122,7 +122,7 @@ const SCOTTSDALE_LICENSE_ENDPOINT =
 const CADENCE = Object.freeze({
   googleRating: "daily",
   reviewVolume: "daily",
-  healthInspection: "unimplemented",
+  healthInspection: "daily",
   licenseVerified: "daily",
   siteFreshness: "daily",
   editorialMentions: "weekly",
@@ -158,6 +158,18 @@ const CSE_DAILY_BUDGET = 80;
 // unlike the weekly-reset cadence editorialMentions/dish-mentions rotate
 // against.
 const PLACES_TEXT_SEARCH_DAILY_BUDGET = 100;
+
+// Maricopa County health-inspection data (envapp.maricopa.gov) -- see the
+// big comment above fetchHealthInspection(). Two plain public HTTP requests
+// per restaurant (a license search + an inspection-history page), no key, no
+// cost. But it's a county government server, so the same daily-rotation
+// courtesy the Google quotas get applies here too: sized so the full roster
+// refreshes over a few days rather than firing 139*2 requests in one burst.
+// Routine inspections happen roughly quarterly, so there is no real freshness
+// cost to a multi-day rotation -- this reuses the DAY-granularity rotation
+// (currentDailyRotationIndex) purely to spread load evenly, not because the
+// data changes daily. 50 -> a ~3-day rotation across the current 139 roster.
+const HEALTH_INSPECTION_DAILY_BUDGET = 50;
 
 const MODE = (process.argv[2] || "daily").toLowerCase();
 if (!["daily", "weekly", "all"].includes(MODE)) {
@@ -736,16 +748,279 @@ async function fetchSiteFreshness(websiteUrl) {
   }
 }
 
-// --- Health inspection ----------------------------------------------------
-// Honest stub, not on any cadence yet. See
-// services/agents/source-agent-playbook.md #5 -- the county's search tool
-// is JS-rendered and this session's sandbox couldn't reach the host
-// directly to test real browser automation against it. This function
-// exists so the pipeline has one obvious place to fill in once that's
-// solved, instead of scoring.mjs quietly defaulting to 0 with no trail
-// explaining why.
-async function fetchHealthInspection(_name, _address) {
-  return { grade: null, reason: "not implemented -- see source-agent-playbook.md #5" };
+// --- Health inspection (Maricopa County Environmental Services) -----------
+// Reverse-engineered 2026-10-17 from envapp.maricopa.gov's public food-
+// inspection portal. This is public-records data the county itself states is
+// "made available to the general public ... at no charge" -- no key, no cost,
+// no login. The portal UI is a JS-rendered DataTables page (which is why #5
+// in source-agent-playbook.md called it an open wall), but it's backed by two
+// plain HTTP endpoints that need no auth, no cookie, and no antiforgery token
+// -- verified with a bare tokenless POST returning 200 + data:
+//
+//   1. POST https://envapp.maricopa.gov/Search/Results
+//        body (x-www-form-urlencoded): licenseSearchParams[BusinessName],
+//        [AddressNum], [StreetName], [PreDirection], [StreetType], [City], [Zip]
+//        -> JSON { data: [ { permitId, businessName, businessAddressConcat,
+//                            permitType, isCuttingEdgeParticipant, ... } ] }
+//   2. GET https://envapp.maricopa.gov/Permit/PermitResults/{permitId}
+//        -> server-rendered HTML with one <table class="w-100"> whose <tbody>
+//           rows are inspections, NEWEST FIRST, columns in fixed order:
+//           Inspection Date | Purpose | Grade | Status | Priority Violation |
+//           Cutting Edge | (view link)
+//
+// Matching discipline (same reason matchScottsdaleLicense() confirms by
+// address -- a bare name fragment pulled back "17 unrelated MISSION
+// businesses" during this pilot's build): a county search hit is only
+// accepted when its street number AND a street-name word also line up with
+// ours. Two real lessons from validating this live against the roster:
+//   - The City field is NOT a safe hard filter. Roka Akor (7299 N Scottsdale
+//     Rd, 85253) sits on a jurisdiction boundary the county labels as
+//     something other than "Scottsdale", so a City="Scottsdale" search
+//     returns zero for it. So we try name+City first (narrower) and, if that
+//     yields no address-confirmed match, retry name-only and lean entirely on
+//     the address confirmation. Validated 10/10 on the first sample this way.
+//   - Common first words ("Cafe", "Postino") return many permits; the street
+//     number is what disambiguates them, including two same-named Postino
+//     locations landing on their correct separate permits.
+//
+// This reusable "find the real AJAX endpoint behind a JS-rendered page via
+// network inspection, then call it directly server-side" pattern is the
+// intended answer for any other source that looks JS-walled -- see
+// source-agent-playbook.md.
+
+const HEALTH_BASE = "https://envapp.maricopa.gov";
+const HEALTH_FETCH_TIMEOUT_MS = 12000;
+const HEALTH_FOOD_PERMIT_RE = /food|eating|drinking|restaurant/i;
+
+async function healthFetch(url, options = {}) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), HEALTH_FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: ctrl.signal,
+      headers: {
+        "User-Agent":
+          "public-trust-rank/1.0 (Scottsdale restaurant ranking pilot; public inspection data)",
+        ...(options.headers || {}),
+      },
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// "7299 N Scottsdale Rd, Scottsdale, AZ 85253" ->
+//   { num:"7299", preDir:"N", streetWord:"SCOTTSDALE", city:"Scottsdale", zip:"85253" }
+// streetWord is the first non-numeric, non-direction token -- enough to
+// confirm a candidate without over-fitting unit/suite noise ("Unit b 106").
+const HEALTH_DIRECTIONS = new Set(["N", "S", "E", "W", "NE", "NW", "SE", "SW"]);
+function parseRestaurantAddress(address) {
+  const parts = (address || "").split(",").map((s) => s.trim());
+  const streetLine = parts[0] || "";
+  const city = parts[1] || "";
+  const zip = ((parts[2] || "").match(/\b(\d{5})\b/) || [])[1] || "";
+  const tokens = streetLine.split(/\s+/).filter(Boolean);
+  let num = "";
+  let rest = tokens.slice();
+  if (rest.length && /^\d+$/.test(rest[0])) num = rest.shift();
+  if (rest.length && HEALTH_DIRECTIONS.has(rest[0].toUpperCase())) rest.shift();
+  const streetWord = (rest[0] || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  return { num, streetWord, city, zip, streetLine };
+}
+
+// A county result row agrees with our restaurant when its address blob
+// ("15169 N SCOTTSDALE RD SCOTTSDALE AZ 85254") contains our street number
+// (as a whole token, so "15169" doesn't match inside a zip) and our street
+// word. Requires at least the number to be present to count as confirmed.
+function healthAddressAgrees(ours, concat) {
+  const blob = (concat || "").toUpperCase();
+  if (!ours.num) return false;
+  const numAsWord = new RegExp(`(^|[^0-9])${ours.num}([^0-9]|$)`);
+  if (!numAsWord.test(blob)) return false;
+  if (ours.streetWord && !blob.includes(ours.streetWord)) return false;
+  return true;
+}
+
+// First significant word of the business name, for the county BusinessName
+// substring search: drop a leading "The", cut at the first apostrophe
+// ("Dominick's" -> "Dominick", which also dodges the county storing the name
+// with or without the apostrophe), take the first token. Broad on purpose --
+// the address confirmation is what makes the final pick precise.
+function healthNameQuery(name) {
+  let n = (name || "").replace(/^the\s+/i, "").trim();
+  n = n.split(/[’']/)[0].trim();
+  return n.split(/\s+/)[0] || "";
+}
+
+async function healthSearchPermits(params) {
+  const body = new URLSearchParams();
+  for (const [k, v] of Object.entries(params)) {
+    if (v) body.set(`licenseSearchParams[${k}]`, v);
+  }
+  const res = await healthFetch(`${HEALTH_BASE}/Search/Results`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Requested-With": "XMLHttpRequest",
+    },
+    body: body.toString(),
+  });
+  if (!res.ok) return { rows: null, status: res.status };
+  const json = await res.json();
+  return { rows: Array.isArray(json.data) ? json.data : [], status: 200 };
+}
+
+// Pick the address-confirmed food permit from a result set. Prefers a food
+// permit type; among address-confirmed candidates returns all of them so the
+// caller can fall back to a second one if the first has no inspections.
+function healthPickPermits(rows, addr) {
+  const food = rows.filter((r) => HEALTH_FOOD_PERMIT_RE.test(r.permitType || ""));
+  const pool = food.length ? food : rows;
+  const confirmed = pool.filter(
+    (r) => r.permitId && healthAddressAgrees(addr, r.businessAddressConcat)
+  );
+  if (confirmed.length) return confirmed;
+  // Single unambiguous food permit with no usable street number to confirm
+  // against: accept it rather than lose a real match on a parse gap.
+  if (!addr.num && pool.length === 1 && pool[0].permitId) return [pool[0]];
+  return [];
+}
+
+function healthCleanCell(html) {
+  return (html || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function healthParseUsDate(s) {
+  // US M/D/Y -- Date(year, monthIndex, day), so month is m[1]-1 and day is m[2].
+  const m = (s || "").match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  if (!m) return 0;
+  return new Date(+m[3], +m[1] - 1, +m[2]).getTime();
+}
+
+// Parse the inspection-history table off /Permit/PermitResults/{id}. Fixed
+// 7-column order: [0] date, [1] purpose, [2] grade, [3] status,
+// [4] priority-violation count, [5] cutting-edge icon, [6] view link.
+function parseInspectionTable(html) {
+  const tableMatch =
+    (html || "").match(
+      /<table[^>]*class="[^"]*\bw-100\b[^"]*"[^>]*>([\s\S]*?)<\/table>/i
+    ) || (html || "").match(/<table[^>]*>([\s\S]*?)<\/table>/i);
+  if (!tableMatch) return [];
+  const tbodyMatch = tableMatch[1].match(/<tbody[^>]*>([\s\S]*?)<\/tbody>/i);
+  const body = tbodyMatch ? tbodyMatch[1] : tableMatch[1];
+  const out = [];
+  for (const [, rowHtml] of body.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)) {
+    const cells = [...rowHtml.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map(([, c]) =>
+      healthCleanCell(c)
+    );
+    if (cells.length < 5) continue;
+    const date = cells[0];
+    if (!/\d{1,2}\/\d{1,2}\/\d{4}/.test(date)) continue;
+    const pvRaw = cells[4];
+    const priorityViolations = /^\d+$/.test(pvRaw) ? parseInt(pvRaw, 10) : null;
+    out.push({
+      date,
+      grade: cells[2] || null,
+      status: cells[3] || null,
+      priorityViolations,
+    });
+  }
+  out.sort((a, b) => healthParseUsDate(b.date) - healthParseUsDate(a.date));
+  return out;
+}
+
+// Shape for every "couldn't get real data" exit, so hasReal/scoring stay
+// uniform. `reason` is the diagnostic; it rides debug_reason, never the
+// public note (same note/debugReason split as ratingScore()).
+function healthMiss(reason, extra = {}) {
+  return {
+    found: false,
+    grade: null,
+    priorityViolations: null,
+    inspectionDate: null,
+    cuttingEdge: null,
+    reason,
+    ...extra,
+  };
+}
+
+async function fetchHealthInspection(name, address) {
+  const addr = parseRestaurantAddress(address);
+  const query = healthNameQuery(name);
+  if (!query) return healthMiss("no usable business name to search");
+
+  // Step 1: find the permit. Tier 1 narrows by City; Tier 2 drops City (see
+  // the Roka Akor jurisdiction-boundary note above) and leans on the address.
+  let candidates = [];
+  try {
+    const tier1 = await healthSearchPermits({
+      BusinessName: query,
+      City: addr.city || "Scottsdale",
+      Zip: addr.zip,
+    });
+    if (tier1.rows === null) return healthMiss(`search HTTP ${tier1.status}`);
+    candidates = healthPickPermits(tier1.rows, addr);
+    if (!candidates.length) {
+      const tier2 = await healthSearchPermits({ BusinessName: query });
+      if (tier2.rows === null) return healthMiss(`search HTTP ${tier2.status}`);
+      candidates = healthPickPermits(tier2.rows, addr);
+    }
+  } catch (err) {
+    return healthMiss(`search failed: ${err.message}`);
+  }
+  if (!candidates.length) {
+    return healthMiss(`no address-confirmed county permit for "${addr.streetLine}"`);
+  }
+
+  // Step 2: pull inspection history. Try up to 2 confirmed permits (some
+  // addresses carry two food permits -- e.g. a restaurant + its bar); keep
+  // the one that actually has inspections, newest wins.
+  let best = null;
+  let lastReason = "permit found but no completed inspections listed";
+  for (const permit of candidates.slice(0, 2)) {
+    try {
+      const res = await healthFetch(
+        `${HEALTH_BASE}/Permit/PermitResults/${encodeURIComponent(permit.permitId)}`
+      );
+      if (!res.ok) {
+        lastReason = `inspection page HTTP ${res.status}`;
+        continue;
+      }
+      const inspections = parseInspectionTable(await res.text());
+      if (!inspections.length) continue;
+      if (!best || healthParseUsDate(inspections[0].date) > healthParseUsDate(best.latest.date)) {
+        best = { permit, inspections, latest: inspections[0] };
+      }
+    } catch (err) {
+      lastReason = `inspection fetch failed: ${err.message}`;
+    }
+  }
+  if (!best) return healthMiss(lastReason, { permitId: candidates[0].permitId });
+
+  const latest = best.latest;
+  return {
+    found: true,
+    grade: latest.grade,
+    priorityViolations: latest.priorityViolations,
+    inspectionDate: latest.date,
+    // Cutting Edge = Maricopa's voluntary food-safety-excellence program; a
+    // real, earned public signal. True if any recent inspection shows it.
+    cuttingEdge: best.inspections.slice(0, 4).some((i) => /cutting edge/i.test(i.grade || "")),
+    recentViolationTotal: best.inspections
+      .slice(0, 3)
+      .reduce((s, i) => s + (i.priorityViolations ?? 0), 0),
+    inspectionCount: best.inspections.length,
+    permitId: best.permit.permitId,
+    reason: null,
+  };
 }
 
 // --- Conversion formulas ---------------------------------------------------
@@ -757,6 +1032,53 @@ function licenseScore({ active, yearsActive }) {
   if (!active) return { value: 0.1, note: "license on file but not Active" };
   const tenureBonus = Math.min(0.5, (yearsActive ?? 0) / 40);
   return { value: Math.round((0.5 + tenureBonus) * 100) / 100, note: `Active, ~${Math.round(yearsActive)}yr tenure` };
+}
+
+// Health inspection -> 0..1. The hard, unambiguous signal is the PRIORITY
+// VIOLATION count on the most recent inspection (priority violations are the
+// serious, direct-illness-risk ones; 0 is a clean inspection). The "Grade"
+// column is less reliable to score on -- it reads "Cutting Edge A+" for
+// program participants but "Not Participating" (not a letter grade) for
+// everyone else -- so grade feeds the human-readable note and a small bonus,
+// not the base value. A mild haircut if the last inspection is over ~18
+// months old, since we can't vouch for conditions since. `note` is the clean,
+// public-facing string; `reason` (only ever set on a miss) rides debugReason.
+function healthInspectionScore(health) {
+  if (!health || !health.found) {
+    return {
+      value: 0,
+      note: "no county inspection record found",
+      debugReason: health?.reason ?? null,
+    };
+  }
+  const pv = health.priorityViolations;
+  let base;
+  if (pv === null) base = 0.5; // inspection on file but count unreadable -- partial credit, still real evidence
+  else if (pv === 0) base = 1.0;
+  else if (pv === 1) base = 0.7;
+  else if (pv === 2) base = 0.5;
+  else if (pv <= 4) base = 0.3;
+  else base = 0.15;
+
+  if (health.cuttingEdge) base = Math.min(1, base + 0.05);
+
+  const ageDays =
+    health.inspectionDate !== null
+      ? (Date.now() - healthParseUsDate(health.inspectionDate)) / (24 * 3600 * 1000)
+      : null;
+  let value = base;
+  if (ageDays !== null && ageDays > 540) value = base * 0.85;
+  value = Math.round(value * 100) / 100;
+
+  const pvNote =
+    pv === null
+      ? "violation count n/a"
+      : pv === 0
+        ? "0 priority violations"
+        : `${pv} priority violation${pv === 1 ? "" : "s"}`;
+  const ceNote = health.cuttingEdge ? ", Cutting Edge" : "";
+  const dateNote = health.inspectionDate ? ` (inspected ${health.inspectionDate})` : "";
+  return { value, note: `${pvNote}${ceNote}${dateNote}`, debugReason: null };
 }
 
 function freshnessScore({ daysSinceModified }) {
@@ -833,7 +1155,7 @@ const FACTOR_FETCHERS = {
   },
   async healthInspection(restaurant, _prior, _context) {
     const health = await fetchHealthInspection(restaurant.name, restaurant.address);
-    return { computed: { value: 0, note: health.reason }, hasReal: false };
+    return { computed: healthInspectionScore(health), hasReal: health.found };
   },
 };
 
@@ -857,6 +1179,11 @@ async function ingestOne(restaurant, prior, runContext) {
   const textSearchDueThisRun =
     restaurantBucket(restaurant.id, runContext.textSearchBucketCount) === runContext.textSearchRotationIndex;
 
+  // Health-inspection rotation gate -- same courtesy-spreading as Text Search
+  // (two county HTTP requests per restaurant), see HEALTH_INSPECTION_DAILY_BUDGET.
+  const healthDueThisRun =
+    restaurantBucket(restaurant.id, runContext.healthBucketCount) === runContext.healthRotationIndex;
+
   for (const factorKey of Object.keys(CADENCE)) {
     const priorFactor = prior?.factors?.[factorKey];
     const due =
@@ -865,7 +1192,9 @@ async function ingestOne(restaurant, prior, runContext) {
           restaurantBucket(restaurant.id, runContext.bucketCount) === runContext.rotationIndex
         : factorKey === "googleRating" || factorKey === "reviewVolume"
           ? factorDueThisRun(factorKey) && textSearchDueThisRun
-          : factorDueThisRun(factorKey);
+          : factorKey === "healthInspection"
+            ? factorDueThisRun(factorKey) && healthDueThisRun
+            : factorDueThisRun(factorKey);
     if (due) {
       const { computed, hasReal } = await FACTOR_FETCHERS[factorKey](restaurant, priorFactor, context);
       factorResults[factorKey] = {
@@ -1099,6 +1428,11 @@ async function main() {
   const textSearchBucketCount = bucketCountFor(snapshot.restaurants.length, PLACES_TEXT_SEARCH_DAILY_BUDGET);
   const textSearchRotationIndex = currentDailyRotationIndex(textSearchBucketCount);
 
+  // Health-inspection (Maricopa County) rotation -- same day-based spreading
+  // as Text Search; see HEALTH_INSPECTION_DAILY_BUDGET.
+  const healthBucketCount = bucketCountFor(snapshot.restaurants.length, HEALTH_INSPECTION_DAILY_BUDGET);
+  const healthRotationIndex = currentDailyRotationIndex(healthBucketCount);
+
   // Budget guard: per-run sanity caps sized to what THIS roster should ever
   // need in one run (one call per restaurant, plus a small buffer) -- see
   // the Budget guard comment above BudgetGuardError. Loaded from, and
@@ -1133,6 +1467,8 @@ async function main() {
     reviewsRotationIndex,
     textSearchBucketCount,
     textSearchRotationIndex,
+    healthBucketCount,
+    healthRotationIndex,
     guard,
     runState,
   };
