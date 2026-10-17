@@ -778,24 +778,32 @@ function editorialScore({ hitCount }) {
 }
 
 // `reason` is fetchGooglePlaces()'s own diagnosis (HTTP status, "no place
-// match", a network error, or -- once added below -- a real Google
-// quota-exhaustion error body) -- see the note above FACTOR_FETCHERS.
-// Surfacing it here means "no review count available" in the UI/audit
-// trail actually says WHY, instead of collapsing every possible cause
-// into one indistinguishable generic string (the same diagnostic-
-// blindness gap that was already fixed for Place Details/reviews, now
-// closed here too, 2026-09-02).
+// match", a network error, or a real Google quota-exhaustion error body)
+// -- see the note above FACTOR_FETCHERS.
+//
+// `note` vs `debugReason`, split 2026-10-17: `note` is rendered VERBATIM
+// on the public restaurant detail page (apps/consumer-web/app.js reads
+// factor.note directly, no filtering). The 2026-09-02 diagnostic-capture
+// fix put the raw Google error body straight into `note` to solve a real
+// debugging problem -- but that meant any visitor who opened a
+// restaurant's detail panel saw "Quota exceeded for quota metric
+// 'SearchTextRequest' ... for consumer 'project_number:816617234424'"
+// verbatim, a real thing a user caught via a live screenshot. `note` is
+// now always a short, clean, consumer-safe string again; `debugReason`
+// carries the full diagnostic detail into the committed JSON (git
+// history, manual debugging) where app.js never reads it, so it never
+// reaches a visitor.
 function reviewVolumeScore(reviewCount, reason) {
-  if (reviewCount === null) return { value: 0, note: reason ? `no review count available (${reason})` : "no review count available" };
+  if (reviewCount === null) return { value: 0, note: "no review count available", debugReason: reason ?? null };
   // Fixed scale, not batch-relative -- so this number means the same
   // thing regardless of which or how many other restaurants are in the
   // run. 2,000 reviews caps out at 1.0; tune if the market's norms differ.
-  return { value: Math.min(1, reviewCount / 2000), note: `${reviewCount} reviews` };
+  return { value: Math.min(1, reviewCount / 2000), note: `${reviewCount} reviews`, debugReason: null };
 }
 
 function ratingScore(rating, reason) {
-  if (rating === null) return { value: 0, note: reason ? `no Google rating available (${reason})` : "no Google rating available" };
-  return { value: Math.round((rating / 5) * 100) / 100, note: `${rating}/5` };
+  if (rating === null) return { value: 0, note: "no Google rating available", debugReason: reason ?? null };
+  return { value: Math.round((rating / 5) * 100) / 100, note: `${rating}/5`, debugReason: null };
 }
 
 // --- Fetchers, keyed by factor, each returning { value, note } -----------
@@ -862,7 +870,8 @@ async function ingestOne(restaurant, prior, runContext) {
       const { computed, hasReal } = await FACTOR_FETCHERS[factorKey](restaurant, priorFactor, context);
       factorResults[factorKey] = {
         value: computed.value,
-        note: computed.note,
+        note: computed.note, // consumer-safe -- see the comment above ratingScore()/reviewVolumeScore()
+        debug_reason: computed.debugReason ?? null, // internal only -- apps/consumer-web/app.js never reads this field
         updated_at: new Date().toISOString(),
         verified: hasReal, // real, checked evidence vs. an honest placeholder -- see scoring.mjs's file header
       };

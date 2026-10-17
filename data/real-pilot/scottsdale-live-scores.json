@@ -55,7 +55,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified, active city business license."
       ],
@@ -65,13 +65,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:57:51.225Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.6905,
           "note": "1381 reviews",
           "updated_at": "2026-10-17T12:57:51.225Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -168,7 +170,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Editorial coverage not yet verified — score reflects the 4 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Editorial coverage not yet verified \u2014 score reflects the 4 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.68,
@@ -177,13 +179,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:57:51.709Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2574 reviews",
           "updated_at": "2026-10-17T12:57:51.709Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -280,7 +284,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -289,13 +293,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:57:52.436Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.4955,
           "note": "991 reviews",
           "updated_at": "2026-10-17T12:57:52.436Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -392,7 +398,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -402,13 +408,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:57:52.915Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3641 reviews",
           "updated_at": "2026-10-17T12:57:52.915Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -505,7 +513,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (96%)."
       ],
       "confidence": 0.56,
@@ -514,13 +522,15 @@
           "value": 0.96,
           "note": "4.8/5",
           "updated_at": "2026-10-17T12:57:53.599Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.789,
           "note": "1578 reviews",
           "updated_at": "2026-10-17T12:57:53.599Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -617,7 +627,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.42,
@@ -626,13 +636,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:57:54.091Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.92,
           "note": "1840 reviews",
           "updated_at": "2026-10-17T12:57:54.091Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -729,7 +741,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.56,
@@ -738,13 +750,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:57:54.567Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.9415,
           "note": "1883 reviews",
           "updated_at": "2026-10-17T12:57:54.567Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -791,7 +805,7 @@
     },
     {
       "id": "real-008",
-      "name": "50 Shades of Rosé",
+      "name": "50 Shades of Ros\u00e9",
       "evidence": {
         "googleRating": 0.84,
         "reviewVolume": 0.216,
@@ -841,7 +855,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%).",
         "Public review volume is the weakest verified signal (22%)."
       ],
@@ -851,13 +865,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:57:55.045Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.216,
           "note": "432 reviews",
           "updated_at": "2026-10-17T12:57:55.045Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -954,7 +970,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Public review volume is the weakest verified signal (12%)."
       ],
@@ -964,13 +980,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:57:55.512Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.116,
           "note": "232 reviews",
           "updated_at": "2026-10-17T12:57:55.512Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1067,7 +1085,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%).",
         "Verified, active city business license."
       ],
@@ -1077,13 +1095,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:57:55.976Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.943,
           "note": "1886 reviews",
           "updated_at": "2026-10-17T12:57:55.976Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1180,7 +1200,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.42,
@@ -1189,13 +1209,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:57:56.398Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2468 reviews",
           "updated_at": "2026-10-17T12:57:56.398Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1292,7 +1314,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -1302,13 +1324,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:57:56.864Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4179 reviews",
           "updated_at": "2026-10-17T12:57:56.864Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1405,7 +1429,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified, active city business license."
       ],
@@ -1415,13 +1439,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:57:57.336Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.277,
           "note": "554 reviews",
           "updated_at": "2026-10-17T12:57:57.336Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1518,7 +1544,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified, active city business license."
       ],
@@ -1528,13 +1554,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:57:57.779Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4053 reviews",
           "updated_at": "2026-10-17T12:57:57.780Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1631,7 +1659,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -1641,13 +1669,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:57:58.237Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2090 reviews",
           "updated_at": "2026-10-17T12:57:58.237Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1744,7 +1774,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%)."
       ],
       "confidence": 0.56,
@@ -1753,13 +1783,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:57:58.699Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.9095,
           "note": "1819 reviews",
           "updated_at": "2026-10-17T12:57:58.699Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1856,7 +1888,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (70%)."
       ],
       "confidence": 0.56,
@@ -1865,13 +1897,15 @@
           "value": 0.7,
           "note": "3.5/5",
           "updated_at": "2026-10-17T12:57:59.177Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.752,
           "note": "1504 reviews",
           "updated_at": "2026-10-17T12:57:59.177Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -1968,7 +2002,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -1978,13 +2012,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:57:59.629Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2943 reviews",
           "updated_at": "2026-10-17T12:57:59.629Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2081,7 +2117,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.56,
@@ -2090,13 +2126,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:00.051Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3737 reviews",
           "updated_at": "2026-10-17T12:58:00.051Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2143,7 +2181,7 @@
     },
     {
       "id": "real-020",
-      "name": "Butters Pancakes & Café",
+      "name": "Butters Pancakes & Caf\u00e9",
       "evidence": {
         "googleRating": 0.94,
         "reviewVolume": 1,
@@ -2193,7 +2231,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.56,
@@ -2202,13 +2240,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:00.530Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4646 reviews",
           "updated_at": "2026-10-17T12:58:00.530Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2305,7 +2345,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -2314,13 +2354,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:00.980Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2730 reviews",
           "updated_at": "2026-10-17T12:58:00.980Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2417,7 +2459,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified, active city business license."
       ],
@@ -2427,13 +2469,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:01.422Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3416 reviews",
           "updated_at": "2026-10-17T12:58:01.422Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2530,7 +2574,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.56,
@@ -2539,13 +2583,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:01.850Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2345 reviews",
           "updated_at": "2026-10-17T12:58:01.850Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2642,7 +2688,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -2651,13 +2697,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:02.289Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2835 reviews",
           "updated_at": "2026-10-17T12:58:02.289Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2754,7 +2802,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -2764,13 +2812,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:02.732Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2284 reviews",
           "updated_at": "2026-10-17T12:58:02.732Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2867,7 +2917,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (74%).",
         "Public review volume is the weakest verified signal (22%)."
       ],
@@ -2877,13 +2927,15 @@
           "value": 0.74,
           "note": "3.7/5",
           "updated_at": "2026-10-17T12:58:03.226Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.221,
           "note": "442 reviews",
           "updated_at": "2026-10-17T12:58:03.226Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -2980,7 +3032,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified, active city business license."
       ],
@@ -2990,13 +3042,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:03.665Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8985,
           "note": "1797 reviews",
           "updated_at": "2026-10-17T12:58:03.665Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3093,7 +3147,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Public review volume is the weakest verified signal (19%)."
       ],
@@ -3103,13 +3157,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:04.124Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.1895,
           "note": "379 reviews",
           "updated_at": "2026-10-17T12:58:04.124Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3206,7 +3262,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -3216,13 +3272,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:04.553Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3580 reviews",
           "updated_at": "2026-10-17T12:58:04.553Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3319,7 +3377,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -3328,13 +3386,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:05.028Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.815,
           "note": "1630 reviews",
           "updated_at": "2026-10-17T12:58:05.028Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3431,7 +3491,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -3440,13 +3500,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:05.474Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.4235,
           "note": "847 reviews",
           "updated_at": "2026-10-17T12:58:05.474Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3543,7 +3605,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -3552,13 +3614,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:05.928Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.7325,
           "note": "1465 reviews",
           "updated_at": "2026-10-17T12:58:05.928Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3605,7 +3669,7 @@
     },
     {
       "id": "real-033",
-      "name": "Cooper’s Hawk Winery & Restaurant",
+      "name": "Cooper\u2019s Hawk Winery & Restaurant",
       "evidence": {
         "googleRating": 0.9,
         "reviewVolume": 0.722,
@@ -3655,7 +3719,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -3664,13 +3728,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:06.371Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.722,
           "note": "1444 reviews",
           "updated_at": "2026-10-17T12:58:06.371Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3767,7 +3833,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -3777,13 +3843,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:06.797Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3690 reviews",
           "updated_at": "2026-10-17T12:58:06.797Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3880,7 +3948,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -3889,13 +3957,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:07.255Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2080 reviews",
           "updated_at": "2026-10-17T12:58:07.255Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -3942,7 +4012,7 @@
     },
     {
       "id": "real-036",
-      "name": "Culver’s",
+      "name": "Culver\u2019s",
       "evidence": {
         "googleRating": 0.84,
         "reviewVolume": 0.932,
@@ -3992,7 +4062,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -4001,13 +4071,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:07.682Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.932,
           "note": "1864 reviews",
           "updated_at": "2026-10-17T12:58:07.682Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4104,7 +4176,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%).",
         "Public review volume is the weakest verified signal (6%)."
       ],
@@ -4114,13 +4186,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:08.141Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.0645,
           "note": "129 reviews",
           "updated_at": "2026-10-17T12:58:08.141Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4217,7 +4291,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (100%).",
         "Verified, active city business license."
       ],
@@ -4227,13 +4301,15 @@
           "value": 1,
           "note": "5/5",
           "updated_at": "2026-10-17T12:58:08.613Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.007,
           "note": "14 reviews",
           "updated_at": "2026-10-17T12:58:08.613Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4330,7 +4406,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%)."
       ],
       "confidence": 0.56,
@@ -4339,13 +4415,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:09.039Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2838 reviews",
           "updated_at": "2026-10-17T12:58:09.039Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4442,7 +4520,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (76%)."
       ],
       "confidence": 0.42,
@@ -4451,13 +4529,15 @@
           "value": 0.76,
           "note": "3.8/5",
           "updated_at": "2026-10-17T12:58:09.479Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.7485,
           "note": "1497 reviews",
           "updated_at": "2026-10-17T12:58:09.479Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4554,7 +4634,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Public review volume is the weakest verified signal (31%)."
       ],
@@ -4564,13 +4644,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:09.944Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.313,
           "note": "626 reviews",
           "updated_at": "2026-10-17T12:58:09.944Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4617,7 +4699,7 @@
     },
     {
       "id": "real-042",
-      "name": "el CARBÓN Mexican Eatery",
+      "name": "el CARB\u00d3N Mexican Eatery",
       "evidence": {
         "googleRating": 0.94,
         "reviewVolume": 0.134,
@@ -4667,7 +4749,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%).",
         "Public review volume is the weakest verified signal (13%)."
       ],
@@ -4677,13 +4759,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:10.429Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.134,
           "note": "268 reviews",
           "updated_at": "2026-10-17T12:58:10.429Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4730,7 +4814,7 @@
     },
     {
       "id": "real-043",
-      "name": "Élephante Scottsdale",
+      "name": "\u00c9lephante Scottsdale",
       "evidence": {
         "googleRating": 0.84,
         "reviewVolume": 0.4485,
@@ -4780,7 +4864,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.42,
@@ -4789,13 +4873,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:10.902Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.4485,
           "note": "897 reviews",
           "updated_at": "2026-10-17T12:58:10.902Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -4892,7 +4978,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -4901,13 +4987,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:11.361Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.9565,
           "note": "1913 reviews",
           "updated_at": "2026-10-17T12:58:11.361Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5004,7 +5092,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -5013,13 +5101,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:11.802Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.6385,
           "note": "1277 reviews",
           "updated_at": "2026-10-17T12:58:11.802Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5116,7 +5206,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -5125,13 +5215,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:12.258Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.775,
           "note": "1550 reviews",
           "updated_at": "2026-10-17T12:58:12.258Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5228,7 +5320,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -5237,13 +5329,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:12.725Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.406,
           "note": "812 reviews",
           "updated_at": "2026-10-17T12:58:12.725Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5340,7 +5434,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -5349,13 +5443,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:13.156Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.47,
           "note": "940 reviews",
           "updated_at": "2026-10-17T12:58:13.156Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5402,7 +5498,7 @@
     },
     {
       "id": "real-049",
-      "name": "Fleming’s Prime Steakhouse & Wine Bar",
+      "name": "Fleming\u2019s Prime Steakhouse & Wine Bar",
       "evidence": {
         "googleRating": 0.92,
         "reviewVolume": 0.7295,
@@ -5452,7 +5548,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified, active city business license."
       ],
@@ -5462,13 +5558,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:13.634Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.7295,
           "note": "1459 reviews",
           "updated_at": "2026-10-17T12:58:13.634Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5565,7 +5663,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -5574,13 +5672,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:14.060Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.9745,
           "note": "1949 reviews",
           "updated_at": "2026-10-17T12:58:14.060Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5627,7 +5727,7 @@
     },
     {
       "id": "real-051",
-      "name": "Fogo de Chão Brazilian Steakhouse",
+      "name": "Fogo de Ch\u00e3o Brazilian Steakhouse",
       "evidence": {
         "googleRating": 0.92,
         "reviewVolume": 1,
@@ -5677,7 +5777,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified, active city business license."
       ],
@@ -5687,13 +5787,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:14.527Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "17627 reviews",
           "updated_at": "2026-10-17T12:58:14.527Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5790,7 +5892,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified, active city business license."
       ],
@@ -5800,13 +5902,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:14.981Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.902,
           "note": "1804 reviews",
           "updated_at": "2026-10-17T12:58:14.981Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -5903,7 +6007,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -5912,13 +6016,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:15.453Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2030 reviews",
           "updated_at": "2026-10-17T12:58:15.453Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6015,7 +6121,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -6025,13 +6131,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:15.924Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3484 reviews",
           "updated_at": "2026-10-17T12:58:15.924Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6128,7 +6236,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -6138,13 +6246,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:16.372Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3185 reviews",
           "updated_at": "2026-10-17T12:58:16.372Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6241,7 +6351,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%).",
         "Verified, active city business license."
       ],
@@ -6251,13 +6361,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:16.824Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.549,
           "note": "1098 reviews",
           "updated_at": "2026-10-17T12:58:16.824Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6354,7 +6466,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -6364,13 +6476,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:17.259Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2272 reviews",
           "updated_at": "2026-10-17T12:58:17.259Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6467,7 +6581,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -6476,13 +6590,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:17.729Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2182 reviews",
           "updated_at": "2026-10-17T12:58:17.729Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6579,7 +6695,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -6588,13 +6704,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:18.190Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8035,
           "note": "1607 reviews",
           "updated_at": "2026-10-17T12:58:18.190Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6691,7 +6809,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.42,
@@ -6700,13 +6818,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:18.634Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4549 reviews",
           "updated_at": "2026-10-17T12:58:18.634Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6803,7 +6923,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.42,
@@ -6812,13 +6932,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:19.094Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.7665,
           "note": "1533 reviews",
           "updated_at": "2026-10-17T12:58:19.094Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6915,7 +7037,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (76%)."
       ],
       "confidence": 0.56,
@@ -6924,13 +7046,15 @@
           "value": 0.76,
           "note": "3.8/5",
           "updated_at": "2026-10-17T12:58:19.577Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3765,
           "note": "753 reviews",
           "updated_at": "2026-10-17T12:58:19.577Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -6977,7 +7101,7 @@
     },
     {
       "id": "real-063",
-      "name": "Jalapeño Inferno Takeout and Cantina",
+      "name": "Jalape\u00f1o Inferno Takeout and Cantina",
       "evidence": {
         "googleRating": 0.86,
         "reviewVolume": 0.127,
@@ -7027,7 +7151,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Public review volume is the weakest verified signal (13%)."
       ],
@@ -7037,13 +7161,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:20.079Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.127,
           "note": "254 reviews",
           "updated_at": "2026-10-17T12:58:20.079Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7140,7 +7266,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%)."
       ],
       "confidence": 0.56,
@@ -7149,13 +7275,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:20.566Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.9865,
           "note": "1973 reviews",
           "updated_at": "2026-10-17T12:58:20.566Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7252,7 +7380,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified, active city business license."
       ],
@@ -7262,13 +7390,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:21.030Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3375,
           "note": "675 reviews",
           "updated_at": "2026-10-17T12:58:21.030Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7365,7 +7495,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -7375,13 +7505,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:21.514Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2084 reviews",
           "updated_at": "2026-10-17T12:58:21.514Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7478,7 +7610,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Public review volume is the weakest verified signal (13%)."
       ],
@@ -7488,13 +7620,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:21.979Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.1345,
           "note": "269 reviews",
           "updated_at": "2026-10-17T12:58:21.979Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7591,7 +7725,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%)."
       ],
       "confidence": 0.56,
@@ -7600,13 +7734,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:22.432Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "6310 reviews",
           "updated_at": "2026-10-17T12:58:22.432Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7703,7 +7839,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -7713,13 +7849,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:22.870Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.355,
           "note": "710 reviews",
           "updated_at": "2026-10-17T12:58:22.870Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7816,7 +7954,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Verified, active city business license."
       ],
@@ -7826,13 +7964,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:23.336Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "3899 reviews",
           "updated_at": "2026-10-17T12:58:23.336Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -7929,7 +8069,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -7938,13 +8078,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:23.781Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2112 reviews",
           "updated_at": "2026-10-17T12:58:23.781Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8041,7 +8183,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -8050,13 +8192,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:24.275Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2368 reviews",
           "updated_at": "2026-10-17T12:58:24.275Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8153,7 +8297,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -8162,13 +8306,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:24.741Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.38,
           "note": "760 reviews",
           "updated_at": "2026-10-17T12:58:24.741Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8265,7 +8411,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%)."
       ],
       "confidence": 0.56,
@@ -8274,13 +8420,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:25.218Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8,
           "note": "1600 reviews",
           "updated_at": "2026-10-17T12:58:25.218Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8377,7 +8525,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified, active city business license."
       ],
@@ -8387,13 +8535,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:25.677Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4271 reviews",
           "updated_at": "2026-10-17T12:58:25.677Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8490,7 +8640,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -8499,13 +8649,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:26.165Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2302 reviews",
           "updated_at": "2026-10-17T12:58:26.165Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8602,7 +8754,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.42,
@@ -8611,13 +8763,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:26.592Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8745,
           "note": "1749 reviews",
           "updated_at": "2026-10-17T12:58:26.592Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8714,7 +8868,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (70%).",
         "Verified, active city business license."
       ],
@@ -8724,13 +8878,15 @@
           "value": 0.7,
           "note": "3.5/5",
           "updated_at": "2026-10-17T12:58:27.074Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2233 reviews",
           "updated_at": "2026-10-17T12:58:27.074Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8827,7 +8983,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (72%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -8837,13 +8993,15 @@
           "value": 0.72,
           "note": "3.6/5",
           "updated_at": "2026-10-17T12:58:27.535Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.649,
           "note": "1298 reviews",
           "updated_at": "2026-10-17T12:58:27.535Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -8940,7 +9098,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is the weakest verified signal (10%)."
       ],
       "confidence": 0.56,
@@ -8949,13 +9107,15 @@
           "value": 0.68,
           "note": "3.4/5",
           "updated_at": "2026-10-17T12:58:28.011Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.36,
           "note": "720 reviews",
           "updated_at": "2026-10-17T12:58:28.011Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9052,7 +9212,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (72%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -9062,13 +9222,15 @@
           "value": 0.72,
           "note": "3.6/5",
           "updated_at": "2026-10-17T12:58:28.473Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2387 reviews",
           "updated_at": "2026-10-17T12:58:28.473Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9165,7 +9327,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (70%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -9175,13 +9337,15 @@
           "value": 0.7,
           "note": "3.5/5",
           "updated_at": "2026-10-17T12:58:28.931Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2101 reviews",
           "updated_at": "2026-10-17T12:58:28.931Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9278,7 +9442,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Public review volume is the weakest verified signal (30%)."
       ],
@@ -9288,13 +9452,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:29.415Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3,
           "note": "600 reviews",
           "updated_at": "2026-10-17T12:58:29.415Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9391,7 +9557,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -9400,13 +9566,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:29.874Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3975,
           "note": "795 reviews",
           "updated_at": "2026-10-17T12:58:29.874Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9503,7 +9671,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.42,
@@ -9512,13 +9680,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:30.333Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.692,
           "note": "1384 reviews",
           "updated_at": "2026-10-17T12:58:30.333Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9615,7 +9785,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (94%)."
       ],
       "confidence": 0.56,
@@ -9624,13 +9794,15 @@
           "value": 0.94,
           "note": "4.7/5",
           "updated_at": "2026-10-17T12:58:30.771Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2429 reviews",
           "updated_at": "2026-10-17T12:58:30.771Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9727,7 +9899,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -9736,13 +9908,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:31.249Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2192 reviews",
           "updated_at": "2026-10-17T12:58:31.249Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9839,7 +10013,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified, active city business license."
       ],
@@ -9849,13 +10023,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:31.710Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "6214 reviews",
           "updated_at": "2026-10-17T12:58:31.710Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -9952,7 +10128,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -9962,13 +10138,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:32.155Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2764 reviews",
           "updated_at": "2026-10-17T12:58:32.155Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10065,7 +10243,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (92%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -10075,13 +10253,15 @@
           "value": 0.92,
           "note": "4.6/5",
           "updated_at": "2026-10-17T12:58:32.624Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.2365,
           "note": "473 reviews",
           "updated_at": "2026-10-17T12:58:32.624Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10178,7 +10358,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (72%)."
       ],
       "confidence": 0.56,
@@ -10187,13 +10367,15 @@
           "value": 0.72,
           "note": "3.6/5",
           "updated_at": "2026-10-17T12:58:33.088Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.656,
           "note": "1312 reviews",
           "updated_at": "2026-10-17T12:58:33.088Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10290,7 +10472,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (70%).",
         "Public review volume is the weakest verified signal (5%)."
       ],
@@ -10300,13 +10482,15 @@
           "value": 0.7,
           "note": "3.5/5",
           "updated_at": "2026-10-17T12:58:33.564Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.045,
           "note": "90 reviews",
           "updated_at": "2026-10-17T12:58:33.564Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10403,7 +10587,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Public review volume is the weakest verified signal (23%)."
       ],
@@ -10413,13 +10597,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:34.039Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.23,
           "note": "460 reviews",
           "updated_at": "2026-10-17T12:58:34.039Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10516,7 +10702,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.56,
@@ -10525,13 +10711,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:34.512Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.777,
           "note": "1554 reviews",
           "updated_at": "2026-10-17T12:58:34.512Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10628,7 +10816,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.42,
@@ -10637,13 +10825,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:34.969Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "4512 reviews",
           "updated_at": "2026-10-17T12:58:34.969Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10740,7 +10930,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (86%).",
         "Public review volume is the weakest verified signal (22%)."
       ],
@@ -10750,13 +10940,15 @@
           "value": 0.86,
           "note": "4.3/5",
           "updated_at": "2026-10-17T12:58:35.403Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.2215,
           "note": "443 reviews",
           "updated_at": "2026-10-17T12:58:35.403Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10853,7 +11045,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (82%).",
         "Public review volume is the weakest verified signal (18%)."
       ],
@@ -10863,13 +11055,15 @@
           "value": 0.82,
           "note": "4.1/5",
           "updated_at": "2026-10-17T12:58:35.864Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.183,
           "note": "366 reviews",
           "updated_at": "2026-10-17T12:58:35.864Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -10966,7 +11160,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -10975,13 +11169,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:36.321Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8405,
           "note": "1681 reviews",
           "updated_at": "2026-10-17T12:58:36.321Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11078,7 +11274,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.56,
@@ -11087,13 +11283,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:36.798Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "6420 reviews",
           "updated_at": "2026-10-17T12:58:36.798Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11190,7 +11388,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -11200,13 +11398,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:37.247Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3105,
           "note": "621 reviews",
           "updated_at": "2026-10-17T12:58:37.247Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11303,7 +11503,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%)."
       ],
       "confidence": 0.42,
@@ -11312,13 +11512,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:37.744Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.4035,
           "note": "807 reviews",
           "updated_at": "2026-10-17T12:58:37.744Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11415,7 +11617,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Verified business license is the weakest verified signal (10%)."
       ],
@@ -11425,13 +11627,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:38.207Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.8855,
           "note": "1771 reviews",
           "updated_at": "2026-10-17T12:58:38.207Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11528,7 +11732,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -11538,13 +11742,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:38.681Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2272 reviews",
           "updated_at": "2026-10-17T12:58:38.681Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11641,7 +11847,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%)."
       ],
       "confidence": 0.56,
@@ -11650,13 +11856,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:39.155Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.6215,
           "note": "1243 reviews",
           "updated_at": "2026-10-17T12:58:39.155Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11753,7 +11961,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (88%).",
         "Verified, active city business license."
       ],
@@ -11763,13 +11971,15 @@
           "value": 0.88,
           "note": "4.4/5",
           "updated_at": "2026-10-17T12:58:39.607Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 1,
           "note": "2691 reviews",
           "updated_at": "2026-10-17T12:58:39.607Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11816,7 +12026,7 @@
     },
     {
       "id": "real-106",
-      "name": "Señor Taco Express Scottsdale",
+      "name": "Se\u00f1or Taco Express Scottsdale",
       "evidence": {
         "googleRating": 0.84,
         "reviewVolume": 0.159,
@@ -11866,7 +12076,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (84%).",
         "Public review volume is the weakest verified signal (16%)."
       ],
@@ -11876,13 +12086,15 @@
           "value": 0.84,
           "note": "4.2/5",
           "updated_at": "2026-10-17T12:58:40.077Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.159,
           "note": "318 reviews",
           "updated_at": "2026-10-17T12:58:40.077Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -11979,7 +12191,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (76%).",
         "Public review volume is the weakest verified signal (22%)."
       ],
@@ -11989,13 +12201,15 @@
           "value": 0.76,
           "note": "3.8/5",
           "updated_at": "2026-10-17T12:58:40.557Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.2205,
           "note": "441 reviews",
           "updated_at": "2026-10-17T12:58:40.557Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -12092,7 +12306,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%)."
       ],
       "confidence": 0.42,
@@ -12101,13 +12315,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:41.019Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.867,
           "note": "1734 reviews",
           "updated_at": "2026-10-17T12:58:41.019Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -12204,7 +12420,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 2 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (90%).",
         "Public review volume is the weakest verified signal (33%)."
       ],
@@ -12214,13 +12430,15 @@
           "value": 0.9,
           "note": "4.5/5",
           "updated_at": "2026-10-17T12:58:41.509Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.3295,
           "note": "659 reviews",
           "updated_at": "2026-10-17T12:58:41.509Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -12317,7 +12535,7 @@
         }
       },
       "topReasons": [
-        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
+        "Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 3 of 6 signals that are (unverified factors aren't counted against it).",
         "Google rating is strong (80%)."
       ],
       "confidence": 0.56,
@@ -12326,13 +12544,15 @@
           "value": 0.8,
           "note": "4/5",
           "updated_at": "2026-10-17T12:58:41.972Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "reviewVolume": {
           "value": 0.5935,
           "note": "1187 reviews",
           "updated_at": "2026-10-17T12:58:41.972Z",
-          "verified": true
+          "verified": true,
+          "debug_reason": null
         },
         "healthInspection": {
           "value": 0,
@@ -12429,21 +12649,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places API HTTP 429 (RESOURCE_EXHAUSTED: Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:42.249Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places API HTTP 429 (RESOURCE_EXHAUSTED: Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places API HTTP 429 (RESOURCE_EXHAUSTED: Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:42.249Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places API HTTP 429 (RESOURCE_EXHAUSTED: Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -12540,21 +12762,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:42.501Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:42.501Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -12651,22 +12875,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (87%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:42.753Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:42.753Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -12763,21 +12989,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:43.005Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:43.005Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -12874,7 +13102,7 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (100%).",
         "Verified, active city business license."
       ],
@@ -12882,15 +13110,17 @@
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:43.256Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:43.256Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -12987,22 +13217,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:43.507Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:43.507Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13099,22 +13331,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:43.760Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:43.760Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13211,22 +13445,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (73%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:44.013Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:44.013Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13323,21 +13559,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:44.264Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:44.264Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13434,21 +13672,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:44.516Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:44.516Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13545,21 +13785,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:44.768Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:44.768Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13656,21 +13898,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:45.020Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:45.020Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13767,22 +14011,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:45.273Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:45.273Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13879,22 +14125,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (82%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:45.526Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:45.526Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -13991,22 +14239,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:45.778Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:45.778Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14103,22 +14353,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (81%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:46.030Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:46.030Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14215,21 +14467,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:46.282Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:46.282Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14326,22 +14580,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:46.534Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:46.534Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14438,22 +14694,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:46.786Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:46.786Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14550,22 +14808,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (72%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:47.039Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:47.039Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14662,22 +14922,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (75%)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:47.291Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:47.291Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14774,7 +15036,7 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (100%).",
         "Verified, active city business license."
       ],
@@ -14782,15 +15044,17 @@
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:47.543Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:47.543Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14887,21 +15151,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:47.794Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:47.794Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -14998,7 +15264,7 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (100%).",
         "Verified, active city business license."
       ],
@@ -15006,15 +15272,17 @@
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:48.045Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:48.045Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -15111,22 +15379,24 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified — score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
-        "No signals verified yet — this restaurant hasn't been reached by the pipeline."
+        "Google rating and Public review volume and Health inspection record and Verified business license and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 0 of 6 signals that are (unverified factors aren't counted against it).",
+        "No signals verified yet \u2014 this restaurant hasn't been reached by the pipeline."
       ],
       "confidence": 0,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:48.296Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:48.296Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -15223,21 +15493,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:48.549Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:48.549Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -15334,21 +15606,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:48.801Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:48.801Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -15445,21 +15719,23 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it)."
       ],
       "confidence": 0.14,
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:49.053Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:49.053Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
@@ -15556,7 +15832,7 @@
         }
       },
       "topReasons": [
-        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified — score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
+        "Google rating and Public review volume and Health inspection record and Site & menu freshness and Editorial coverage not yet verified \u2014 score reflects the 1 of 6 signals that are (unverified factors aren't counted against it).",
         "Verified business license is strong (100%).",
         "Verified, active city business license."
       ],
@@ -15564,15 +15840,17 @@
       "factors": {
         "googleRating": {
           "value": 0,
-          "note": "no Google rating available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no Google rating available",
           "updated_at": "2026-10-17T12:58:49.304Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "reviewVolume": {
           "value": 0,
-          "note": "no review count available (Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.))",
+          "note": "no review count available",
           "updated_at": "2026-10-17T12:58:49.305Z",
-          "verified": false
+          "verified": false,
+          "debug_reason": "Places Text Search quota exhausted this run (Quota exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest per day' of service 'places.googleapis.com' for consumer 'project_number:816617234424'.)"
         },
         "healthInspection": {
           "value": 0,
