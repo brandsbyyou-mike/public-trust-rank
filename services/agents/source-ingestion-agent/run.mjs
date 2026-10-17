@@ -133,6 +133,32 @@ const CADENCE = Object.freeze({
 // designing right up against the cap.
 const CSE_DAILY_BUDGET = 80;
 
+// Real, captured error, not a guess (2026-10-17): every daily run's notes
+// for the last 6+ weeks have said, verbatim, "RESOURCE_EXHAUSTED: Quota
+// exceeded for quota metric 'SearchTextRequest' and limit 'SearchTextRequest
+// per day'" for the same ~29 of 139 restaurants, every single day, with no
+// exception found across 46 straight days of history. Places Text Search
+// has its own real per-day cap on this unbilled project, same class of
+// problem as the already-fixed Place Details cap, just never actually
+// addressed with a budget/rotation -- only diagnosed. Sequential,
+// alphabetical-ish iteration order meant the cap was always exhausted
+// partway through the SAME tail of the roster, so those restaurants never
+// got a turn: 7 of them (no license match either) sat at a flat score of
+// 50 / confidence 0 for the entire 6+ weeks, looking exactly like "not a
+// real business" on the live site when they're simply never reached.
+// Fix: the same daily-budget-and-rotation treatment already applied to
+// Place Details reviews and editorial mentions, sized under the real
+// observed cap (roughly 110/day succeeded before the 429s started) for
+// margin. 100, not 139, means every restaurant's Text Search comes due on
+// a 2-day rotation (see bucketCountFor()/currentDailyRotationIndex()
+// below) instead of all 139 racing for the same daily cap -- less
+// "freshness" per restaurant (every-other-day instead of every day for
+// googleRating/reviewVolume), but no restaurant is ever permanently
+// excluded again. Daily, not weekly, rotation -- this quota resets daily,
+// unlike the weekly-reset cadence editorialMentions/dish-mentions rotate
+// against.
+const PLACES_TEXT_SEARCH_DAILY_BUDGET = 100;
+
 const MODE = (process.argv[2] || "daily").toLowerCase();
 if (!["daily", "weekly", "all"].includes(MODE)) {
   console.error(`Unknown mode "${MODE}" -- use "daily", "weekly", or "all".`);
@@ -163,6 +189,16 @@ function bucketCountFor(totalRestaurants, dailyBudget) {
 function currentRotationIndex(bucketCount) {
   const weekIndex = Math.floor(Date.now() / (7 * 24 * 3600 * 1000));
   return weekIndex % bucketCount;
+}
+
+// Same idea as currentRotationIndex() above, but DAY-granularity -- for
+// PLACES_TEXT_SEARCH_DAILY_BUDGET, where the underlying Google quota
+// itself resets every day, not every week. A week-based index here would
+// lock the same half of the roster out of Text Search for a full 7 days
+// at a time instead of alternating daily.
+function currentDailyRotationIndex(bucketCount) {
+  const dayIndex = Math.floor(Date.now() / (24 * 3600 * 1000));
+  return dayIndex % bucketCount;
 }
 
 // Deterministic hash of a restaurant's id into [0, bucketCount) -- stable
@@ -805,13 +841,23 @@ async function ingestOne(restaurant, prior, runContext) {
   let confidence = 0;
   const context = { licenseRecords: runContext.licenseRecords, guard: runContext.guard, runState: runContext.runState }; // per-restaurant scratch (e.g. placesResult cache)
 
+  // Text Search rotation gate, shared by googleRating and reviewVolume --
+  // both ride the one cached fetchGooglePlaces() call per restaurant (see
+  // getPlaces()), so whether today is this restaurant's turn is computed
+  // once here rather than twice below. See PLACES_TEXT_SEARCH_DAILY_BUDGET
+  // for why this gate exists at all.
+  const textSearchDueThisRun =
+    restaurantBucket(restaurant.id, runContext.textSearchBucketCount) === runContext.textSearchRotationIndex;
+
   for (const factorKey of Object.keys(CADENCE)) {
     const priorFactor = prior?.factors?.[factorKey];
     const due =
       factorKey === "editorialMentions"
         ? (MODE === "weekly" || MODE === "all") &&
           restaurantBucket(restaurant.id, runContext.bucketCount) === runContext.rotationIndex
-        : factorDueThisRun(factorKey);
+        : factorKey === "googleRating" || factorKey === "reviewVolume"
+          ? factorDueThisRun(factorKey) && textSearchDueThisRun
+          : factorDueThisRun(factorKey);
     if (due) {
       const { computed, hasReal } = await FACTOR_FETCHERS[factorKey](restaurant, priorFactor, context);
       factorResults[factorKey] = {
@@ -1037,6 +1083,13 @@ async function main() {
   const reviewsBucketCount = bucketCountFor(snapshot.restaurants.length, PLACE_DETAILS_DAILY_BUDGET);
   const reviewsRotationIndex = currentRotationIndex(reviewsBucketCount);
 
+  // Places Text Search (googleRating/reviewVolume) rotation -- see the
+  // real-quota comment above PLACES_TEXT_SEARCH_DAILY_BUDGET. DAY-based
+  // index (currentDailyRotationIndex), not week-based, because this is
+  // the quota that resets every day.
+  const textSearchBucketCount = bucketCountFor(snapshot.restaurants.length, PLACES_TEXT_SEARCH_DAILY_BUDGET);
+  const textSearchRotationIndex = currentDailyRotationIndex(textSearchBucketCount);
+
   // Budget guard: per-run sanity caps sized to what THIS roster should ever
   // need in one run (one call per restaurant, plus a small buffer) -- see
   // the Budget guard comment above BudgetGuardError. Loaded from, and
@@ -1063,7 +1116,17 @@ async function main() {
   // being exhausted says nothing about the other.
   const runState = { placeDetailsQuotaExhausted: null, textSearchQuotaExhausted: null };
 
-  const runContext = { licenseRecords, bucketCount, rotationIndex, reviewsBucketCount, reviewsRotationIndex, guard, runState };
+  const runContext = {
+    licenseRecords,
+    bucketCount,
+    rotationIndex,
+    reviewsBucketCount,
+    reviewsRotationIndex,
+    textSearchBucketCount,
+    textSearchRotationIndex,
+    guard,
+    runState,
+  };
 
   for (const restaurant of snapshot.restaurants) {
     // Sequential, not Promise.all -- basic courtesy to the per-restaurant
