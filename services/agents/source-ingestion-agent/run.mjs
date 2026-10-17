@@ -15,23 +15,23 @@
  *   - googleRating, reviewVolume, licenseVerified, siteFreshness: DAILY
  *     (rating/reviews move day to day; license status and site changes are
  *     cheap to check daily even though they rarely change)
- *   - editorialMentions: WEEKLY, ROTATED across the roster (a news feature
- *     is a rare event -- checking it daily buys nothing a weekly check
- *     doesn't). Custom Search's free tier is 100 queries/day; once the
- *     roster is bigger than that, checking every restaurant in one weekly
- *     run would blow the free tier, so each weekly run only checks a
- *     rotating slice of the roster (see CSE_DAILY_BUDGET below) -- every
- *     restaurant still gets refreshed, just roughly monthly instead of
- *     weekly once the roster is large. Below the budget, rotation collapses
- *     to "everyone, every week," same as before.
- *   - healthInspection: UNIMPLEMENTED (not on any cadence yet -- see #5 in
- *     the playbook)
+ *   - healthInspection: DAILY, ROTATED across the roster (resolved from
+ *     Maricopa County's public inspection portal -- two HTTP requests per
+ *     restaurant, spread over a few days via HEALTH_INSPECTION_DAILY_BUDGET
+ *     to be polite to the county server; inspections change ~quarterly so
+ *     there's no freshness cost to the rotation)
+ *   - reviewSentiment: WEEKLY, ROTATED -- derived from the same Google
+ *     review sample as dish/service mentions (recent star average + praised
+ *     dishes + flagged service), so it rides that one Place Details fetch
+ *     and its rotation (see PLACE_DETAILS_DAILY_BUDGET). Replaced the former
+ *     editorial/press factor, which biased toward marketing spend rather
+ *     than diner trust.
  *
  * Run with `node run.mjs daily` or `node run.mjs weekly` (defaults to
  * "daily" if no argument given). A run only fetches the factors on that
  * cadence and CARRIES FORWARD the last known value (with its original
  * note and timestamp) for everything else -- so a daily run never zeroes
- * out last week's editorial-mentions finding, and a weekly run doesn't
+ * out last week's review-sentiment finding, and a weekly run doesn't
  * waste calls re-checking things that don't need it.
  *
  * Every fetch is defensive: a missing API key, a network failure, or a
@@ -103,6 +103,20 @@ const SERVICE_LEXICON = Object.freeze([
   "seated quickly", "reservation", "noisy", "cozy", "parking",
 ]);
 
+// Polarity for the service terms above, used by reviewSentimentScore() to
+// turn "what people are saying" into a scored signal. Terms not in either
+// set ("service", "customer service", "wait time", "reservation", "parking")
+// are neutral -- their mere presence says nothing about sentiment, so they
+// don't move the score.
+const POSITIVE_SERVICE = new Set([
+  "friendly staff", "attentive", "seated quickly", "short wait", "cozy",
+]);
+const NEGATIVE_SERVICE = new Set([
+  "slow service", "rude", "long wait", "noisy",
+]);
+
+const clampRange = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
+
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -125,7 +139,11 @@ const CADENCE = Object.freeze({
   healthInspection: "daily",
   licenseVerified: "daily",
   siteFreshness: "daily",
-  editorialMentions: "weekly",
+  // reviewSentiment is NOT in this CADENCE loop -- it's derived from the
+  // same Place Details review fetch that powers dish/service mentions, so
+  // it's computed in that block (weekly + reviews rotation) after the loop,
+  // see ingestOne(). (The old editorialMentions factor was removed: press/
+  // editorial coverage biases toward marketing spend, not diner trust.)
 });
 
 // Custom Search's free tier is 100 queries/day. Keep real headroom under
@@ -713,26 +731,12 @@ function matchScottsdaleLicense(records, name, address) {
   return { active, yearsActive, reason: null };
 }
 
-// --- Editorial mentions (Google Custom Search) -- WEEKLY cadence ---------
-async function fetchEditorialMentions(name, guard) {
-  const key = process.env.GOOGLE_CSE_KEY;
-  const cx = process.env.GOOGLE_CSE_CX;
-  if (!key || !cx) return { hitCount: null, reason: "no GOOGLE_CSE_KEY/GOOGLE_CSE_CX set" };
-
-  guard.charge("customSearch"); // see the Budget guard comment above fetchGooglePlaces()
-
-  try {
-    const q = encodeURIComponent(`"${name}" Scottsdale restaurant review OR feature`);
-    const res = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${key}&cx=${cx}&q=${q}&num=10`
-    );
-    if (!res.ok) return { hitCount: null, reason: `Custom Search HTTP ${res.status}` };
-    const json = await res.json();
-    return { hitCount: json.items?.length ?? 0, reason: null };
-  } catch (err) {
-    return { hitCount: null, reason: `fetch failed: ${err.message}` };
-  }
-}
+// (The old fetchEditorialMentions / editorialScore pair was removed when the
+// editorial/press factor was replaced by reviewSentiment -- press coverage
+// biases toward restaurants with marketing budgets, the opposite of a
+// from-the-people trust signal. The CSE_DAILY_BUDGET / customSearch budget-
+// guard plumbing is left in place, now simply uncharged, rather than ripping
+// through the guard for a no-op.)
 
 // --- Site freshness -------------------------------------------------------
 async function fetchSiteFreshness(websiteUrl) {
@@ -1091,14 +1095,6 @@ function freshnessScore({ daysSinceModified }) {
   return { value: 0.3, note: `updated ${Math.round(d)}d ago` };
 }
 
-function editorialScore({ hitCount }) {
-  if (hitCount === null) return { value: 0, note: "editorial search not run" };
-  if (hitCount === 0) return { value: 0.1, note: "search ran, nothing found" };
-  if (hitCount <= 2) return { value: 0.4, note: `${hitCount} hit(s)` };
-  if (hitCount <= 5) return { value: 0.6, note: `${hitCount} hits` };
-  return { value: 0.8, note: `${hitCount}+ hits` };
-}
-
 // `reason` is fetchGooglePlaces()'s own diagnosis (HTTP status, "no place
 // match", a network error, or a real Google quota-exhaustion error body)
 // -- see the note above FACTOR_FETCHERS.
@@ -1128,6 +1124,51 @@ function ratingScore(rating, reason) {
   return { value: Math.round((rating / 5) * 100) / 100, note: `${rating}/5`, debugReason: null };
 }
 
+// Review sentiment -> 0..1: "what real diners are actually saying," scored.
+// This is the replacement for the old editorial/press factor. It's computed
+// from the SAME already-derived review data the pipeline keeps for dish/
+// service mentions (term/mentions/avg_rating) plus the recent-review star
+// average -- no new fetch, no raw review text stored, so it stays inside the
+// exact legal boundary documented atop this file. The anchor is the crowd's
+// own recent star average; the dish-praise and service-flag specifics nudge
+// it, bounded so the base rating dominates -- the point is to let what people
+// SAY move the score without overriding the crowd's own number. Negative
+// service themes ("rude", "slow service") bite harder than positive ones
+// help, because a recurring complaint is a stronger trust signal than a
+// compliment. `note` is the clean, public-facing "here's what they're
+// saying" line; `reason` (only on a miss) rides debugReason.
+function reviewSentimentScore(dishMentions, serviceMentions, reviewSample) {
+  const recentAvg = reviewSample?.avg_rating ?? null;
+  const dm = dishMentions || [];
+  const sm = serviceMentions || [];
+  if (recentAvg === null && dm.length === 0 && sm.length === 0) {
+    return { value: 0, note: "no recent reviews available", debugReason: "no review sample" };
+  }
+
+  const base = recentAvg !== null ? recentAvg / 5 : 0.6;
+
+  const sumHits = (arr, set) =>
+    arr.filter((m) => set.has(m.term)).reduce((s, m) => s + (m.mentions || 0), 0);
+  const negHits = sumHits(sm, NEGATIVE_SERVICE);
+  const posHits = sumHits(sm, POSITIVE_SERVICE);
+  const lovedDishes = dm.filter((m) => m.avg_rating !== null && m.avg_rating >= 4.3);
+  const pannedDishes = dm.filter((m) => m.avg_rating !== null && m.avg_rating <= 2.5);
+
+  const serviceAdj = clampRange((posHits * 0.5 - negHits) * 0.04, -0.15, 0.08);
+  const dishAdj = clampRange(lovedDishes.length * 0.02 - pannedDishes.length * 0.05, -0.12, 0.08);
+  const value = Math.round(Math.min(1, Math.max(0, base + serviceAdj + dishAdj)) * 100) / 100;
+
+  const parts = [];
+  if (recentAvg !== null) parts.push(`recent reviews avg ${recentAvg}`);
+  const topLoved = lovedDishes.slice(0, 3).map((m) => m.term);
+  if (topLoved.length) parts.push(`praised: ${topLoved.join(", ")}`);
+  const flagged = sm.filter((m) => NEGATIVE_SERVICE.has(m.term)).map((m) => m.term);
+  if (flagged.length) parts.push(`flagged: ${flagged.slice(0, 2).join(", ")}`);
+  const note = parts.join("; ") || "reviews scanned, no standout themes";
+
+  return { value, note, debugReason: null };
+}
+
 // --- Fetchers, keyed by factor, each returning { value, note } -----------
 // Each takes (restaurant, prior, context) -- context carries per-run shared
 // state (the cached Places result, the bulk license dataset, the rotation
@@ -1148,10 +1189,6 @@ const FACTOR_FETCHERS = {
   async siteFreshness(restaurant, _prior, _context) {
     const freshness = await fetchSiteFreshness(restaurant.website);
     return { computed: freshnessScore(freshness), hasReal: freshness.daysSinceModified !== null };
-  },
-  async editorialMentions(restaurant, _prior, context) {
-    const editorial = await fetchEditorialMentions(restaurant.name, context.guard);
-    return { computed: editorialScore(editorial), hasReal: editorial.hitCount !== null };
   },
   async healthInspection(restaurant, _prior, _context) {
     const health = await fetchHealthInspection(restaurant.name, restaurant.address);
@@ -1187,14 +1224,11 @@ async function ingestOne(restaurant, prior, runContext) {
   for (const factorKey of Object.keys(CADENCE)) {
     const priorFactor = prior?.factors?.[factorKey];
     const due =
-      factorKey === "editorialMentions"
-        ? (MODE === "weekly" || MODE === "all") &&
-          restaurantBucket(restaurant.id, runContext.bucketCount) === runContext.rotationIndex
-        : factorKey === "googleRating" || factorKey === "reviewVolume"
-          ? factorDueThisRun(factorKey) && textSearchDueThisRun
-          : factorKey === "healthInspection"
-            ? factorDueThisRun(factorKey) && healthDueThisRun
-            : factorDueThisRun(factorKey);
+      factorKey === "googleRating" || factorKey === "reviewVolume"
+        ? factorDueThisRun(factorKey) && textSearchDueThisRun
+        : factorKey === "healthInspection"
+          ? factorDueThisRun(factorKey) && healthDueThisRun
+          : factorDueThisRun(factorKey);
     if (due) {
       const { computed, hasReal } = await FACTOR_FETCHERS[factorKey](restaurant, priorFactor, context);
       factorResults[factorKey] = {
@@ -1251,16 +1285,10 @@ async function ingestOne(restaurant, prior, runContext) {
     }
   }
 
-  // verified factors pass their real value through; everything else goes
-  // in as null so scoreRestaurant() excludes it from the score instead of
-  // treating "we haven't checked" as "confirmed worst case." See the file
-  // header in services/ranking-engine/scoring.mjs.
-  const evidence = Object.fromEntries(
-    Object.entries(factorResults).map(([k, v]) => [k, v.verified ? v.value : null])
-  );
-  evidence.confidence = Math.round(confidence * 100) / 100;
-
-  const result = scoreRestaurant(evidence);
+  // NOTE: evidence is built and scoreRestaurant() is called LOWER DOWN, after
+  // the review fetch below -- reviewSentiment is derived from that fetch and
+  // has to be in `factorResults`/`confidence` before scoring, so the scoring
+  // step waits until every factor (reviewSentiment included) is settled.
 
   // place_id: resolve once, reuse forever (see resolvePlaceId() above).
   // Deliberately NOT part of `factors`/`evidence` -- it's plumbing to
@@ -1285,12 +1313,14 @@ async function ingestOne(restaurant, prior, runContext) {
   // reviewsBucketCount/reviewsRotationIndex above -- the real Place
   // Details quota can't cover the full roster in one run), carried
   // forward untouched on weeks/days it's not this restaurant's turn --
-  // same carry-forward pattern as editorialMentions above.
+  // the same carry-forward pattern the CADENCE factors above use. The
+  // reviewSentiment SCORED factor rides this same one fetch (see below).
   let dishMentions = prior?.dish_mentions ?? [];
   let serviceMentions = prior?.service_mentions ?? [];
   let reviewSample = prior?.recent_reviews ?? { count: 0, avg_rating: null };
   let dishMentionsUpdatedAt = prior?.dish_mentions_updated_at ?? null;
   let dishMentionsNote = prior?.dish_mentions_note ?? "not yet fetched";
+  let reviewsFetchedThisRun = false;
   const reviewsDueThisRun =
     (MODE === "weekly" || MODE === "all") &&
     restaurantBucket(restaurant.id, runContext.reviewsBucketCount) === runContext.reviewsRotationIndex;
@@ -1307,10 +1337,46 @@ async function ingestOne(restaurant, prior, runContext) {
       dishMentionsNote = reviews.length
         ? `scanned ${reviews.length} review(s) from Google's most-relevant set`
         : "no reviews returned by Places API";
+      reviewsFetchedThisRun = true;
     } else {
       dishMentionsNote = reason;
     }
   }
+
+  // reviewSentiment factor -- scored from the SAME derived review data above
+  // (no extra fetch, no raw text stored). Fresh when we actually pulled
+  // reviews this run; otherwise carry the last real value forward, same
+  // treatment the CADENCE loop gives its factors.
+  if (reviewsFetchedThisRun) {
+    const computed = reviewSentimentScore(dishMentions, serviceMentions, reviewSample);
+    const verified = computed.debugReason === null;
+    factorResults.reviewSentiment = {
+      value: computed.value,
+      note: computed.note, // consumer-safe "here's what they're saying"
+      debug_reason: computed.debugReason ?? null,
+      updated_at: new Date().toISOString(),
+      verified,
+    };
+    if (verified) confidence += WEIGHTS.reviewSentiment;
+  } else if (prior?.factors?.reviewSentiment) {
+    const pf = prior.factors.reviewSentiment;
+    const verified = pf.verified ?? (pf.updated_at != null); // legacy-row inference, see the CADENCE carry-forward note above
+    factorResults.reviewSentiment = { ...pf, verified };
+    if (verified) confidence += WEIGHTS.reviewSentiment;
+  } else {
+    factorResults.reviewSentiment = { value: 0, note: "not yet fetched", updated_at: null, verified: false };
+  }
+
+  // Now that every factor (reviewSentiment included) is settled, build the
+  // evidence set and score. verified factors pass their real value through;
+  // everything else goes in as null so scoreRestaurant() excludes it rather
+  // than treating "we haven't checked" as "confirmed worst case." See the
+  // file header in services/ranking-engine/scoring.mjs.
+  const evidence = Object.fromEntries(
+    Object.entries(factorResults).map(([k, v]) => [k, v.verified ? v.value : null])
+  );
+  evidence.confidence = Math.round(confidence * 100) / 100;
+  const result = scoreRestaurant(evidence);
 
   return {
     id: restaurant.id,
@@ -1511,7 +1577,7 @@ async function main() {
     JSON.stringify(
       {
         _notice:
-          "Generated by services/agents/source-ingestion-agent/run.mjs. Each factor is either real fetched data or an explicit 0 with a note explaining why -- never a guess. See each restaurant's `factors` field for a per-factor value/note/updated_at audit trail, `previous_score`/`score_delta`/`delta_since` for the real change-since-last-time (from score-history.json, not a demo placeholder), and services/agents/OPERATIONS.md for the daily/weekly cadence this runs on. healthInspection is always 0 today; see source-agent-playbook.md #5. editorialMentions checks a rotating slice of the roster each week once the roster is larger than Custom Search's free-tier budget, not every restaurant every week -- see CSE_DAILY_BUDGET in run.mjs; `factors.editorialMentions.updated_at` on each restaurant is the source of truth for when it was last actually checked. `dish_mentions` is WEEKLY and rotated the same way editorialMentions is (see PLACE_DETAILS_DAILY_BUDGET in run.mjs) -- the real GetPlaceRequest quota on this unbilled project turned out to be 100/day, so each restaurant's dish/service mentions now refresh at least every other week, not every week; `dish_mentions_updated_at` on each restaurant is the source of truth for when it was last actually checked. Derived-only summary of Google's up-to-5 most relevant reviews (term/mentions/avg_rating) -- it does NOT affect `score` (see the DISH MENTIONS comment atop run.mjs for the legal reason raw review text is never stored here).",
+          "Generated by services/agents/source-ingestion-agent/run.mjs. Each factor is either real fetched data or an explicit 0 with a note explaining why -- never a guess. See each restaurant's `factors` field for a per-factor value/note/updated_at audit trail, `previous_score`/`score_delta`/`delta_since` for the real change-since-last-time (from score-history.json, not a demo placeholder), and services/agents/OPERATIONS.md for the daily/weekly cadence this runs on. healthInspection is real as of 2026-10-17 -- resolved from Maricopa County's public food-inspection portal (envapp.maricopa.gov), rotated daily across the roster (HEALTH_INSPECTION_DAILY_BUDGET); `factors.healthInspection.updated_at` is the source of truth for when it was last checked. reviewSentiment is a SCORED factor derived from the same Google review sample as dish/service mentions -- recent-review star average plus praised-dish and flagged-service signals, no raw review text stored -- and replaces the former editorial/press factor (press coverage biased toward marketing spend, not diner trust). `dish_mentions` / reviewSentiment are WEEKLY and rotated (see PLACE_DETAILS_DAILY_BUDGET in run.mjs) -- the real GetPlaceRequest quota on this unbilled project turned out to be 100/day, so each restaurant's reviews refresh at least every other week, not every week; `dish_mentions_updated_at` and `factors.reviewSentiment.updated_at` are the source of truth for when each was last checked. dish_mentions/service_mentions/recent_reviews are a derived-only summary of Google's up-to-5 most relevant reviews (term/mentions/avg_rating) -- they feed reviewSentiment's score and the UI, never storing raw review text (see the DISH MENTIONS comment atop run.mjs for the legal reason).",
         last_run_mode: MODE,
         generated_at: new Date().toISOString(),
         restaurants: results,

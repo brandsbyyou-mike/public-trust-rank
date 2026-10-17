@@ -29,12 +29,11 @@
  *
  * UNVERIFIED vs. MEASURED-LOW, and why the score is renormalized:
  * A factor the pipeline has never actually verified for this restaurant
- * (health inspection has no automated source yet; editorial mentions
- * hasn't reached this restaurant's weekly rotation slot) comes in as
- * `null`/`undefined` -- not 0. A factor that WAS checked and genuinely
- * came back low (a real Google rating of 2.9, a real Custom Search that
- * found zero press mentions) is a real number, including a real 0, and
- * counts normally. The score is the weighted average over only the
+ * (e.g. review sentiment or health inspection that hasn't reached this
+ * restaurant's rotation slot yet) comes in as `null`/`undefined` -- not 0.
+ * A factor that WAS checked and genuinely came back low (a real Google
+ * rating of 2.9, a real health inspection with priority violations) is a
+ * real number, including a real 0, and counts normally. The score is the weighted average over only the
  * factors that are actually known -- an unfetched factor is excluded from
  * the math entirely, not counted as the worst possible outcome. A
  * restaurant should never score lower because OUR data pipeline hasn't
@@ -74,7 +73,7 @@ export const WEIGHTS = Object.freeze({
   healthInspection: 0.18,    // County health department inspection score/grade (public record)
   licenseVerified: 0.14,     // City open-data business license: active + tenure (public record)
   siteFreshness: 0.12,       // Business's own public website: menu/hours/content activity
-  editorialMentions: 0.14,   // Press/editorial coverage via Google Custom Search JSON API
+  reviewSentiment: 0.14,     // What real diners are actually saying: derived sentiment from the Google review sample (recent avg + dish praise + service flags). Replaces the old editorial/press factor -- press coverage biases toward marketing spend, the opposite of a from-the-people trust signal.
 });
 
 export const FACTOR_LABELS = Object.freeze({
@@ -83,7 +82,7 @@ export const FACTOR_LABELS = Object.freeze({
   healthInspection: "Health inspection record",
   licenseVerified: "Verified business license",
   siteFreshness: "Site & menu freshness",
-  editorialMentions: "Editorial coverage",
+  reviewSentiment: "What diners are saying",
 });
 
 export const FACTOR_SOURCES = Object.freeze({
@@ -92,7 +91,7 @@ export const FACTOR_SOURCES = Object.freeze({
   healthInspection: "County health department public inspection records",
   licenseVerified: "City open-data business license record",
   siteFreshness: "Business's own public website",
-  editorialMentions: "Google Custom Search JSON API (press, editorial, and local news coverage)",
+  reviewSentiment: "Derived sentiment from Google's public review sample (recent star average, praised dishes, and flagged service themes) -- no raw review text stored",
 });
 
 const FLOOR = 50;
@@ -104,9 +103,10 @@ const NEUTRAL = 0.5; // the "we don't know yet" prior a thin sample gets pulled 
 // roughly two average factor weights (WEIGHTS values run 0.12-0.26,
 // averaging ~0.167): enough that a restaurant with just one real factor
 // verified (knownWeight ~0.12-0.26) is dominated by the prior and pulled
-// hard toward neutral, while a restaurant near the roster's actual
-// achievable ceiling (~0.82 -- healthInspection has no source for anyone
-// yet) is only lightly nudged, not flattened.
+// hard toward neutral, while a restaurant with broad real coverage (all six
+// factors now have real sources -- health inspection and review sentiment
+// included -- so a fully-covered listing can approach the top of the range)
+// is only lightly nudged, not flattened.
 const THIN_EVIDENCE_PRIOR_WEIGHT = 0.3;
 
 function clamp01(n) {
@@ -197,6 +197,9 @@ function explain(breakdown, evidence) {
   if (evidence.licenseVerified != null && evidence.licenseVerified >= 0.9) {
     reasons.push("Verified, active city business license.");
   }
+  if (evidence.reviewSentiment != null && evidence.reviewSentiment >= 0.8) {
+    reasons.push("Recent diners are saying good things.");
+  }
   if (weakest.value <= 0.35 && weakest.factor !== strongest.factor) {
     reasons.push(`${FACTOR_LABELS[weakest.factor]} is the weakest verified signal (${Math.round(weakest.value * 100)}%).`);
   }
@@ -216,7 +219,7 @@ if (typeof process !== "undefined" && import.meta.url === `file://${process.argv
     healthInspection: 0.95,
     licenseVerified: 1.0,
     siteFreshness: 0.5,
-    editorialMentions: 0.4,
+    reviewSentiment: 0.85,
     confidence: 0.8,
   };
   console.log(JSON.stringify(scoreRestaurant(sample), null, 2));
